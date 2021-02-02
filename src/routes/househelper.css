@@ -1,0 +1,129 @@
+.map {
+  display: flex;
+  background-color: red;
+  width: 100%;
+  height: 900px;
+  z-index: 2;
+  min-width: 800px;
+}
+#leftmenu {
+  position: absolute;
+  width: 550px;
+  height: 820px;
+  background-color: rgba(255, 255, 255, 0.863);
+  right: 10px;
+  top: 130px;
+  border: 1px solid rgb(206, 206, 206);
+  z-index: 1;
+}
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#close {
+  position: absolute;
+  width: 550px;
+  height: 820px;
+  background-color: rgba(255, 255, 255, 0.863);
+  top: 130px;
+  border: 1px solid rgb(206, 206, 206);
+  animation-name: myanimation;
+  animation-duration: 0.8s;
+}
+#close2 {
+  position: absolute;
+  width: 550px;
+  height: 820px;
+  background-color: rgba(255, 255, 255, 0.863);
+  top: 130px;
+  right: 10px;
+  border: 1px solid rgb(206, 206, 206);
+  animation-name: myanimation3;
+  animation-duration: 0.6s;
+}
+
+#sibal {
+  position: absolute;
+  right: 0;
+  top: 500px;
+  right: 560px;
+  width: 25px;
+  height: 50px;
+  background-color: rgba(177, 177, 177, 0.692);
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: none;
+  z-index: 1;
+}
+
+#sibal2 {
+  position: absolute;
+  right: 0;
+  top: 500px;
+  width: 25px;
+  height: 50px;
+  background-color: rgba(177, 177, 177, 0.692);
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  animation-name: myanimation2;
+  animation-duration: 0.3s;
+  outline: none;
+  z-index: 1;
+}
+#sibal3 {
+  position: absolute;
+  right: 0;
+  top: 500px;
+  right: 560px;
+  width: 25px;
+  height: 50px;
+  background-color: rgba(177, 177, 177, 0.692);
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  animation-name: myanimation4;
+  animation-duration: 0.8s;
+  outline: none;
+  z-index: 1;
+}
+@keyframes myanimation {
+  0% {
+    right: 0px;
+  }
+  100% {
+    right: -999px;
+  }
+}
+@keyframes myanimation2 {
+  0% {
+    right: 560px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+@keyframes myanimation3 {
+  0% {
+    right: -999px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+@keyframes myanimation4 {
+  0% {
+    right: 0px;
+  }
+  100% {
+    right: 560px;
+  }
+}
