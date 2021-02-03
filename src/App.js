@@ -1,10 +1,14 @@
 import Househelper from "./routes/househelper";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
   return (
-    <div>
-      <Househelper />
-    </div>
+    <Provider store={store}>
+      <div>
+        <Househelper />
+      </div>
+    </Provider>
   );
 }
 

@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../store/store";
 
 const { kakao } = window;
 
 const MapContainer = () => {
+  const dispatcher = useDispatch();
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
@@ -10,6 +13,7 @@ const MapContainer = () => {
       level: 3,
     };
     const map = new kakao.maps.Map(container, options);
+    dispatcher(actionCreators.setMap(map), [map]);
   }, []);
 
   return (

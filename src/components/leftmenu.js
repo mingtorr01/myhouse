@@ -20,7 +20,7 @@ export default class Leftmenu extends React.Component {
           <div className="region2">
             <div className="regionselect">
               <p className="regionselect_p">살고싶은지역</p>
-              <img src={Mark} width="25px" height="25px" />
+              <img src={Mark} width="25px" height="25px" alt="" />
             </div>
             <div className="regionselect2">
               <select name="cars">
@@ -69,7 +69,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div1">
             <div className="selector_img">
-              <img src={Planet} width="30px" height="30px" />
+              <img src={Planet} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>환경</p>
@@ -77,7 +77,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div2">
             <div className="selector_img">
-              <img src={Book} width="30px" height="30px" />
+              <img src={Book} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>교육</p>
@@ -85,7 +85,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div3">
             <div className="selector_img">
-              <img src={Hospital} width="30px" height="30px" />
+              <img src={Hospital} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>병원시설</p>
@@ -93,7 +93,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div4">
             <div className="selector_img">
-              <img src={Store} width="30px" height="30px" />
+              <img src={Store} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>편의시설</p>
@@ -101,7 +101,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div5">
             <div className="selector_img">
-              <img src={Police} width="30px" height="30px" />
+              <img src={Police} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>치안</p>
@@ -109,7 +109,7 @@ export default class Leftmenu extends React.Component {
           </div>
           <div className="selector_div5">
             <div className="selector_img">
-              <img src={Cars} width="30px" height="30px" />
+              <img src={Cars} width="30px" height="30px" alt="" />
             </div>
             <div className="selector_p">
               <p>교통</p>

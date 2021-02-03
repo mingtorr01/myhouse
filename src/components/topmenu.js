@@ -8,7 +8,7 @@ export default class Topmenu extends React.Component {
       <div>
         <div className="topdiv">
           <div className="topname">
-            <img src={Houseimg} height="35px" witdh="25px" />
+            <img src={Houseimg} height="35px" witdh="25px" alt="" />
             <pre className="topname1">하우스</pre>
             <pre className="topname2">헬퍼</pre>
           </div>
