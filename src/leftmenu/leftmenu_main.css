@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 .keyword_main{
     display: block;
     border: 1px solid red;
@@ -13,21 +14,38 @@
     border-top: 1px solid #e9e9e9;
     background-color: #fff;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
+    z-index: 5;
 }
-
+.find_house_button{
+    display: block;
+    border: 1px solid red;
+    width: 354px;
+    height: 54px;
+    position: absolute;
+    top: 589px;
+    left: 11px;
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    background: linear-gradient(to left, #ff9966,#ff5e62);
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    color: white;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 16px;
+}
 .keyword_div{
     display: block;
     width: 354px;
     height: 51px;
     border-bottom:1px solid rgb(228, 228, 228);
-    background-color: #eb6c63;
+    background-color: white;
 }
 .keyword_div input{
     height: 31px;
     width: 236px;
     border:none;
-    padding-left: 48px;
+    padding-left: 58px;
     padding-right: 70px;
     padding-top: 9px;
     padding-bottom: 5px;
@@ -48,14 +66,14 @@
     font-weight: 400;
   }
 .keyword_div a{
-    background-image: url("../img/home.png");
+    background-image: url("../img/home_find.png");
     position: absolute;
-    top: 15px;
-    left: 16px;
+    top: 12px;
+    left: 14px;
     display: inline-block;
     overflow: hidden;
-    width: 21px;
-    height: 21px;
+    width: 28px;
+    height: 28px;
     line-height: 999em;
     vertical-align: top;
     color: #333;
@@ -72,7 +90,7 @@
     outline: none;
     width: 17px;
     height: 17px;
-    background-color: #eb6c63;
+    background-color: white;
 }
 .realtime_visitor{
     display: block;
@@ -170,7 +188,7 @@ ul,li{list-style:none;}
     height: 300px;
     width: 354px;
     background-color: blue;
-    z-index: 4;
+    z-index: 10;
     border-radius: 0px 0px 3px 3px;
     border: 1px solid #cecece;
     border-bottom: 1px solid #c0c0c0;

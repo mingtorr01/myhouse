@@ -19,7 +19,25 @@ function Region_search(props){
                 </div>
             </div>
             <div className="show_select_region_maindiv">
-               
+                   <div className="show_select_region_div_default">
+                       <p>검색 목록</p>
+                   </div>
+                   <div className="show_select_region_div_show_region">
+                       <ul>
+                           <li>
+                               경상남도 창원시 의창구 사림동
+                           </li>
+                           <li>
+                               경상남도 통영시 사림구 동작동
+                           </li>
+                           <li>
+                               전라남도 해림시 구사구 추림동
+                           </li>
+                           <li>
+                               경상남도 창원시 의창구 사림동
+                           </li>
+                       </ul>
+                   </div>
             </div>
         </div>
     )

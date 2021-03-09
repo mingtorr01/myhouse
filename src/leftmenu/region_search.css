@@ -1,9 +1,9 @@
 .region_search{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 10px;
+    left: 10px;
     width: 375px;
-    bottom: 0px;
+    bottom: 120px;
     z-index: 11;
     border: 1px solid #cecece;
     border-bottom: 1px solid #c0c0c0;
@@ -48,7 +48,7 @@
   }
 
 .search_bar_input_div a{
-    background-image: url("../img/home.png");
+    background-image: url("../img/home_red.png");
     position: absolute;
     top: 23px;
     left: 24px;
@@ -132,11 +132,58 @@
 }
 
 .show_select_region_maindiv{
+    display: flex;
     position: absolute;
     margin-top: 111px;
     top: 0;
     bottom: 0;
     left: 0;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    background-color: white;
+    flex-direction: column;
+
 }
+.show_select_region_div{
+    width: 100%;
+    background-color: blue;
+    margin-top: 40px;
+}
+.show_select_region_div_default{
+    width: 100%;
+    background-color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.show_select_region_div_default p{
+    margin:0;
+    margin-left: 15px;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    color: #eb6c63;
+}
+.show_select_region_div_show_region{
+    width: 100%;
+    background-color: white;
+}
+.show_select_region_div_show_region ul{
+    padding-left: 20px;
+}
+.show_select_region_div_show_region li{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.show_select_region_div_show_region li:before { /* the custom styled bullets */
+    background-color: #eb6c63;
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    height: 8px;
+    width: 8px;
+  }

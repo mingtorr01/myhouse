@@ -1,0 +1,119 @@
+.dropmenu_main{
+    width: 34px;
+    height: 200px;
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    z-index: 4;
+    border-radius: 4px;
+    display: flex;
+    font-size: 12px;
+    font-weight: 400;
+    flex-direction: column;
+
+    
+}
+.dropmenu_main a{
+    background-color: white;
+    border:2px solid #eb6c63;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+    
+}
+.dropmenu_list_main{
+    width: 136px;
+    height: 300px;
+    position: absolute;
+    right: 90px;
+    top: 30px;
+    z-index: 4;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 12px;
+}
+.dropmenu_list_main2{
+    width: 136px;
+    height: 300px;
+    position: absolute;
+    right: 90px;
+    top: 80px;
+    z-index: 4;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 12px;
+}
+.dropmenu_list_main3{
+    width: 136px;
+    height: 300px;
+    position: absolute;
+    right: 90px;
+    top: 130px;
+    z-index: 4;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 12px;
+}
+.dropmenu_list_main3 ul{
+    margin: 0;
+    padding: 0;
+}
+.dropmenu_list_main ul{
+    margin: 0;
+    padding: 0;
+}
+.dropmenu_list_main2 ul{
+    margin: 0;
+    padding: 0;
+}
+.dropmenu_item{
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 7px;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    text-decoration: none;
+    color: black;
+}
+.dropmenu_item:hover{
+    color: #eb6c63;
+}
+.item_img{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left: 7px;
+}
+.item_name{
+    display: flex;
+    height: 30px;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.item_check{
+    display: flex;
+    width: 20px;
+    height: 30px;
+    align-content: center;
+    justify-content: center;
+}
+.item_check input{
+    margin-top: 8px;
+}
