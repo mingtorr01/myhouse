@@ -1,16 +1,17 @@
 .favorite_1{
-    display: block;
+    display: flex;
     width: 354px;
-    height: 404px;
+    height: 292px;
     position: absolute;
     top: 140px;
     left: 11px;
     border-radius: 3px;
     border: 1px solid #cecece;
     border-bottom: 1px solid #c0c0c0;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 5;
+    flex-direction: column;
 }
 .favorite_title_div{
     width: 100%;
@@ -34,27 +35,26 @@
     margin-left: 10px;
 }
 .favorite_main_div{
-    width: 100%;
-    height: 305px;
-    background-color: white;
     display: flex;
-    align-items: center;
+    width: 100%;
+    height: 245px;
+    flex-direction: column;
 }
 .favorite_end_div{
+    display: flex;
     width: 100%;
     height: 50px;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    bottom: 0px;
 }
 .favorite_end_div button{
-    display: block;
     border: 1px solid red;
     width: 354px;
     height: 50px;
     border-radius: 3px;
     border: 0px;
     outline: none;
-    background-color:#ff5e62 ;
+    background: linear-gradient(to left, #ff9966,#ff5e62);
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
     color: white;
@@ -62,5 +62,53 @@
     font-size: 16px;
 }
 .favorite_end_div button:hover{
-    background-color: #ff5e61b2;
+    background: #ff5e61b2;
+}
+.favorite_title_div button{
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background-image: url("../img/cancel_white.png");
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 18px;
+    height: 18px;
+    background-color:#ff5e62 ;
+}
+.favorite_main_div_row{
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.favorite_main_div_column{
+    width: 80px;
+    height:40px;
+    background-color: seagreen;
+    margin-left: 7px;
+}
+.favorite_main_div_column button{
+    width: 80px;
+    height: 40px;
+    outline: none;
+    background-color: #fbf3f3;
+    color: #ff5e62;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 16px;
+    border: 0px;
+}
+.favorite_main_div_column button:hover{
+    background-color: #fd8082;
+    color: white;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 16px;
+    border: 0px;
+    outline: none;
 }
