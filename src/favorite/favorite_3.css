@@ -1,0 +1,271 @@
+.Favorite_3_main{
+    width: 354px;
+    height: 602px;
+    position: absolute;
+    top: 140px;
+    left: 11px;
+    z-index: 4;
+
+}
+.Favorite_3_main_div{
+    display: flex;
+    width: 354px;
+    height: 502px;
+    position: absolute;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    border-bottom: 1px solid #c0c0c0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 5;
+    flex-direction: column;
+}
+#back_step{
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background-image: url("../img/left_arrow.png");
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 23px;
+    height: 25px;
+    background-color:#ff5e62 ;
+}
+.Favorite_3_main_div_scroll{
+    width: 100%;
+    height: 452px;
+    overflow-y:scroll;
+}
+#favorite_title_p2{
+    margin: 0;
+    color: white;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 18px;
+    margin-left: 50px;
+}
+.favorite_item_div{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+.favorite_item_div p{
+    margin: 0px;
+    margin-top: 15px;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    color: black;
+}
+.favorite_enviroment_item_div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap : wrap;
+
+}
+.favorite_enviroment_item_div button{
+    width: auto;
+    height: 30px;
+    outline: none;
+    background-color: #fbf3f3;
+    color: #ff5e62;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14px;
+    border: 0px;
+    margin-left: 15px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.favorite_enviroment_item_div button:hover{
+    width: auto;
+    height: 30px;
+    outline: none;
+    background-color: #ff5e62;
+    color: white;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14px;
+    border: 0px;
+    margin-left: 15px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.gongbak{
+    width: 100%;
+    height: 30px;
+}
+.gipho{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    border-bottom: 1px solid #c0c0c0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+}
+.controlbox_main{
+    position: absolute;
+    top: 190px;
+    left: 370px;
+    width: 300px;
+    height: 200px;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    border-bottom: 1px solid #c0c0c0;
+    background-color: #ffb7b7;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 5;
+}
+.controlbox_title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #ffb7b7;
+}
+.controlbox_title p{
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    color: #fd0004;
+    font-weight: 700;
+    margin-left: 20px;
+}
+#controlbox_title_p{
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 10px;
+
+}
+.range{
+    position: absolute;
+    top: 60px;
+    width: 90%;
+    margin-left: 5%;
+    height: 80px;
+    background-color: #fff;
+    border-radius:  10px;
+
+}
+.range .slidervalue{
+    position: relative;
+    width: 100%;
+
+}
+.range .slidervalue span{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    color: #fff;
+    font-weight: 500;
+    top: -5px;
+    left: 50px;
+    transform:translateX(-50%);
+    line-height: 55px;
+    z-index: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+
+}
+.range .slidervalue span:after{
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    background-color: #ff5e62;
+    left: 50%;
+    transform:translateX(-50%) rotate(45deg);
+    border:3px solid #fff;
+    z-index: -1;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+.range .field{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.range .field .value{
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff5e62;
+    z-index: 7;
+}
+.range .field .value.left{
+    left: 20px;
+}
+.range .field .value.right{
+    right: 20px;
+}
+.range .field input{
+    -webkit-appearance:none;
+    height: 3px;
+    width: 70%;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    z-index: 7;
+}
+.range .field input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    background-color: #ff5e62;
+    border-radius: 50%;
+    border: 1px solid #ff5e62;
+    cursor: pointer;
+
+}
+.controlbox_button{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background-color: red;
+    bottom: 0;
+}
+.controlbox_button button{
+    width: 100%;
+    height: 40px;
+    background-color: #ee7777;
+    outline: none;
+    color: #fff;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 18px;
+    border: 0px;
+}
+.controlbox_title button{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    background-image: url("../img/cancel_white.png");
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 15px;
+    height: 15px;
+    background-color:#ffb7b7 ;
+}

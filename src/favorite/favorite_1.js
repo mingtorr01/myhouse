@@ -1,24 +1,77 @@
 import "./favorite.css"
-
-
+import React, { useState,useEffect } from "react";
+import Favorite_3 from './favorite_3'
+const regionarr =['서울 특별시','대구광역시','부산광역시','울산광역시','광주광역시','경기도','강원도','충청북도','충청남도','경상북도','경상남도','전라남도','전라북도','제주도','전국']
 
 function Favorite_1(props){
-    return(
-        <div className="favorite_1">
-            <div className="favorite_title_div">
-                <p id="favorite_title_p">1 step</p>
-                <p>원하시는 지역을 선택하세요. (1/4)</p>
+    const [step,stepchange] =useState(1);
+    const [arrsize,arrsizechange] = useState(regionarr.length/4);
+    const [renewarr,renewarrchange] = useState([]);
+    useEffect(() => { 
+        showregion();
+    },[]);
+
+    const showregion=()=>{
+        const row = regionarr.length/4+1; //4.5나옴 4개의 row가 나와야함
+        console.log(row);
+        let newarr = []
+        let newcolumn=[]
+        let num=0;
+        for (let index = 0; index < regionarr.length; index++) {
+            if(index%4===0){
+                newarr.push(newcolumn);
+                newcolumn=[];
+                newcolumn.push(regionarr[index]);
+                console.log("한줄끝");
+            }else{
+                newcolumn.push(regionarr[index]);
+            }
+        }
+        if(newcolumn.length!=0){
+            newarr.push(newcolumn);
+        }
+        
+        newarr.shift();
+        console.log(newarr);
+        renewarrchange(newarr);
+    }
+    const rendermap=renewarr.map((v,i,a)=>{
+        console.log(i);
+        return(
+            <div className="favorite_main_div_row">
+                {renewarr[i].map((v,i,a)=>{
+                    return(
+                        <div className="favorite_main_div_column">
+                    <button onClick={()=>{stepchange(2)}}>
+                        {v}
+                    </button>
+                    </div>
+                    )
+                })}
             </div>
-            <div className="favorite_main_div">
-                
+        )
+    })
+    if(step===1){
+        return(
+            <div className="favorite_1">
+                <div className="favorite_title_div">
+                    <p id="favorite_title_p">1 step</p>
+                    <p>원하시는 지역을 선택하세요. (1/3)</p>
+                    <button>
+                        
+                    </button>
+                </div>
+                <div className="favorite_main_div">
+                    {rendermap}
+                </div>
             </div>
-            <div className="favorite_end_div">
-            <button>
-            완료 
-            </button>
-            </div>
-        </div>
-    )
+        )
+    }else{
+        return(
+            <Favorite_3 control_change={props.control_change}/>
+        )
+    }
+    
 }
 
 export default Favorite_1
