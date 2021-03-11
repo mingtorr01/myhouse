@@ -1,8 +1,8 @@
 .Favorite_3_main{
     width: 354px;
-    height: 602px;
+    height: 642px;
     position: absolute;
-    top: 140px;
+    top: 120px;
     left: 11px;
     z-index: 4;
 
@@ -10,7 +10,7 @@
 .Favorite_3_main_div{
     display: flex;
     width: 354px;
-    height: 502px;
+    height: 402px;
     position: absolute;
     border-radius: 3px;
     border: 1px solid #cecece;
@@ -20,21 +20,47 @@
     z-index: 5;
     flex-direction: column;
 }
+.favorite_title_div2{
+    width: 100%;
+    height: 35px;
+    background-color: #ff5e62;
+    display: flex;
+    align-items: center;
+}
+.favorite_title_div2 p{
+    margin: 0;
+    color: white;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 15px;
+    margin-left: 10px;
+}
+.favorite_title_div2 button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-image: url("../img/cancel_white.png");
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 15px;
+    height: 15px;
+    background-color:#ff5e62 ;
+}
 #back_step{
     position: absolute;
     left: 10px;
-    top: 12px;
+    top: 7px;
     background-image: url("../img/left_arrow.png");
     background-size: cover;
     border: none;
     outline: none;
-    width: 23px;
-    height: 25px;
+    width: 17px;
+    height: 20px;
     background-color:#ff5e62 ;
 }
 .Favorite_3_main_div_scroll{
     width: 100%;
-    height: 452px;
+    height: 352px;
     overflow-y:scroll;
 }
 #favorite_title_p2{
@@ -106,14 +132,15 @@
 }
 .gipho{
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
-    height: 80px;
+    height: 210px;
     border-radius: 3px;
     border: 1px solid #cecece;
     border-bottom: 1px solid #c0c0c0;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    
 }
 .controlbox_main{
     position: absolute;
@@ -268,4 +295,76 @@
     width: 15px;
     height: 15px;
     background-color:#ffb7b7 ;
+}
+.gipho_title{
+    width: 100%;
+    height: 30px;
+    background-color: #ff4e4e;
+    display: flex;
+    align-items: center;
+    
+}
+.gipho_title p{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    margin-left: 20px;
+    color: #ffffff;
+}
+.gipho_select_item{
+    width: auto;
+    height: 30px;
+    background-color: #ff8383;
+    color: #fff;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14px;
+    border: 0px;
+    margin-left: 15px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.gipho_select_item p{
+    margin: 0;
+}
+#gipho_select_item_p{
+    margin: 0;
+    margin-left: 30px;
+    display: flex;
+    font-size: 14px;
+    margin-right: 25px;
+}
+.gipho_main{
+    display: flex;
+    width: 100%;
+    height: 147px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    align-items: flex-start;
+}
+.gipho_select_item button{
+    background-image: url("../img/cancel_white.png");
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 18px;
+    height: 18px;
+    background-color:#ff8383 ;
+}
+#gipho_select_button{
+    width: 100%;
+    height: 33px;
+    background-color: #ee7777;
+    outline: none;
+    color: #fff;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 16px;
+    border: 0px;
 }
