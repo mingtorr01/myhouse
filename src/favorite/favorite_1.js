@@ -7,9 +7,14 @@ function Favorite_1(props){
     const [step,stepchange] =useState(1);
     const [arrsize,arrsizechange] = useState(regionarr.length/4);
     const [renewarr,renewarrchange] = useState([]);
+    const [value, setValue] = useState(props.select_gipho_data);
+    // This will launch only if propName value has chaged.
     useEffect(() => { 
         showregion();
-    },[]);
+        setValue(props.select_gipho_data)
+        console.log("zzzz"+value);
+        
+    },[value]);
 
     const showregion=()=>{
         const row = regionarr.length/4+1; //4.5나옴 4개의 row가 나와야함
@@ -32,11 +37,9 @@ function Favorite_1(props){
         }
         
         newarr.shift();
-        console.log(newarr);
         renewarrchange(newarr);
     }
     const rendermap=renewarr.map((v,i,a)=>{
-        console.log(i);
         return(
             <div className="favorite_main_div_row">
                 {renewarr[i].map((v,i,a)=>{
@@ -68,7 +71,7 @@ function Favorite_1(props){
         )
     }else{
         return(
-            <Favorite_3 control_change={props.control_change}/>
+            <Favorite_3 control_change={props.control_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value}/>
         )
     }
     

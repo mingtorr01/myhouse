@@ -10,7 +10,16 @@ function Controlbox(props){
         range_value_change(e.target.value); 
         
     }
- 
+
+    const select_click =(e)=>{
+        const data = {
+            name:props.gipho_name,
+            range:range_value
+        }
+        props.props_gipho_select(e,data)
+        console.log("yyyy");
+        return ;
+    }
     return(
         <div className="controlbox_main">
             <div className="controlbox_title">
@@ -31,7 +40,7 @@ function Controlbox(props){
                 </div>
             </div>
             <div className="controlbox_button">
-                <button>설정 완료</button>
+                <button onClick={select_click}>설정 완료</button>
             </div>
         </div>
     )
