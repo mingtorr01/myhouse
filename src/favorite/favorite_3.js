@@ -3,7 +3,14 @@ import "./favorite_3.css";
 function Favorite_3(props) {
   const [value, valuechange] = useState(props.select_gipho_data2);
   const [click, clickchange] = useState(0);
-  const [setopen1, openchange1] = useState(0);
+  const [setopen1, openchange1] = useState(true);
+  const [setopen2, openchange2] = useState(true);
+  const [setopen3, openchange3] = useState(true);
+  const [setopen4, openchange4] = useState(true);
+  const [setopen5, openchange5] = useState(true);
+  const [setopen6, openchange6] = useState(true);
+  const [setopen7, openchange7] = useState(true);
+
 
   const click_a = (name) => {
     //강제 트리거
@@ -14,8 +21,35 @@ function Favorite_3(props) {
     valuechange(props.select_gipho_data2);
   }, [click, click_a]);
 
-  const openchange = (e) => {
-    openchange1(!setopen1);
+  const openchange = (item) => {
+      switch (item) {
+          case 1:
+              openchange1(!setopen1)
+              break;
+          case 2:
+            openchange2(!setopen2)
+              break;
+          case 3:
+            openchange3(!setopen3)
+              break;
+          case 4:
+            openchange4(!setopen4)
+              break;
+          case 5:
+            openchange5(!setopen5)
+              break;
+              
+          case 6:
+            openchange6(!setopen6)
+              break;
+          case 7:
+            openchange7(!setopen7)
+              break;
+
+          default:
+              break;
+      }
+    
   };
 
   return (
@@ -28,8 +62,7 @@ function Favorite_3(props) {
         </div>
         <div className="Favorite_3_main_div_scroll">
           <div className="favorite_item_div">
-            <p>환경 지표</p>
-            <button onClick={openchange}>gd</button>
+            <button id="favorite_item_div_button" onClick={()=>openchange(1)} >환경 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen1 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -48,8 +81,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>교육 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(2)} >교육 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen2 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change("교원 1인당 학생수");
@@ -60,8 +93,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>복지 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(3)} >복지 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen3=== true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change(" 병원+약국 밀집도");
@@ -107,8 +140,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>편의시설 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(4)} >편의시설 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen4 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change("쇼핑시설 밀집도");
@@ -147,8 +180,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>안전시설 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(5)} >안전시설 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen5 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change("화재 안전");
@@ -187,8 +220,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>주택 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(6)} >주택 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen6 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change("공동주택 비율");
@@ -227,8 +260,8 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-            <p>지역인구 지표</p>
-            <div className="favorite_enviroment_item_div">
+          <button id="favorite_item_div_button" onClick={()=>openchange(7)} >지역인구 지표</button>
+            <div className="favorite_enviroment_item_div" style={{ display: `${setopen7 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
                   props.control_change("청장년 인구비율");

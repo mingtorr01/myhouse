@@ -22,8 +22,8 @@
 }
 .favorite_title_div2{
     width: 100%;
-    height: 35px;
-    background-color: #ff5e62;
+    height: 40px;
+    background-color: #4e61f1;
     display: flex;
     align-items: center;
 }
@@ -49,18 +49,18 @@
 #back_step{
     position: absolute;
     left: 10px;
-    top: 7px;
+    top: 9px;
     background-image: url("../img/left_arrow.png");
     background-size: cover;
     border: none;
     outline: none;
-    width: 17px;
+    width: 20px;
     height: 20px;
-    background-color:#ff5e62 ;
+    background-color:#4e61f1 ;
 }
 .Favorite_3_main_div_scroll{
     width: 100%;
-    height: 352px;
+    height: 362px;
     overflow-y:scroll;
 }
 #favorite_title_p2{
@@ -73,7 +73,7 @@
 .favorite_item_div{
     width: 100%;
     height: auto;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .favorite_item_div p{
     margin: 0px;
@@ -96,8 +96,8 @@
     width: auto;
     height: 30px;
     outline: none;
-    background-color: #fbf3f3;
-    color: #ff5e62;
+    background-color: #f3f4fc;
+    color: #8b99ff;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
     font-family: 'Do Hyeon', sans-serif;
@@ -113,7 +113,7 @@
     width: auto;
     height: 30px;
     outline: none;
-    background-color: #ff5e62;
+    background-color: #8b99ff;
     color: white;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
@@ -151,7 +151,7 @@
     border-radius: 3px;
     border: 1px solid #cecece;
     border-bottom: 1px solid #c0c0c0;
-    background-color: #ffb7b7;
+    background-color: #8b99ff;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 5;
 }
@@ -160,13 +160,13 @@
     height: 40px;
     display: flex;
     align-items: center;
-    background-color: #ffb7b7;
+    background-color: #8b99ff;
 }
 .controlbox_title p{
     margin: 0;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
-    color: #fd0004;
+    color: #f8f8fa;
     font-weight: 700;
     margin-left: 20px;
 }
@@ -216,7 +216,7 @@
     content: "";
     height: 25px;
     width: 25px;
-    background-color: #ff5e62;
+    background-color: #5a6dfc;
     left: 50%;
     transform:translateX(-50%) rotate(45deg);
     border:3px solid #fff;
@@ -236,7 +236,7 @@
     position: absolute;
     font-size: 18px;
     font-weight: 600;
-    color: #ff5e62;
+    color: #5a6dfc;
     z-index: 7;
 }
 .range .field .value.left{
@@ -259,9 +259,9 @@
     -webkit-appearance: none;
     height: 14px;
     width: 14px;
-    background-color: #ff5e62;
+    background-color: #5a6dfc;
     border-radius: 50%;
-    border: 1px solid #ff5e62;
+    border: 1px solid #5a6dfc;
     cursor: pointer;
 
 }
@@ -275,7 +275,7 @@
 .controlbox_button button{
     width: 100%;
     height: 40px;
-    background-color: #ee7777;
+    background-color: #4e61f1;
     outline: none;
     color: #fff;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
@@ -294,12 +294,12 @@
     outline: none;
     width: 15px;
     height: 15px;
-    background-color:#ffb7b7 ;
+    background-color:#8b99ff ;
 }
 .gipho_title{
     width: 100%;
     height: 30px;
-    background-color: #ff4e4e;
+    background-color: #4e61f1;
     display: flex;
     align-items: center;
     
@@ -359,7 +359,7 @@
 #gipho_select_button{
     width: 100%;
     height: 33px;
-    background-color: #ee7777;
+    background: linear-gradient(to left, #7983ca,#4e61f1);
     outline: none;
     color: #fff;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
@@ -367,4 +367,22 @@
     font-family: 'Do Hyeon', sans-serif;
     font-size: 16px;
     border: 0px;
+}
+#favorite_item_div_button{
+    width: auto;
+    height: 25px;
+    background-color: #3bb5fc;
+    outline: none;
+    color: #fff;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 2;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 13px;
+    border: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 15px;
+    border-radius: 24px;
+    padding-right: 10px;
+    padding-left: 10px;
 }

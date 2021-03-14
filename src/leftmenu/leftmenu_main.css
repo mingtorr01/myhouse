@@ -27,7 +27,7 @@
     border-radius: 3px;
     border: 0px;
     outline: none;
-    background: linear-gradient(to left, #ff9966,#ff5e62);
+    background: linear-gradient(to left, #7983ca,#8b99ff);
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
     color: white;
@@ -66,7 +66,7 @@
     font-weight: 400;
   }
 .keyword_div a{
-    background-image: url("../img/home_find.png");
+    background-image: url("../img/search_blue.png");
     position: absolute;
     top: 12px;
     left: 14px;
@@ -116,7 +116,7 @@ ul,li{list-style:none;}
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 17px;
     font-weight: 600;
-    color: #eb6c63;
+    color: #8b99ff;
 }
 .realtime_visitor_div_name{
     display:inline-block;
