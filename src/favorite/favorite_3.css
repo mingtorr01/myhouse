@@ -1,388 +1,379 @@
-.Favorite_3_main{
-    width: 354px;
-    height: 642px;
-    position: absolute;
-    top: 120px;
-    left: 11px;
-    z-index: 4;
-
+.Favorite_3_main {
+  width: 354px;
+  height: 642px;
+  position: absolute;
+  top: 120px;
+  left: 11px;
+  z-index: 4;
 }
-.Favorite_3_main_div{
-    display: flex;
-    width: 354px;
-    height: 402px;
-    position: absolute;
-    border-radius: 3px;
-    border: 1px solid #cecece;
-    border-bottom: 1px solid #c0c0c0;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 5;
-    flex-direction: column;
+.Favorite_3_main_div {
+  display: flex;
+  width: 354px;
+  height: 402px;
+  position: absolute;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  border-bottom: 1px solid #c0c0c0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 5;
+  flex-direction: column;
 }
-.favorite_title_div2{
-    width: 100%;
-    height: 40px;
-    background-color: #4e61f1;
-    display: flex;
-    align-items: center;
+.favorite_title_div2 {
+  width: 100%;
+  height: 40px;
+  background-color: #4e61f1;
+  display: flex;
+  align-items: center;
 }
-.favorite_title_div2 p{
-    margin: 0;
-    color: white;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 15px;
-    margin-left: 10px;
+.favorite_title_div2 p {
+  margin: 0;
+  color: white;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 15px;
+  margin-left: 10px;
 }
-.favorite_title_div2 button{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background-image: url("../img/cancel_white.png");
-    background-size: cover;
-    border: none;
-    outline: none;
-    width: 15px;
-    height: 15px;
-    background-color:#ff5e62 ;
+.favorite_title_div2 button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-image: url("../img/cancel_white.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 15px;
+  height: 15px;
+  background-color: #ff5e62;
 }
-#back_step{
-    position: absolute;
-    left: 10px;
-    top: 9px;
-    background-image: url("../img/left_arrow.png");
-    background-size: cover;
-    border: none;
-    outline: none;
-    width: 20px;
-    height: 20px;
-    background-color:#4e61f1 ;
+#back_step {
+  position: absolute;
+  left: 10px;
+  top: 9px;
+  background-image: url("../img/left_arrow.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  background-color: #4e61f1;
 }
-.Favorite_3_main_div_scroll{
-    width: 100%;
-    height: 362px;
-    overflow-y:scroll;
+.Favorite_3_main_div_scroll {
+  width: 100%;
+  height: 362px;
+  overflow-y: auto;
 }
-#favorite_title_p2{
-    margin: 0;
-    color: white;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 18px;
-    margin-left: 50px;
+#favorite_title_p2 {
+  margin: 0;
+  color: white;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 18px;
+  margin-left: 50px;
 }
-.favorite_item_div{
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
+.favorite_item_div {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
 }
-.favorite_item_div p{
-    margin: 0px;
-    margin-top: 15px;
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 13px;
-    color: black;
+.favorite_item_div p {
+  margin: 0px;
+  margin-top: 15px;
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  color: black;
 }
-.favorite_enviroment_item_div{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap : wrap;
-
+.favorite_enviroment_item_div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.favorite_enviroment_item_div button{
-    width: auto;
-    height: 30px;
-    outline: none;
-    background-color: #f3f4fc;
-    color: #8b99ff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 14px;
-    border: 0px;
-    margin-left: 15px;
-    border-radius: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
+.favorite_enviroment_item_div button {
+  width: auto;
+  height: 30px;
+  outline: none;
+  background-color: #f3f4fc;
+  color: #8b99ff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 14px;
+  border: 0px;
+  margin-left: 15px;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
 }
-.favorite_enviroment_item_div button:hover{
-    width: auto;
-    height: 30px;
-    outline: none;
-    background-color: #8b99ff;
-    color: white;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 14px;
-    border: 0px;
-    margin-left: 15px;
-    border-radius: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
+.favorite_enviroment_item_div button:hover {
+  width: auto;
+  height: 30px;
+  outline: none;
+  background-color: #8b99ff;
+  color: white;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 14px;
+  border: 0px;
+  margin-left: 15px;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
 }
-.gongbak{
-    width: 100%;
-    height: 30px;
+.gongbak {
+  width: 100%;
+  height: 30px;
 }
-.gipho{
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    height: 210px;
-    border-radius: 3px;
-    border: 1px solid #cecece;
-    border-bottom: 1px solid #c0c0c0;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    
+.gipho {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 210px;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  border-bottom: 1px solid #c0c0c0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
 }
-.controlbox_main{
-    position: absolute;
-    top: 190px;
-    left: 370px;
-    width: 300px;
-    height: 200px;
-    border-radius: 3px;
-    border: 1px solid #cecece;
-    border-bottom: 1px solid #c0c0c0;
-    background-color: #8b99ff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 5;
+.controlbox_main {
+  position: absolute;
+  top: 190px;
+  left: 370px;
+  width: 300px;
+  height: 200px;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  border-bottom: 1px solid #c0c0c0;
+  background-color: #8b99ff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 5;
 }
-.controlbox_title{
-    width: 100%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    background-color: #8b99ff;
+.controlbox_title {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: #8b99ff;
 }
-.controlbox_title p{
-    margin: 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: #f8f8fa;
-    font-weight: 700;
-    margin-left: 20px;
+.controlbox_title p {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  color: #f8f8fa;
+  font-weight: 700;
+  margin-left: 20px;
 }
-#controlbox_title_p{
-    margin: 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    font-weight: 500;
-    margin-left: 10px;
-
+#controlbox_title_p {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 10px;
 }
-.range{
-    position: absolute;
-    top: 60px;
-    width: 90%;
-    margin-left: 5%;
-    height: 80px;
-    background-color: #fff;
-    border-radius:  10px;
-
+.range {
+  position: absolute;
+  top: 60px;
+  width: 90%;
+  margin-left: 5%;
+  height: 80px;
+  background-color: #fff;
+  border-radius: 10px;
 }
-.range .slidervalue{
-    position: relative;
-    width: 100%;
-
+.range .slidervalue {
+  position: relative;
+  width: 100%;
 }
-.range .slidervalue span{
-    position: absolute;
-    height: 25px;
-    width: 25px;
-    color: #fff;
-    font-weight: 500;
-    top: -5px;
-    left: 50px;
-    transform:translateX(-50%);
-    line-height: 55px;
-    z-index: 7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-
+.range .slidervalue span {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  color: #fff;
+  font-weight: 500;
+  top: -5px;
+  left: 50px;
+  transform: translateX(-50%);
+  line-height: 55px;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
 }
-.range .slidervalue span:after{
-    position: absolute;
-    content: "";
-    height: 25px;
-    width: 25px;
-    background-color: #5a6dfc;
-    left: 50%;
-    transform:translateX(-50%) rotate(45deg);
-    border:3px solid #fff;
-    z-index: -1;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
+.range .slidervalue span:after {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 25px;
+  background-color: #5a6dfc;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border: 3px solid #fff;
+  z-index: -1;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
 }
-.range .field{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.range .field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
-.range .field .value{
-    position: absolute;
-    font-size: 18px;
-    font-weight: 600;
-    color: #5a6dfc;
-    z-index: 7;
+.range .field .value {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5a6dfc;
+  z-index: 7;
 }
-.range .field .value.left{
-    left: 20px;
+.range .field .value.left {
+  left: 20px;
 }
-.range .field .value.right{
-    right: 20px;
+.range .field .value.right {
+  right: 20px;
 }
-.range .field input{
-    -webkit-appearance:none;
-    height: 3px;
-    width: 70%;
-    background-color: #ddd;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    z-index: 7;
+.range .field input {
+  -webkit-appearance: none;
+  height: 3px;
+  width: 70%;
+  background-color: #ddd;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  z-index: 7;
 }
-.range .field input::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    height: 14px;
-    width: 14px;
-    background-color: #5a6dfc;
-    border-radius: 50%;
-    border: 1px solid #5a6dfc;
-    cursor: pointer;
-
+.range .field input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  background-color: #5a6dfc;
+  border-radius: 50%;
+  border: 1px solid #5a6dfc;
+  cursor: pointer;
 }
-.controlbox_button{
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background-color: red;
-    bottom: 0;
+.controlbox_button {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: red;
+  bottom: 0;
 }
-.controlbox_button button{
-    width: 100%;
-    height: 40px;
-    background-color: #4e61f1;
-    outline: none;
-    color: #fff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 18px;
-    border: 0px;
+.controlbox_button button {
+  width: 100%;
+  height: 40px;
+  background-color: #4e61f1;
+  outline: none;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 18px;
+  border: 0px;
 }
-.controlbox_title button{
-    position: absolute;
-    right: 10px;
-    top: 12px;
-    background-image: url("../img/cancel_white.png");
-    background-size: cover;
-    border: none;
-    outline: none;
-    width: 15px;
-    height: 15px;
-    background-color:#8b99ff ;
+.controlbox_title button {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  background-image: url("../img/cancel_white.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 15px;
+  height: 15px;
+  background-color: #8b99ff;
 }
-.gipho_title{
-    width: 100%;
-    height: 30px;
-    background-color: #4e61f1;
-    display: flex;
-    align-items: center;
-    
+.gipho_title {
+  width: 100%;
+  height: 30px;
+  background-color: #4e61f1;
+  display: flex;
+  align-items: center;
 }
-.gipho_title p{
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 14px;
-    margin: 0;
-    margin-left: 20px;
-    color: #ffffff;
+.gipho_title p {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 14px;
+  margin: 0;
+  margin-left: 20px;
+  color: #ffffff;
 }
-.gipho_select_item{
-    width: auto;
-    height: 30px;
-    background-color: #ff8383;
-    color: #fff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 14px;
-    border: 0px;
-    margin-left: 15px;
-    border-radius: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
+.gipho_select_item {
+  width: auto;
+  height: 30px;
+  background-color: #ff8383;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 14px;
+  border: 0px;
+  margin-left: 15px;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
-.gipho_select_item p{
-    margin: 0;
+.gipho_select_item p {
+  margin: 0;
 }
-#gipho_select_item_p{
-    margin: 0;
-    margin-left: 30px;
-    display: flex;
-    font-size: 14px;
-    margin-right: 25px;
+#gipho_select_item_p {
+  margin: 0;
+  margin-left: 30px;
+  display: flex;
+  font-size: 14px;
+  margin-right: 25px;
 }
-.gipho_main{
-    display: flex;
-    width: 100%;
-    height: 147px;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    align-items: flex-start;
+.gipho_main {
+  display: flex;
+  width: 100%;
+  height: 147px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  align-items: flex-start;
 }
-.gipho_select_item button{
-    background-image: url("../img/cancel_white.png");
-    background-size: cover;
-    border: none;
-    outline: none;
-    width: 18px;
-    height: 18px;
-    background-color:#ff8383 ;
+.gipho_select_item button {
+  background-image: url("../img/cancel_white.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 18px;
+  height: 18px;
+  background-color: #ff8383;
 }
-#gipho_select_button{
-    width: 100%;
-    height: 33px;
-    background: linear-gradient(to left, #7983ca,#4e61f1);
-    outline: none;
-    color: #fff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 16px;
-    border: 0px;
+#gipho_select_button {
+  width: 100%;
+  height: 33px;
+  background: linear-gradient(to left, #7983ca, #4e61f1);
+  outline: none;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
+  border: 0px;
 }
-#favorite_item_div_button{
-    width: auto;
-    height: 25px;
-    background-color: #3bb5fc;
-    outline: none;
-    color: #fff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
-    z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 13px;
-    border: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-left: 15px;
-    border-radius: 24px;
-    padding-right: 10px;
-    padding-left: 10px;
+#favorite_item_div_button {
+  width: auto;
+  height: 25px;
+  background-color: #3bb5fc;
+  outline: none;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 13px;
+  border: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 15px;
+  border-radius: 24px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
