@@ -71,7 +71,7 @@ function Favorite_1(props){
         )
     }else{
         return(
-            <Favorite_3 control_change={props.control_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value}/>
+            <Favorite_3 control_change={props.control_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change}/>
         )
     }
     
