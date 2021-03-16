@@ -9,20 +9,24 @@ import Dropmenu from "./dropmenue/dropmenu";
 import Dropmenu_list_hospital from "./dropmenue/dropmenu_list";
 import Favorite_1 from "./favorite/favorite_1";
 import { Provider } from "react-redux";
-import Controlbox from "./favorite/controlbox";
-import Gipho from "./favorite/gipho";
+import Controlbox from './favorite/controlbox'
+import Result from './result/result';
 function App() {
   const [searchdiv_bool, searchdiv_change] = useState(false);
   const [favorite_div_bool, favorite_div_bool_change] = useState(false);
-  const [listname, listname_change] = useState("no");
-  const [listclick_count, listclick_count_change] = useState(0);
-  const [control, controlchange] = useState(false);
-  const [gipho_name, gipho_name_change] = useState("");
-  const [select_gipho_data, select_gipho_data_change] = useState([]);
+  const [listname, listname_change] = useState('no');
+  const [listclick_count ,listclick_count_change] = useState(0);
+  const [control,controlchange] =useState(false);
+  const [gipho_name,gipho_name_change] = useState('')
+  const [select_gipho_data,select_gipho_data_change] = useState([]);
+  const [result_bool,result_bool_change] =useState(false);
   const mounted = useRef(false);
 
-  function props_gipho_select(event, select) {
-    //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
+  const result_change=()=>{
+    result_bool_change(true)
+    favorite_div_bool_change(false);
+  }
+   function props_gipho_select(event,select){  //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
     event.preventDefault();
     let data = select_gipho_data;
     let is_include = false;
@@ -132,11 +136,13 @@ function App() {
       <div>
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} />
-        {favorite_div_bool ? <div></div> : <Findhouse_button findhouse_button={findhouse_button} />}
-        {favorite_div_bool ? <Favorite_1 control_change={control_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} /> : <News />}
-        <Dropmenu listname_change_props={listname_change_props} />
-        {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
+        {favorite_div_bool?<div></div>:<Findhouse_button findhouse_button={findhouse_button}/>}
+        {favorite_div_bool?<Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data}/>:<News/>}
+        <Dropmenu listname_change_props={listname_change_props}/>
+        {listclick_count === 1?<Dropmenu_list_hospital listname={listname}/> : <div></div>}
         <Househelper />
+        {result_bool ?  <Result/> : <div></div>}
+       
       </div>
       {control ? <Controlbox gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>

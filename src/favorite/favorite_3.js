@@ -308,7 +308,7 @@ function Favorite_3(props) {
             );
           })}
         </div>
-        <button id="gipho_select_button">선택 완료</button>
+        <button id="gipho_select_button" onClick={props.result_change}>선택 완료</button>
       </div>
     </div>
   );
