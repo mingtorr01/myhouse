@@ -1,0 +1,22 @@
+{
+    "office_trade" : {
+      "properties" : {
+        "address" : { "type" : "keyword" },
+        "detailed_address" : { "type" : "keyword" },
+        "year" : { "type" : "long" },
+        "month" : { "type" : "long" },
+        "build_year" : { "type" : "long" },
+        "trade_price" : { "type" : "long" },
+        "city" : { "type" : "keyword" },
+        "sub_city" : { "type" : "keyword" },
+        "dong" : { "type" : "keyword" },
+        "code" : { "type" : "keyword" },
+        "name" : { "type" : "keyword" },
+        "floor" : { "type" : "long" },
+        "exclusive_private_area" : { "type" : "float" },
+        "date": { "type" : "date" , "format" : "dateOptionalTime"},
+        "location" : { "type" : "geo_point" }
+      }
+    }
+  
+}

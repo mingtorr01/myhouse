@@ -12,7 +12,7 @@ with open(trade_csv_filename, newline='', encoding='UTF8') as csvfile:
 
         count += 1
 
-        json_result = "{ \"index\" : { \"_index\": \"office_trades\", \"_type\": \"office_trade\"} } \r\n"
+        json_result = "{ \"index\" : { \"_index\": \"office_trades\", \"_type\": \"office_trade\"} } \n"
         json_result += "{"
         json_result += "\"address\":" + "\"" + address + "\"" + ","
         json_result += "\"detailed_address\":" + "\"" + detailed_address + "\"" + ","
@@ -32,7 +32,7 @@ with open(trade_csv_filename, newline='', encoding='UTF8') as csvfile:
         json_result += "\"lat\":" + latitude + ","
         json_result += "\"lon\":" + longitude
         json_result += "}"
-        json_result += "}\r\n"
+        json_result += "}\n"
         li.append(json_result)
 
         print("count : ", count, ", address : ", address, "lat,lng ", latitude, ", ", longitude)
