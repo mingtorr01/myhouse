@@ -3,16 +3,77 @@ const app = express();
 const port = process.env.PORT || 3001;
 const cors = require("cors");
 var http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 const bodyParser = require("body-parser");
 
 //app.use(express.json()); //bodyparser 역할 없으면 req.body 안먹힌다.
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors()); // 서버와 클라이언트 사이의 크로스 도메인 헤더 라이브러리
 
 const route = require("./routes/mongod");
 //app.use("/db", route); //라우팅
 
+const elasticsearch = require("elasticsearch");
+const http2 = require("http");
+const path = require("path");
+//.......................................................................................................................
+var fs = require("fs");
+
+var dFilePath = path.join(__dirname, "district_latlng.csv");
+var cFilePath = path.join(__dirname, "city_latlng.csv");
+
+var data = fs.readFileSync(dFilePath, { encoding: "utf8" });
+var rows = data.split("\n");
+var districts = [];
+
+var dcolumns = ["district", "lat", "lng"];
+for (var rowIndex in rows) {
+  var row = rows[rowIndex].split(",");
+
+  var data = {}; // 빈 객체를 생성하고 여기에 데이터를 추가한다.
+  for (var columnIndex in dcolumns) {
+    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
+    var column = dcolumns[columnIndex];
+    data[column] = row[columnIndex];
+  }
+  districts.push(data);
+}
+
+var cities = [];
+
+var ccolumns = ["city", "lat", "lng"];
+data = fs.readFileSync(cFilePath, { encoding: "utf8" });
+rows = data.split("\n");
+for (var rowIndex in rows) {
+  var row = rows[rowIndex].split(",");
+
+  var data = {}; // 빈 객체를 생성하고 여기에 데이터를 추가한다.
+  for (var columnIndex in ccolumns) {
+    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
+    var column = ccolumns[columnIndex];
+    data[column] = row[columnIndex];
+  }
+  cities.push(data);
+}
+cities = cities.slice(0, -1);
+districts = districts.slice(0, -1);
+
+var trade_esclient = new elasticsearch.Client({
+  host: "http://localhost:9200",
+});
+var deposit_esclient = new elasticsearch.Client({
+  host: "http://localhost:9200",
+});
+var rent_esclient = new elasticsearch.Client({
+  host: "http://localhost:9200",
+});
+
+//..............................................................................................................................
 io.on("connection", function (socket) {
   console.log("user connection");
 
@@ -117,8 +178,12 @@ io.on("connection", function (socket) {
     }
   });
 });
-
 trade_esclient.searchTarget = function (sw, ne, type) {
+  console.log("1.");
+  console.log(sw);
+  console.log(ne);
+  console.log("7." + ne.lat + " " + sw.lng);
+  console.log("8." + sw.lat + " " + ne.lng);
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -131,12 +196,12 @@ trade_esclient.searchTarget = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -177,6 +242,11 @@ trade_esclient.searchTarget = function (sw, ne, type) {
   });
 };
 trade_esclient.searchDong = function (sw, ne, type) {
+  console.log("2.");
+  console.log(sw);
+  console.log(ne);
+  console.log("5." + ne.La + " " + ne.Ma);
+  console.log("6." + sw.lat + " " + ne.lng);
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -189,12 +259,12 @@ trade_esclient.searchDong = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -236,11 +306,17 @@ trade_esclient.searchDong = function (sw, ne, type) {
 };
 
 trade_esclient.searchDistrict = function (sw, ne, type) {
+  console.log("3.");
+  console.log(sw);
+  console.log(ne);
+  console.log("1." + ne.Ma + " " + sw.La);
+  console.log("2." + sw.Ma + " " + ne.La);
   var selectedDistrict = [];
 
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    console.log(districts[index].lat);
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index].district);
     }
   }
@@ -294,12 +370,20 @@ trade_esclient.searchDistrict = function (sw, ne, type) {
 };
 
 trade_esclient.searchCity = function (sw, ne, type) {
+  console.log("4.");
+  console.log(sw);
+  console.log(ne);
+  console.log("1." + ne.Ma + " " + sw.La);
+  console.log("2." + sw.Ma + " " + ne.La);
   var selectedDistrict = [];
 
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    //console.log(districts[index]);
+
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index]);
+      console.log(selectedDistrict);
     }
   }
   return new Promise(function (resolve, reject) {
@@ -355,12 +439,12 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -418,12 +502,12 @@ deposit_esclient.searchDong = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -474,7 +558,7 @@ deposit_esclient.searchDistrict = function (sw, ne, type) {
 
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index].district);
     }
   }
@@ -537,7 +621,7 @@ deposit_esclient.searchCity = function (sw, ne, type) {
 
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index]);
     }
   }
@@ -602,12 +686,12 @@ rent_esclient.searchTarget = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -665,12 +749,12 @@ rent_esclient.searchDong = function (sw, ne, type) {
                 geo_bounding_box: {
                   location: {
                     top_left: {
-                      lat: ne._lat,
-                      lon: sw._lng,
+                      lat: ne.Ma,
+                      lon: sw.La,
                     },
                     bottom_right: {
-                      lat: sw._lat,
-                      lon: ne._lng,
+                      lat: sw.Ma,
+                      lon: ne.La,
                     },
                   },
                 },
@@ -721,7 +805,7 @@ rent_esclient.searchDistrict = function (sw, ne, type) {
 
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index].district);
     }
   }
@@ -785,7 +869,7 @@ rent_esclient.searchCity = function (sw, ne, type) {
   console.log(type);
   for (var index in districts) {
     // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne._lat && districts[index].lat >= sw._lat && districts[index].lng <= ne._lng && districts[index].lng >= sw._lng) {
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index]);
     }
   }
@@ -838,6 +922,6 @@ rent_esclient.searchCity = function (sw, ne, type) {
   });
 };
 
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

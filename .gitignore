@@ -25,5 +25,5 @@ yarn-error.log*
 .env
 .eslintcache
 
-.csv
-.xlxs
+/server/city_latlng.csv
+/server/district_latlng.csv
