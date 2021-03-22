@@ -71,7 +71,7 @@ const MapContainer = () => {
       console.log(zoom);
       if (zoom <= 5) updateTarget(map);
       else if (zoom <= 9 && zoom >= 6) updateDong(map);
-      else if (zoom <= 13 && zoom >= 10) updateDistrict(map);
+      else if (zoom <= 11 && zoom >= 10) updateDistrict(map);
       else if (zoom <= 12) updateCity(map);
     });
 
@@ -86,6 +86,17 @@ const MapContainer = () => {
         if (positions[key].avg_trade_price.value >= 10000) avg = parseInt(Math.round(positions[key].avg_trade_price.value / 1000) / 10) + "." + parseInt(Math.round(positions[key].avg_trade_price.value / 1000) % 10) + "억";
         else avg = parseInt(Math.round(positions[key].avg_trade_price.value)) + "만원";
 
+        var marker = new kakao.maps.CustomOverlay({
+          map: map,
+          clickable: true,
+          content: '<div class="customOverlay"><a href="#">Chart</a></div>',
+          position: position,
+          content: ['<div id="base">', '<span class="name">' + positions[key].key + "</span>", '<div class="avg_value">' + avg + "</div>", "</div>"].join(""),
+          xAnchor: 0.5,
+          yAnchor: 0.5,
+          zIndex: 3,
+        });
+        /*
         var marker = new kakao.maps.Marker({
           map: map,
           position: position,
@@ -95,7 +106,7 @@ const MapContainer = () => {
             size: new kakao.maps.Size(38, 58),
             anchor: new kakao.maps.Point(19, 58),
           },
-        });
+        });*/
         markers.push(marker);
       }
     });
