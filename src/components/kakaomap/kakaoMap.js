@@ -13,7 +13,6 @@ function updateTarget(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  console.log("222");
   socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
 }
 
@@ -21,7 +20,6 @@ function updateDong(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  console.log("hi");
   socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
 }
 
