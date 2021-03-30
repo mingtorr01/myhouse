@@ -6,13 +6,13 @@ import './result.css'
 Drilldown(Highcharts);
 
 const config = {
-    chart: { type: 'column',height:250 }, 
-    title: { text: '매매가 비교' }, 
+    chart: { type: 'column',height:250,width:340 }, 
+    title: { text: '' }, 
     //subtitle: { text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.' }, 
     xAxis: { type: 'category' },
     yAxis:{
         title:{
-            text: '평균 가격' //왼쪽 텍스트
+            text: '' //왼쪽 텍스트
         }
     },
     legend:{
@@ -34,12 +34,17 @@ const config = {
     series: [{ 
         name: '가격률', 
         data: [
-            { name: '1분기', y: 43.33, drilldown: 'Microsoft Internet Explorer',color:'#4e61f1' }, 
-            { name: '2분기', y: 24.03, drilldown: 'Chrome',color:'#4e61f1' }, 
-            { name: '3분기', y: 10.38, drilldown: 'Firefox' ,color:'#4e61f1'}, 
-            { name: '4분기', y: 4.77, drilldown: 'Safari',color:'#4e61f1' }, 
-            { name: '5분기', y: 0.91, drilldown: 'Opera',color:'#4e61f1' }, 
-            { name: '6분기', y: 0.2, drilldown: null ,color:'#4e61f1'}] }
+            { name: '대방동', y: 43.33, drilldown: 'Microsoft Internet Explorer',color:'#4e61f1' }, 
+            { name: '신림동', y: 24.03, drilldown: 'Chrome',color:'#4e61f1' }, 
+            { name: '사림동', y: 10.38, drilldown: 'Firefox' ,color:'#4e61f1'}, 
+            { name: '명서동', y: 4.77, drilldown: 'Safari',color:'#4e61f1' }, 
+            { name: '회원동', y: 0.91, drilldown: 'Opera',color:'#4e61f1' }, 
+            { name: '성주동', y: 10.38, drilldown: 'Firefox' ,color:'#4e61f1'}, 
+            { name: '반림동', y: 4.77, drilldown: 'Safari',color:'#4e61f1' }, 
+            { name: '명곡동', y: 0.91, drilldown: 'Opera',color:'#4e61f1' }, 
+            { name: '사파동', y: 0.91, drilldown: 'Opera',color:'#4e61f1' }, 
+            { name: '봉곡동', y: 0.2, drilldown: null ,color:'#4e61f1'}
+        ]}
         ],
         
    
