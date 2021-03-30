@@ -66,14 +66,14 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen1 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("대기오염도");
+                  props.control_change({bigname:'환경',name:"대기오염도"});
                 }}
               >
                 대기오염도
               </button>
               <button
                 onClick={() => {
-                  props.control_change("녹지비율");
+                  props.control_change({bigname:'환경',name:"녹지비율"});
                 }}
               >
                 녹지비율
@@ -85,7 +85,7 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen2 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("교원 1인당 학생수");
+                  props.control_change({bigname:'교육',name:"교원 1인당 학생수"});
                 }}
               >
                 교원 1인당 학생수
@@ -97,42 +97,42 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen3=== true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change(" 병원+약국 밀집도");
+                  props.control_change({bigname:'복지',name:"병원+약국 밀집도"});
                 }}
               >
                 병원+약국 밀집도
               </button>
               <button
                 onClick={() => {
-                  props.control_change("유치원 및 보육시설");
+                  props.control_change({bigname:'복지',name:"유치원 및 보육시설"});
                 }}
               >
                 유치원 및 보육시설
               </button>
               <button
                 onClick={() => {
-                  props.control_change("노인복지시설");
+                  props.control_change({bigname:'복지',name:"노인복지시설"});
                 }}
               >
                 노인복지시설
               </button>
               <button
                 onClick={() => {
-                  props.control_change("사회복지시설");
+                  props.control_change({bigname:'복지',name:"사회복지시설"});
                 }}
               >
                 사회복지시설
               </button>
               <button
                 onClick={() => {
-                  props.control_change("문화시설 수");
+                  props.control_change({bigname:'복지',name:"문화시설 수"});
                 }}
               >
                 문화시설 수
               </button>
               <button
                 onClick={() => {
-                  props.control_change("노인복지시설 수");
+                  props.control_change({bigname:'복지',name:"체육시설 수"});
                 }}
               >
                 체육시설 수
@@ -144,35 +144,35 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen4 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("쇼핑시설 밀집도");
+                  props.control_change({bigname:'편의',name:"쇼핑시설 밀집도"});
                 }}
               >
                 쇼핑시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  props.control_change("외식시설 밀집도");
+                  props.control_change({bigname:'편의',name:"외식시설 밀집도"});
                 }}
               >
                 외식시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  props.control_change("은행시설 밀집도");
+                  props.control_change({bigname:'편의',name:"은행시설 밀집도"});
                 }}
               >
                 은행시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  props.control_change("우체국시설");
+                  props.control_change({bigname:'편의',name:"우체국시설"});
                 }}
               >
                 우체국시설
               </button>
               <button
                 onClick={() => {
-                  props.control_change("대중교통 이용률");
+                  props.control_change({bigname:'편의',name:"대중교통 이용률"});
                 }}
               >
                 대중교통 이용률
@@ -184,35 +184,35 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen5 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("화재 안전");
+                  props.control_change({bigname:'안전',name:"화재 안전"});
                 }}
               >
                 화재 안전
               </button>
               <button
                 onClick={() => {
-                  props.control_change("교통사고 안전");
+                  props.control_change({bigname:'안전',name:"교통사고 안전"});
                 }}
               >
                 교통사고 안전
               </button>
               <button
                 onClick={() => {
-                  props.control_change("범죄 안전");
+                  props.control_change({bigname:'안전',name:"범죄 안전"});
                 }}
               >
                 범죄 안전
               </button>
               <button
                 onClick={() => {
-                  props.control_change("감염병 안전");
+                  props.control_change({bigname:'안전',name:"감염병 안전"});
                 }}
               >
                 감염병 안전
               </button>
               <button
                 onClick={() => {
-                  props.control_change("자연재해 안전");
+                  props.control_change({bigname:'안전',name:"자연재해 안전"});
                 }}
               >
                 자연재해 안전
@@ -224,35 +224,35 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen6 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("공동주택 비율");
+                  props.control_change({bigname:'주택',name:"공동주택 비율"});
                 }}
               >
                 공동주택 비율
               </button>
               <button
                 onClick={() => {
-                  props.control_change("주거면적");
+                  props.control_change({bigname:'주택',name:"주거면적"});
                 }}
               >
                 주거면적
               </button>
               <button
                 onClick={() => {
-                  props.control_change("노후주택 비율");
+                  props.control_change({bigname:'주택',name:"노후주택 비율"});
                 }}
               >
                 노후주택 비율
               </button>
               <button
                 onClick={() => {
-                  props.control_change("자가점유 비율");
+                  props.control_change({bigname:'주택',name:"자가점유 비율"});
                 }}
               >
                 자가점유 비율
               </button>
               <button
                 onClick={() => {
-                  props.control_change("단독주택 비율");
+                  props.control_change({bigname:'주택',name:"단독주택 비율"});
                 }}
               >
                 단독주택 비율
@@ -264,21 +264,21 @@ function Favorite_3(props) {
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen7 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  props.control_change("청장년 인구비율");
+                  props.control_change({bigname:'지역인구',name:"청장년 인구비율"});
                 }}
               >
                 청장년 인구비율
               </button>
               <button
                 onClick={() => {
-                  props.control_change("사업체 종사자 비율");
+                  props.control_change({bigname:'지역인구',name:"사업체 종사자 비율"});
                 }}
               >
                 사업체 종사자 비율
               </button>
               <button
                 onClick={() => {
-                  props.control_change("순유입인구 비율");
+                  props.control_change({bigname:'지역인구',name:"순유입인구 비율"});
                 }}
               >
                 순유입인구 비율

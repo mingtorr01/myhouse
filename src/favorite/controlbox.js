@@ -13,17 +13,18 @@ function Controlbox(props){
 
     const select_click =(e)=>{
         const data = {
-            name:props.gipho_name,
+            bigname:props.gipho_name.bigname,
+            name:props.gipho_name.name,
             range:range_value
         }
         props.props_gipho_select(e,data)
-        console.log("yyyy");
+        console.log(data);
         return ;
     }
     return(
         <div className="controlbox_main">
             <div className="controlbox_title">
-                <p>{props.gipho_name}</p>
+                <p>{props.gipho_name.name}</p>
                 <p id="controlbox_title_p"> 지표 설정하기</p>
                 <button onClick={props.cancle_control_box}>
 

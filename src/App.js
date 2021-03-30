@@ -17,10 +17,12 @@ function App() {
   const [listname, listname_change] = useState('no');
   const [listclick_count ,listclick_count_change] = useState(0);
   const [control,controlchange] =useState(false);
-  const [gipho_name,gipho_name_change] = useState('')
+  const [gipho_name,gipho_name_change] = useState([]);
   const [select_gipho_data,select_gipho_data_change] = useState([]);
   const [result_bool,result_bool_change] =useState(false);
+  const [result_data,result_data_change] = useState([]);
   const mounted = useRef(false);
+
 
   const result_change=()=>{
     result_bool_change(true)
@@ -87,7 +89,6 @@ function App() {
     console.log(name);
     switch (name) {
       case "hospital":
-        console.log("asdasdasd");
         if (listname === "hospital") {
           listclick_count_change(0);
           listname_change("no");
@@ -135,13 +136,13 @@ function App() {
     <Provider store={store}>
       <div>
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
-        <Leftmenu_1 props_searchbar_change={props_searchbar_change} />
+        <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change}/>
         {favorite_div_bool?<div></div>:<Findhouse_button findhouse_button={findhouse_button}/>}
         {favorite_div_bool?<Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data}/>:<News/>}
         <Dropmenu listname_change_props={listname_change_props}/>
         {listclick_count === 1?<Dropmenu_list_hospital listname={listname}/> : <div></div>}
         <Househelper />
-        {result_bool ?  <Result/> : <div></div>}
+        {result_bool ?  <Result select_gipho_data={select_gipho_data}/> : <div></div>}
        
       </div>
       {control ? <Controlbox gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
