@@ -23,6 +23,7 @@ const http2 = require("http");
 const path = require("path");
 //.......................................................................................................................
 var fs = require("fs");
+const { type } = require("os");
 
 var dFilePath = path.join(__dirname, "district_latlng.csv");
 var cFilePath = path.join(__dirname, "city_latlng.csv");
@@ -45,6 +46,12 @@ for (var rowIndex in rows) {
 }
 
 var cities = [];
+
+
+
+
+
+
 
 var ccolumns = ["city", "lat", "lng"];
 data = fs.readFileSync(cFilePath, { encoding: "utf8" });
@@ -178,6 +185,9 @@ io.on("connection", function (socket) {
     }
   });
 });
+
+
+
 trade_esclient.searchTarget = function (sw, ne, type) {
   console.log("1.");
   console.log(sw);
@@ -921,6 +931,37 @@ rent_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
+app.post('/clickevent',function(req,res){
+  console.log("웅웅앙앙");
+})
+trade_esclient.searchmeme = function(){
+  console.log("asdasd");
+  return new Promise(function(resolve,reject){
+    trade_esclient.search({
+      index:"office_trades",
+      body:{
+        query: {
+          term: {
+             name: "화성파크드림"
+           }
+         }
+      }
+    }).then(
+      function (resp) {
+        resolve(resp);
+      },
+      function (err) {
+        reject(err.message);
+      }
+    )
+  })
+  }
+function aaa(){
+  trade_esclient.searchmeme().then(function (result) {
+    console.log(result.hits.hits);
+  });
+}
+aaa();
 
 http.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

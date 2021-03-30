@@ -6,8 +6,19 @@ import io from "socket.io-client";
 const url = "http://localhost:3001/";
 
 const socket = io.connect("http://localhost:3001/");
-
 const { kakao } = window;
+
+function markeronclick(){
+  console.log("시발");
+  const box={
+    name:'asdasd'
+  }
+  
+}
+
+function moveclick(){
+ 
+}
 
 function updateTarget(map) {
   var bounds = map.getBounds();
@@ -53,47 +64,56 @@ function hideMarker(map, marker) {
   marker.setMap(null);
 }
 
-const MapContainer = () => {
+const MapContainer = () => { ////////////////////////////////////////////
+
   const dispatcher = useDispatch();
+  
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      center: new kakao.maps.LatLng(35.2279868,128.6796256),
       level: 5,
     };
     const map = new kakao.maps.Map(container, options);
+
+   
+    
 
     var markers = [];
     kakao.maps.event.addListener(map, "idle", function () {
       var zoom = map.getLevel();
       console.log(zoom);
-      if (zoom <= 5) updateTarget(map);
-      else if (zoom <= 9 && zoom >= 6) updateDong(map);
-      else if (zoom <= 11 && zoom >= 10) updateDistrict(map);
-      else if (zoom <= 12) updateCity(map);
+      if (zoom <= 4) updateTarget(map);
+      else if (zoom <= 6 && zoom >= 5) updateDong(map);
+      else if (zoom <= 8 && zoom >= 7) updateDistrict(map);
+      else if (zoom <= 9) updateCity(map);
     });
 
     socket.on("marker", function (positions) {
+      
+      
       updateMarkers(map, markers);
       for (var key in positions) {
         //console.log(positions[key].location.hits.hits[0]._source.location.lat); // 아파트 이름
         //console.log(positions[key].location.hits.hits[0]._source.location.lon); // 아파트 이름
         var position = new kakao.maps.LatLng(positions[key].location.hits.hits[0]._source.location.lat, positions[key].location.hits.hits[0]._source.location.lon);
-
+        
         var avg;
         if (positions[key].avg_trade_price.value >= 10000) avg = parseInt(Math.round(positions[key].avg_trade_price.value / 1000) / 10) + "." + parseInt(Math.round(positions[key].avg_trade_price.value / 1000) % 10) + "억";
         else avg = parseInt(Math.round(positions[key].avg_trade_price.value)) + "만원";
+        var zoom = map.getLevel();
 
+        var housenum = key.length;
         var marker = new kakao.maps.CustomOverlay({
           map: map,
-          clickable: true,
-          content: '<div class="customOverlay"><a href="#">Chart</a></div>',
           position: position,
-          content: ['<div id="base">', '<span class="name">' + positions[key].key + "</span>", '<div class="avg_value">' + avg + "</div>", "</div>"].join(""),
+          content: markerreturn(key,positions,avg,zoom,housenum),
           xAnchor: 0.5,
           yAnchor: 0.5,
-          zIndex: 3,
+          zIndex: 4,
         });
+
+        
         /*
         var marker = new kakao.maps.Marker({
           map: map,
@@ -106,14 +126,72 @@ const MapContainer = () => {
           },
         });*/
         markers.push(marker);
+        
       }
+      
     });
-
+    
     //dispatcher(actionCreators.setMap(map), [map]);
   }, []);
 
+  
+
+   
+  function markerreturn(key,positions,avg,zoom,housenum){
+    if (zoom <= 4) {
+     
+      const level = `<div  className="level_box" onclick="markeronclick()">`+
+        '<div id="box_avg">'+
+        '<p id="box_avg_p">'+
+        avg+
+        '</p>'+
+        '</div>'+
+        '<div id="box_img">'+
+        '</div>'+
+      '</div>'
+  
+      return level
+    }
+    else if (zoom <= 6 && zoom >= 5) {
+      const level2 = '<div class="range_level_box">'+
+      '<div id="range_level_box1">'+
+      positions[key].key+
+      '</div>'+
+      '<div id="range_level_box2">'+
+      avg+
+      '</div>'+
+      '</div>'
+      return level2
+    }
+    else if (zoom < 9 && zoom >= 7) {
+      const level2 = '<div class="range_level_box2">'+
+      '<div id="range_level_box3">'+
+      positions[key].key+
+      '</div>'+
+      '<div id="range_level_box4">'+
+      avg+
+      '</div>'+
+      '</div>'
+      return level2
+  
+    }
+    else if (zoom <= 9) {
+      const level2 = '<div class="range_level_box2">'+
+      '<div id="range_level_box3">'+
+      positions[key].key+
+      '</div>'+
+      '<div id="range_level_box4">'+
+      avg+
+      '</div>'+
+      '</div>'
+      return level2
+    }
+    
+  }
+
   return (
     <div
+    
       id="myMap"
       style={{
         width: "100%",

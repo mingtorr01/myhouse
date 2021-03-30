@@ -62,3 +62,124 @@ div.avg_value {
   color: white;
   font-weight: bold;
 }
+
+.level_box{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.level_box:hover>#box_avg{
+  width: auto;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-right: 5px;
+  background-color: #5f71f8af;
+  margin-bottom: 5px;
+  border-radius: 24px;
+}
+#box_name{
+  width: auto;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background-color: lightgreen;
+}
+#box_avg{
+  width: auto;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-right: 5px;
+  background-color: #5f71f8e8;
+  margin-bottom: 5px;
+  border-radius: 24px;
+}
+#box_avg_p{
+  padding: 0px;
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 4px;
+  margin-bottom: 3px;
+  color: white;
+}
+#box_img{
+  width: 35px;
+  height: 35px;
+  background-image: url("./building.png");
+  background-size: cover;
+}
+.range_level_box{
+  display: flex;
+  width: auto;
+  height: auto;
+  background-color: #3f52e6;
+  border: 1.5px solid #5f71f8;
+  border-radius: 10px;
+  flex-direction: column;
+  
+}
+#range_level_box1{
+  display: flex;
+  width: auto;
+  height: auto;
+  font-size: 13px;
+  color: white;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+#range_level_box2{
+  display: flex;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: white;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+}
+.range_level_box2{
+  display: flex;
+  width: auto;
+  height: auto;
+  background-color: #724ef5;
+  border: 1.5px solid #5f71f8;
+  border-radius: 10px;
+  flex-direction: column;
+  
+}
+#range_level_box3{
+  display: flex;
+  width: auto;
+  height: auto;
+  font-size: 13px;
+  color: white;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+#range_level_box4{
+  display: flex;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: white;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+}
