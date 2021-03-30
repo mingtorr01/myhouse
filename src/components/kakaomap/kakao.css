@@ -1,0 +1,64 @@
+#bar {
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  width: 354px;
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  border-bottom: 1px solid #c0c0c0;
+  border-top: 1px solid #e9e9e9;
+  background-color: #fff;
+  z-index: 2;
+}
+
+div#keyword_search {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  height: 51px;
+  background-color: #fff;
+  text-align: center;
+}
+input.keyword {
+  padding: 0px;
+  border: 0px;
+  height: 31px;
+  float: left;
+  width: 300px;
+  font-size: 16px;
+}
+
+#base {
+  background: #2929a3;
+  display: inline-block;
+  height: 44px;
+  margin-left: 8px;
+  margin-top: 22px;
+  position: relative;
+  width: 60px;
+}
+#base:before {
+  border-bottom: 14px solid #2929a3;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  content: "";
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: -14px;
+  width: 0;
+}
+
+span.name {
+  padding-left: 5px;
+  padding-top: 10px;
+  color: white;
+  font-size: 10px;
+}
+
+div.avg_value {
+  padding-left: 5px;
+  color: white;
+  font-weight: bold;
+}

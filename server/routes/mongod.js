@@ -21,7 +21,7 @@ db.once("open", function () {
   // 몽고디비 서버에 연결
   console.log("Connected to mongod server");
 });
-const users = User.find({}, function (err, board) {
-  console.log(board);
-});
+//const users = User.find({}, function (err, board) {
+//  console.log(board);
+//});
 module.exports = router;
