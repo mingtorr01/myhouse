@@ -12,9 +12,10 @@ const io = require("socket.io")(http, {
 const bodyParser = require("body-parser");
 
 //app.use(express.json()); //bodyparser 역할 없으면 req.body 안먹힌다.
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors()); // 서버와 클라이언트 사이의 크로스 도메인 헤더 라이브러리
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+app.use(bodyParser.json());
 const route = require("./routes/mongod");
 //app.use("/db", route); //라우팅
 
@@ -931,10 +932,11 @@ rent_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
-app.post('/clickevent',function(req,res){
-  console.log("웅웅앙앙");
-})
-trade_esclient.searchmeme = function(){
+
+
+
+
+trade_esclient.searchmeme = function(name2){
   console.log("asdasd");
   return new Promise(function(resolve,reject){
     trade_esclient.search({
@@ -942,7 +944,7 @@ trade_esclient.searchmeme = function(){
       body:{
         query: {
           term: {
-             name: "화성파크드림"
+             name: name2
            }
          }
       }
@@ -955,13 +957,17 @@ trade_esclient.searchmeme = function(){
       }
     )
   })
-  }
-function aaa(){
-  trade_esclient.searchmeme().then(function (result) {
-    console.log(result.hits.hits);
-  });
 }
-aaa();
+app.post('/clickevent',(req,res)=>{
+  console.log("웅웅앙앙");
+  console.log(req.body);
+  trade_esclient.searchmeme(req.body.name).then(function (result) {
+    result.hits.hits.map((v,i,a)=>{
+      console.log(v._source);
+    })
+    
+  });
+})
 
 http.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

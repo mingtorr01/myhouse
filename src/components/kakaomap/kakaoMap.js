@@ -8,11 +8,8 @@ const url = "http://localhost:3001/";
 const socket = io.connect("http://localhost:3001/");
 const { kakao } = window;
 
-function markeronclick(){
-  console.log("시발");
-  const box={
-    name:'asdasd'
-  }
+const markeronclick=(string)=>{
+  console.log(string);
   
 }
 
@@ -75,10 +72,6 @@ const MapContainer = () => { ////////////////////////////////////////////
       level: 5,
     };
     const map = new kakao.maps.Map(container, options);
-
-   
-    
-
     var markers = [];
     kakao.maps.event.addListener(map, "idle", function () {
       var zoom = map.getLevel();
@@ -114,6 +107,7 @@ const MapContainer = () => { ////////////////////////////////////////////
         });
 
         
+    
         /*
         var marker = new kakao.maps.Marker({
           map: map,
@@ -139,8 +133,7 @@ const MapContainer = () => { ////////////////////////////////////////////
    
   function markerreturn(key,positions,avg,zoom,housenum){
     if (zoom <= 4) {
-     
-      const level = `<div  className="level_box" onclick="markeronclick()">`+
+      const level = '<a href="#" class="level_box" onclick="myFunction(\'' + positions[key].key + '\')"}>'+
         '<div id="box_avg">'+
         '<p id="box_avg_p">'+
         avg+
@@ -148,8 +141,22 @@ const MapContainer = () => { ////////////////////////////////////////////
         '</div>'+
         '<div id="box_img">'+
         '</div>'+
-      '</div>'
-  
+      '</a>'
+    
+      window.myFunction = (string) => {
+        console.log(string);
+        const box = {
+          name : string
+        }
+        fetch("http://localhost:3001/clickevent", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(box),
+        })
+    };
+    
       return level
     }
     else if (zoom <= 6 && zoom >= 5) {
