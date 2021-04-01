@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./househelper.css";
 import MapContainer from "../components/kakaomap/kakaoMap";
 
@@ -6,7 +6,7 @@ import useGeolocation from "../action/kakaomap/useGeolocation";
 import useCenterChanged from "../action/kakaomap/useCenterChanged";
 import { useSelector } from "react-redux";
 
-const Househelper = () => {
+const Househelper = (props) => {
   const { map } = useSelector((state) => ({ map: state.maskMap.map }), []);
 
   const { getGeo } = useGeolocation();

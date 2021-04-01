@@ -21,9 +21,10 @@ function App() {
   const [select_gipho_data,select_gipho_data_change] = useState([]);
   const [result_bool,result_bool_change] =useState(false);
   const [result_data,result_data_change] = useState([]);
+
   const mounted = useRef(false);
 
-
+  
   const result_change=()=>{
     result_bool_change(true)
     favorite_div_bool_change(false);
@@ -141,7 +142,7 @@ function App() {
         {favorite_div_bool?<Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data}/>:<News/>}
         <Dropmenu listname_change_props={listname_change_props}/>
         {listclick_count === 1?<Dropmenu_list_hospital listname={listname}/> : <div></div>}
-        <Househelper />
+        <Househelper/>
         {result_bool ?  <Result select_gipho_data={select_gipho_data}/> : <div></div>}
        
       </div>

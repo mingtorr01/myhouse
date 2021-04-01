@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators } from "../../store/store";
+import Apart_page from './apart_page';
 import "./kakao.css";
 import io from "socket.io-client";
 const url = "http://localhost:3001/";
@@ -8,14 +9,7 @@ const url = "http://localhost:3001/";
 const socket = io.connect("http://localhost:3001/");
 const { kakao } = window;
 
-const markeronclick=(string)=>{
-  console.log(string);
-  
-}
 
-function moveclick(){
- 
-}
 
 function updateTarget(map) {
   var bounds = map.getBounds();
@@ -61,10 +55,12 @@ function hideMarker(map, marker) {
   marker.setMap(null);
 }
 
-const MapContainer = () => { ////////////////////////////////////////////
+const MapContainer = (props) => { ////////////////////////////////////////////
 
   const dispatcher = useDispatch();
-  
+  const [apart_page,apart_page_change] = useState(false);
+  const [apart_data,apart_data_change] = useState([]);
+
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
@@ -125,7 +121,17 @@ const MapContainer = () => { ////////////////////////////////////////////
     });
     
     //dispatcher(actionCreators.setMap(map), [map]);
-  }, []);
+  }, []); ///////////////////////////////////////////////////
+
+  const apart_page_bool = ()=>{
+    if(apart_page===false){
+      apart_page_change(true);
+    }else{
+      apart_page_change(false);
+    }
+  }
+
+
   window.myFunction = (box) => {  ///클릭 이벤트
       
     var splitstring = box.split(',');
@@ -145,7 +151,10 @@ const MapContainer = () => { ////////////////////////////////////////////
       body: JSON.stringify(data),
     }).then(res=>res.json()).then((json)=>{
       console.log(json);
+      apart_data_change(json);
     })
+    
+    apart_page_bool();
 };
   
 
@@ -213,13 +222,14 @@ const MapContainer = () => { ////////////////////////////////////////////
 
   return (
     <div
-    
       id="myMap"
       style={{
         width: "100%",
         height: "100%",
       }}
-    ></div>
+    >
+      {apart_page?<Apart_page apart_data={apart_data}/>:<div></div>}
+    </div>
   );
 };
 

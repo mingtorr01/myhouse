@@ -183,3 +183,19 @@ div.avg_value {
   justify-content: center;
   align-items: center;
 }
+.test{
+  display: block;
+    border: 1px solid red;
+    width: 354px;
+    position: absolute;
+    top: 125px;
+    bottom: 10px;
+    left: 11px;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    border-bottom: 1px solid #c0c0c0;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 15;
+    overflow-y: auto;
+}
