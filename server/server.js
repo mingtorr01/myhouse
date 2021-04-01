@@ -234,7 +234,7 @@ trade_esclient.searchTarget = function (sw, ne, type) {
                 location: {
                   top_hits: {
                     size: 1,
-                    _source: { include: ["location"] },
+                    _source: { include: ["location","code"]},
                   },
                 },
               },
@@ -288,6 +288,7 @@ trade_esclient.searchDong = function (sw, ne, type) {
                 field: "dong",
                 size: 100,
               },
+              
               aggs: {
                 avg_trade_price: {
                   avg: {
@@ -936,36 +937,62 @@ rent_esclient.searchCity = function (sw, ne, type) {
 
 
 
-trade_esclient.searchmeme = function(name2){
+trade_esclient.searchmeme = function (location) {
   console.log("asdasd");
-  return new Promise(function(resolve,reject){
-    trade_esclient.search({
-      index:"office_trades",
-      body:{
-        query: {
-          term: {
-             name: name2
-           }
-         }
-      }
-    }).then(
-      function (resp) {
-        resolve(resp);
-      },
-      function (err) {
-        reject(err.message);
-      }
-    )
-  })
-}
+  console.log(location);
+  //35.2252821649117+128.687405218001
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: "apart_trades",
+        body: {
+          query: {
+            bool: {
+              must: [
+                {
+                  match_all: {},
+                },
+              ],
+              filter: [
+                {
+                  geo_distance: {
+                    distance: "1m",
+                    location: {
+                      lat: location.lat,
+                      lon: location.lon,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          resolve(resp);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+
 app.post('/clickevent',(req,res)=>{
   console.log("웅웅앙앙");
   console.log(req.body);
-  trade_esclient.searchmeme(req.body.name).then(function (result) {
+  const location = {
+    lat:req.body.position_x,
+    lon:req.body.position_y
+  }
+  trade_esclient.searchmeme(location).then(function (result) {
+    const data = [];
     result.hits.hits.map((v,i,a)=>{
       console.log(v._source);
+      data.push(v._source);
     })
-    
+    res.send(data)
   });
 })
 

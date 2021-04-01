@@ -21,27 +21,27 @@ function updateTarget(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateDong(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateDistrict(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("district", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("district", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 function updateCity(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("city", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("city", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateMarkers(map, markers) {
@@ -95,7 +95,6 @@ const MapContainer = () => { ////////////////////////////////////////////
         if (positions[key].avg_trade_price.value >= 10000) avg = parseInt(Math.round(positions[key].avg_trade_price.value / 1000) / 10) + "." + parseInt(Math.round(positions[key].avg_trade_price.value / 1000) % 10) + "억";
         else avg = parseInt(Math.round(positions[key].avg_trade_price.value)) + "만원";
         var zoom = map.getLevel();
-
         var housenum = key.length;
         var marker = new kakao.maps.CustomOverlay({
           map: map,
@@ -127,13 +126,41 @@ const MapContainer = () => { ////////////////////////////////////////////
     
     //dispatcher(actionCreators.setMap(map), [map]);
   }, []);
-
+  window.myFunction = (box) => {  ///클릭 이벤트
+      
+    var splitstring = box.split(',');
+    console.log(splitstring[0]);
+    console.log(splitstring[1]);
+    console.log(splitstring[2]);
+    const data = {
+      apart_name:splitstring[0],
+      position_x:splitstring[1],
+      position_y:splitstring[2]
+    }
+    fetch("http://localhost:3001/clickevent", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(res=>res.json()).then((json)=>{
+      console.log(json);
+    })
+};
   
 
    
   function markerreturn(key,positions,avg,zoom,housenum){
+    const box = {
+      data:positions[key].key,
+      x:positions[key].location.hits.hits[0]._source.location.lat,
+      y:positions[key].location.hits.hits[0]._source.location.lon
+    }
+    
+
+    const string = "asdasd"
     if (zoom <= 4) {
-      const level = '<a href="#" class="level_box" onclick="myFunction(\'' + positions[key].key + '\')"}>'+
+      const level = '<a href="#" class="level_box" onclick="myFunction(\'' + positions[key].key +','+positions[key].location.hits.hits[0]._source.location.lat +','+ positions[key].location.hits.hits[0]._source.location.lon+'\')"}>'+
         '<div id="box_avg">'+
         '<p id="box_avg_p">'+
         avg+
@@ -143,19 +170,7 @@ const MapContainer = () => { ////////////////////////////////////////////
         '</div>'+
       '</a>'
     
-      window.myFunction = (string) => {
-        console.log(string);
-        const box = {
-          name : string
-        }
-        fetch("http://localhost:3001/clickevent", {
-          method: "post",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(box),
-        })
-    };
+      
     
       return level
     }
