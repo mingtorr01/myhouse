@@ -15,7 +15,7 @@ function code1(location) {
     console.log("====================================");
     trade_esclient
       .search({
-        index: "office_trades",
+        index: "apart_trades",
         body: {
           query: {
             bool: {

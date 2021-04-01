@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators } from "../../store/store";
-import Apart_page from "./apart_page";
+import Apart_page from "./meme/apart_page";
 import "./kakao.css";
 import io from "socket.io-client";
 const url = "http://localhost:3001/";
@@ -13,27 +13,27 @@ function updateTarget(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateDong(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateDistrict(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("district", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("district", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 function updateCity(map) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
-  socket.emit("city", { sw: swLatLng, ne: neLatLng, type: "office_trades" });
+  socket.emit("city", { sw: swLatLng, ne: neLatLng, type: "apart_trades" });
 }
 
 function updateMarkers(map, markers) {
@@ -117,11 +117,13 @@ const MapContainer = (props) => {
   }, []); ///////////////////////////////////////////////////
 
   const apart_page_bool = () => {
+    apart_page_change(true);
+    /*
     if (apart_page === false) {
       apart_page_change(true);
     } else {
       apart_page_change(false);
-    }
+    }*/
   };
 
   window.myFunction = (box) => {
