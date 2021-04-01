@@ -18,6 +18,8 @@ app.use(cors());
 app.use(bodyParser.json());
 const route = require("./routes/mongod");
 //app.use("/db", route); //라우팅
+const route2 = require("./routes/get_idx");
+app.use("/api", route2);
 
 const elasticsearch = require("elasticsearch");
 const http2 = require("http");
@@ -47,12 +49,6 @@ for (var rowIndex in rows) {
 }
 
 var cities = [];
-
-
-
-
-
-
 
 var ccolumns = ["city", "lat", "lng"];
 data = fs.readFileSync(cFilePath, { encoding: "utf8" });
@@ -187,8 +183,6 @@ io.on("connection", function (socket) {
   });
 });
 
-
-
 trade_esclient.searchTarget = function (sw, ne, type) {
   console.log("1.");
   console.log(sw);
@@ -234,7 +228,7 @@ trade_esclient.searchTarget = function (sw, ne, type) {
                 location: {
                   top_hits: {
                     size: 1,
-                    _source: { include: ["location","code"]},
+                    _source: { include: ["location", "code"] },
                   },
                 },
               },
@@ -288,7 +282,7 @@ trade_esclient.searchDong = function (sw, ne, type) {
                 field: "dong",
                 size: 100,
               },
-              
+
               aggs: {
                 avg_trade_price: {
                   avg: {
@@ -933,68 +927,6 @@ rent_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
-
-
-
-
-trade_esclient.searchmeme = function (location) {
-  console.log("asdasd");
-  console.log(location);
-  //35.2252821649117+128.687405218001
-  return new Promise(function (resolve, reject) {
-    trade_esclient
-      .search({
-        index: "apart_trades",
-        body: {
-          query: {
-            bool: {
-              must: [
-                {
-                  match_all: {},
-                },
-              ],
-              filter: [
-                {
-                  geo_distance: {
-                    distance: "1m",
-                    location: {
-                      lat: location.lat,
-                      lon: location.lon,
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        },
-      })
-      .then(
-        function (resp) {
-          resolve(resp);
-        },
-        function (err) {
-          reject(err.message);
-        }
-      );
-  });
-};
-
-app.post('/clickevent',(req,res)=>{
-  console.log("웅웅앙앙");
-  console.log(req.body);
-  const location = {
-    lat:req.body.position_x,
-    lon:req.body.position_y
-  }
-  trade_esclient.searchmeme(location).then(function (result) {
-    const data = [];
-    result.hits.hits.map((v,i,a)=>{
-      console.log(v._source);
-      data.push(v._source);
-    })
-    res.send(data)
-  });
-})
 
 http.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

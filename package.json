@@ -20,6 +20,7 @@
     "highcharts": "^9.0.1",
     "highcharts-drilldown": "^0.1.7",
     "highcharts-react-official": "^3.0.0",
+    "http-proxy-middleware": "0.19.1",
     "i": "0.3.6",
     "mongodb": "3.6.4",
     "mongoose": "5.12.0",
