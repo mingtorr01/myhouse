@@ -18,6 +18,7 @@ function code1(location) {
         index: "apart_trades",
         body: {
           sort: [{ date: "asc" }],
+          size:10000,
           query: {
             bool: {
               must: [

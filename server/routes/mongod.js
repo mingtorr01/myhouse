@@ -63,6 +63,7 @@ router.post("/getLocation", (req, res) => {
   console.log(locations);
   location1.find({ _시도: locations }, { _id: 0, _시군구: 1 }).then((data) => {
     console.log(data);
+    res.send(data)
   });
 });
 module.exports = router;

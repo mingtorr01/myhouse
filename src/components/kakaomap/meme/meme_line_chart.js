@@ -15,7 +15,7 @@ function HighChart2(props){
 
     useEffect(()=>{
         console.log(props.data);
-        
+        apart_data_chage(props.data);
     },[props.data]);
 ////////////////////////////////////////////////////////////
 
@@ -57,11 +57,11 @@ function HighChart2(props){
             }
           },
           tooltip: {   //막대표 마우스 데이면 나오는 div
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>', 
+            headerFormat: '<span style="font-size:11px">평균가</span><br>', 
             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b> {point.y:0f}만원</b><br/>' 
         },
           series: [{
-            name: '매매가 평균',
+            name: Math.floor((props.data_name/3.3058))+'평 '+'매매가 평균',
             data: props.data,
             color:'#4e61f1'
           }],
