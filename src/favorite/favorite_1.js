@@ -58,8 +58,7 @@ function Favorite_1(props){
         return(
             <div className="favorite_1">
                 <div className="favorite_title_div">
-                    <p id="favorite_title_p">1 step</p>
-                    <p>원하시는 지역을 선택하세요. (1/3)</p>
+                    <p>1. 원하시는 지역을 선택하세요.</p>
                     <button>
                         
                     </button>

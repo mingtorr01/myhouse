@@ -1,15 +1,15 @@
 .Favorite_3_main {
   width: 354px;
-  height: 642px;
+  height: 682px;
   position: absolute;
-  top: 120px;
+  top: 130px;
   left: 11px;
   z-index: 4;
 }
 .Favorite_3_main_div {
   display: flex;
   width: 354px;
-  height: 402px;
+  height: 372px;
   position: absolute;
   border-radius: 3px;
   border: 1px solid #cecece;
@@ -22,40 +22,44 @@
 .favorite_title_div2 {
   width: 100%;
   height: 40px;
-  background-color: #4e61f1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  background-color: rgb(255, 255, 255);
 }
 .favorite_title_div2 p {
   margin: 0;
-  color: white;
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 15px;
-  margin-left: 10px;
+  color: black;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  
 }
-.favorite_title_div2 button {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background-image: url("../img/cancel_white.png");
-  background-size: cover;
-  border: none;
-  outline: none;
-  width: 15px;
-  height: 15px;
-  background-color: #ff5e62;
-}
+
 #back_step {
   position: absolute;
   left: 10px;
-  top: 9px;
-  background-image: url("../img/left_arrow.png");
+  top: 12px;
+  background-image: url("../img/left-arrow-black.png");
   background-size: cover;
   border: none;
   outline: none;
-  width: 20px;
-  height: 20px;
-  background-color: #4e61f1;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+}
+#cancle_step{
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  background-image: url("../img/cancel_black.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
 }
 .Favorite_3_main_div_scroll {
   width: 100%;
@@ -72,7 +76,13 @@
 .favorite_item_div {
   width: 100%;
   height: auto;
-  margin-top: 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+.favorite_item_div2{
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
 }
 .favorite_item_div p {
   margin: 0px;
@@ -89,39 +99,48 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 .favorite_enviroment_item_div button {
   width: auto;
-  height: 30px;
+  height: auto;
   outline: none;
   background-color: #f3f4fc;
   color: #8b99ff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   z-index: 2;
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
   border: 0px;
   margin-left: 15px;
   border-radius: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-top: 10px;
 }
 .favorite_enviroment_item_div button:hover {
   width: auto;
-  height: 30px;
+  height: auto;
   outline: none;
   background-color: #8b99ff;
-  color: white;
+  color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   z-index: 2;
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
   border: 0px;
   margin-left: 15px;
   border-radius: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-top: 10px;
 }
 .gongbak {
@@ -132,7 +151,7 @@
   position: absolute;
   bottom: 20px;
   width: 100%;
-  height: 210px;
+  height: 280px;
   border-radius: 3px;
   border: 1px solid #cecece;
   border-bottom: 1px solid #c0c0c0;
@@ -144,34 +163,34 @@
   top: 190px;
   left: 370px;
   width: 300px;
-  height: 200px;
+  height: 150px;
   border-radius: 3px;
   border: 1px solid #cecece;
   border-bottom: 1px solid #c0c0c0;
-  background-color: #8b99ff;
+  background-color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   z-index: 5;
 }
 .controlbox_title {
   width: 100%;
-  height: 40px;
+  height: 30px;
   display: flex;
   align-items: center;
-  background-color: #8b99ff;
+  border-bottom: 1px solid rgb(240, 239, 239);
 }
 .controlbox_title p {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 14px;
-  color: #f8f8fa;
-  font-weight: 700;
+  font-size: 13px;
+  color: #696969;
+  font-weight: 600;
   margin-left: 20px;
 }
 #controlbox_title_p {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: #8b99ff;
   font-weight: 500;
   margin-left: 10px;
 }
@@ -209,7 +228,7 @@
   content: "";
   height: 25px;
   width: 25px;
-  background-color: #5a6dfc;
+  background-color: #5d6ef0;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
   border: 3px solid #fff;
@@ -232,23 +251,32 @@
   color: #5a6dfc;
   z-index: 7;
 }
-.range .field .value.left {
+.left {
+  font-size: 13px;
+  position: absolute;
   left: 20px;
+  display: flex;
+  font-weight: bold;
+  color: black;
 }
-.range .field .value.right {
-  right: 20px;
+.right {
+  font-size: 13px;
+  position: absolute;
+  font-weight: bold;
+  right: 18px;
+  color: black;
 }
-.range .field input {
+.controlbox_range input {
   -webkit-appearance: none;
-  height: 3px;
-  width: 70%;
+  height: 8px;
+  width: 73%;
   background-color: #ddd;
   border-radius: 5px;
   outline: none;
   border: none;
   z-index: 7;
 }
-.range .field input::-webkit-slider-thumb {
+.controlbox_range input::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 14px;
   width: 14px;
@@ -258,23 +286,64 @@
   cursor: pointer;
 }
 .controlbox_button {
+  display: flex;
+  flex-direction: row;
   position: absolute;
   width: 100%;
-  height: 40px;
-  background-color: red;
+  height: 30px;
   bottom: 0;
 }
-.controlbox_button button {
+#controlbox_onclick2  {
   width: 100%;
-  height: 40px;
-  background-color: #4e61f1;
+  height: 30px;
+  background-color: #ececec;
+  border: 1px solid rgb(236, 236, 236);
   outline: none;
-  color: #fff;
+  color: rgb(94, 94, 94);
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   z-index: 2;
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 18px;
-  border: 0px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+#controlbox_onclick2:hover {
+  width: 100%;
+  height: 30px;
+  background-color: #5a6dfc34;
+  border: 1px solid rgb(236, 236, 236);
+  outline: none;
+  color: #5a6dfc;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+#controlbox_onclick1 {
+  width: 100%;
+  height: 30px;
+  background-color: #f1f1f1;
+  border: 1px solid rgb(236, 236, 236);
+  outline: none;
+  color: rgb(94, 94, 94);
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+#controlbox_onclick1:hover {
+  width: 100%;
+  height: 30px;
+  background-color: #fa4c4c23;
+  border: 1px solid rgb(236, 236, 236);
+  outline: none;
+  color: #fa4c4c;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
 }
 .controlbox_title button {
   position: absolute;
@@ -291,27 +360,29 @@
 .gipho_title {
   width: 100%;
   height: 30px;
-  background-color: #4e61f1;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .gipho_title p {
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   margin: 0;
-  margin-left: 20px;
-  color: #ffffff;
+  color: black;
 }
 .gipho_select_item {
   width: auto;
-  height: 30px;
-  background-color: #ff8383;
+  height: auto;
+  background-color: #4056fc;
   color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   font-family: "Do Hyeon", sans-serif;
   font-size: 14px;
   border: 0px;
-  margin-left: 15px;
+  margin-left: 26px;
   border-radius: 3px;
   padding-left: 10px;
   padding-right: 10px;
@@ -319,6 +390,8 @@
   margin-bottom: 5px;
   display: flex;
   align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .gipho_select_item p {
   margin: 0;
@@ -333,9 +406,9 @@
 .gipho_main {
   display: flex;
   width: 100%;
-  height: 147px;
-  flex-wrap: wrap;
-  overflow-y: auto;
+  height: 217px;
+  flex-direction: column;
+  overflow-y:scroll;
   align-items: flex-start;
 }
 .gipho_select_item button {
@@ -345,12 +418,12 @@
   outline: none;
   width: 18px;
   height: 18px;
-  background-color: #ff8383;
+  background-color: #4056fc;
 }
 #gipho_select_button {
   width: 100%;
   height: 33px;
-  background: linear-gradient(to left, #7983ca, #4e61f1);
+  background-color: #6075eb;
   outline: none;
   color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
@@ -359,21 +432,148 @@
   font-size: 16px;
   border: 0px;
 }
+#gipho_select_button:hover{
+  width: 100%;
+  height: 33px;
+  background-color: #6075ebbb;
+  outline: none;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 10;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
+  border: 0px;
+}
 #favorite_item_div_button {
+  display: flex;
   width: auto;
-  height: 25px;
-  background-color: #3bb5fc;
+  height: auto;
+  background-color: #576ff8;
   outline: none;
   color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   z-index: 2;
-  font-family: "Do Hyeon", sans-serif;
-  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.8px;
+  font-weight: 500;
   border: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   margin-left: 15px;
   border-radius: 24px;
   padding-right: 10px;
   padding-left: 10px;
+  margin-bottom: 7px;
+  justify-content: center;
+  align-items: center;
+}
+#favorite_item_div_button:hover{
+  display: flex;
+  width: auto;
+  height: auto;
+  background-color: #576ff8c5;
+  outline: none;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.8px;
+  font-weight: 500;
+  border: 0px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  margin-left: 15px;
+  border-radius: 24px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 7px;
+  justify-content: center;
+  align-items: center;
+}
+.controlbox_mid{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50px;
+}
+.controlbox_mid1{
+  width: auto;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+}
+.controlbox_mid2{
+  width: auto;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+}
+.controlbox_mid1_1{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.controlbox_mid1_1 p{
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: 10px;
+  color: rgb(51, 51, 51);
+}
+.controlbox_mid1_2{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.controlbox_mid1_2 p{
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: 10px;
+  color: rgb(51, 51, 51);
+}
+.controlbox_mid2_1{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.controlbox_mid2_2{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.controlbox_mid2_1 p{
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 10px;
+  color: #4056fc;
+}
+.controlbox_mid2_2 p{
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 10px;
+  color: #7481e6;
+}
+.controlbox_range{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.gonbak2{
+  width: 100%;
+  height: 30px;
+  display: flex;
 }

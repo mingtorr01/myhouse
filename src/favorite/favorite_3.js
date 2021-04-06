@@ -57,12 +57,12 @@ function Favorite_3(props) {
       <div className="Favorite_3_main_div">
         <div className="favorite_title_div2">
           <button id="back_step"></button>
-          <p id="favorite_title_p2">3 step</p>
-          <p>지표를 선택하세요. (3/3)</p>
+          <p>3. 지표를 선택하세요.</p>
+          <button id="cancle_step"></button>
         </div>
         <div className="Favorite_3_main_div_scroll">
           <div className="favorite_item_div">
-            <button id="favorite_item_div_button" onClick={()=>openchange(1)} >환경 지표</button>
+            <button id="favorite_item_div_button" onClick={()=>openchange(1)} >1. 환경 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen1 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -81,7 +81,7 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(2)} >교육 지표</button>
+          <button id="favorite_item_div_button" onClick={()=>openchange(2)} >2. 교육 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen2 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -93,7 +93,7 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(3)} >복지 지표</button>
+          <button id="favorite_item_div_button" onClick={()=>openchange(3)} >3. 복지 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen3=== true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -140,7 +140,7 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(4)} >편의시설 지표</button>
+          <button id="favorite_item_div_button" onClick={()=>openchange(4)} >4. 편의시설 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen4 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -180,7 +180,7 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(5)} >안전시설 지표</button>
+          <button id="favorite_item_div_button" onClick={()=>openchange(5)} >5. 안전시설 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen5 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -220,7 +220,7 @@ function Favorite_3(props) {
             </div>
           </div>
           <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(6)} >주택 지표</button>
+          <button id="favorite_item_div_button" onClick={()=>openchange(6)} >6. 주택 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen6 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -259,8 +259,8 @@ function Favorite_3(props) {
               </button>
             </div>
           </div>
-          <div className="favorite_item_div">
-          <button id="favorite_item_div_button" onClick={()=>openchange(7)} >지역인구 지표</button>
+          <div className="favorite_item_div2">
+          <button id="favorite_item_div_button" onClick={()=>openchange(7)} >7. 지역인구 지표</button>
             <div className="favorite_enviroment_item_div" style={{ display: `${setopen7 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
@@ -290,14 +290,14 @@ function Favorite_3(props) {
       </div>
       <div className="gipho" key={props.select_gipho_data2}>
         <div className="gipho_title">
-          <p>* 선택하신 옵션</p>
+          <p>* 선택하신 지표</p>
         </div>
         <div className="gipho_main">
           {value.map((v, i, a) => {
             return (
               <div key={i} className="gipho_select_item">
                 <p>{v.name}</p>
-                <p id="gipho_select_item_p">선호도 {v.range}</p>
+                <p id="gipho_select_item_p">{v.range*50}%</p>
                 <button
                   id="gipho_cancle"
                   onClick={() => {
@@ -307,6 +307,9 @@ function Favorite_3(props) {
               </div>
             );
           })}
+          <div className="gonbak2">
+
+          </div>
         </div>
         <button id="gipho_select_button" onClick={props.result_change}>선택 완료</button>
       </div>

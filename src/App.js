@@ -29,6 +29,7 @@ function App() {
     result_bool_change(true)
     favorite_div_bool_change(false);
   }
+  
    function props_gipho_select(event,select){  //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
     event.preventDefault();
     let data = select_gipho_data;

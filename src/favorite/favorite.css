@@ -1,38 +1,49 @@
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+@font-face {
+    font-family: 'Jal_Onuel';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .favorite_1{
     display: flex;
     width: 354px;
-    height: 292px;
+    height: 282px;
     position: absolute;
-    top: 140px;
+    top: 130px;
     left: 11px;
     border-radius: 3px;
-    border: 1px solid #cecece;
-    border-bottom: 1px solid #c0c0c0;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    background-color: #fff;
     z-index: 5;
     flex-direction: column;
+    border-bottom: 1px solid #c0c0c0;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
 }
 .favorite_title_div{
     width: 100%;
-    height: 50px;
-    background-color: #4e61f1;
+    height: 40px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
 }
 #favorite_title_p{
     margin: 0;
-    color: white;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 18px;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
     margin-left: 20px;
 }
 .favorite_title_div p{
     margin: 0;
-    color: white;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 15px;
-    margin-left: 10px;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
 }
 .favorite_main_div{
     display: flex;
@@ -67,14 +78,14 @@
 .favorite_title_div button{
     position: absolute;
     right: 10px;
-    top: 15px;
-    background-image: url("../img/cancel_white.png");
+    top: 14px;
+    background-image: url("../img/cancel_black.png");
     background-size: cover;
     border: none;
     outline: none;
-    width: 18px;
-    height: 18px;
-    background-color:#4e61f1 ;
+    width: 12px;
+    height: 12px;
+    background-color: white;
 }
 .favorite_main_div_row{
     margin-top: 10px;
@@ -87,28 +98,30 @@
 .favorite_main_div_column{
     width: 80px;
     height:40px;
-    background-color: seagreen;
     margin-left: 7px;
 }
 .favorite_main_div_column button{
     width: 80px;
     height: 40px;
     outline: none;
-    background-color: #f3f4fc;
-    color: #8b99ff;
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    background-color: #5f71f8;
+    color: white;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     border: 0px;
+    border-radius: 7px;
 }
 .favorite_main_div_column button:hover{
-    background-color: #8b99ff;
-    color: white;
+    background-color: #8b99ff77;
+    color: #5f71f8;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     z-index: 2;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     border: 0px;
     outline: none;
 }
