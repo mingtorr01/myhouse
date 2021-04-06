@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyParser.json());
 const route = require("./routes/mongod");
-//app.use("/db", route); //라우팅
+app.use("/db", route); //라우팅
 const route2 = require("./routes/get_idx");
 app.use("/api", route2);
 

@@ -20,4 +20,8 @@ router.post("/clickevent", (req, res) => {
   });
 });
 
+router.post("/getlocation", (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = router;
