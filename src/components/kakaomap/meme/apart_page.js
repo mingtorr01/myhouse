@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import './meme.css';
 import HighChart2 from './meme_line_chart';
-
+import Bottom_arrow from './blue-bottom-arrow.png';
 
 
 class Apart_page extends React.Component{
@@ -51,8 +51,6 @@ class Apart_page extends React.Component{
         this.setState({
             graph_name:this.state.sizing[0]
         })
-          
-
           this.state.data.map((v,i,a)=>{
             if(Math.floor(v.exclusive_private_area) === this.state.sizing[0]){
                 const date= new Date(v.date);
@@ -229,10 +227,15 @@ render(){
                 </div>
             </div>
             {this.props.make_data2.map((v,i,a)=>{
-                return(
-                    <Meme_chart_row date={v.date} price={v.price} size={v.size} floor={v.floor} />
-                )
+                if(i<5){
+                    return(
+                        <Meme_chart_row date={v.date} price={v.price} size={v.size} floor={v.floor} />
+                    )
+                }
             })}
+            <div className="pho_main_title_row_button">
+                <button>더 보기<img src={Bottom_arrow} width="10px" height="10px"/></button>
+            </div>
         </div>
     )
 }
@@ -246,7 +249,7 @@ class Meme_chart_row extends React.Component{
         }
     }
     componentDidMount(){
-        console.log(this.props.price);
+        console.log(this.props.price%10000);
         if(this.props.price>10000 && this.props.price%10000 === 0){
             this.setState({
                 price1:String(Math.floor(this.props.price/10000))+'억',
@@ -264,7 +267,11 @@ class Meme_chart_row extends React.Component{
     componentDidUpdate(prevProps){
         if(this.props !== prevProps){
         console.log(this.props.price);
-        if(this.props.price>10000){
+        if(this.props.price>10000 && this.props.price%10000 === 0){
+            this.setState({
+                price1:String(Math.floor(this.props.price/10000))+'억',
+            })
+        }else if(this.props.price>10000){
             this.setState({
                 price1:String(Math.floor(this.props.price/10000))+'억'+String(this.props.price%10000)+'만원',
             })
