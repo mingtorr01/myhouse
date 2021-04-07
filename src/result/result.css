@@ -35,7 +35,7 @@
 }
 .result_gipho_title{
     width: 95%;
-    height: 30px;
+    height: auto;
     border-bottom: 1px solid lightgray;
     margin-left: 8px;
     margin-bottom: 10px;
@@ -55,6 +55,7 @@
     font-weight: bold;
     border: 0px;
     outline: none;
+    padding-bottom: 5px;
     
 }
 #result_button:hover{
