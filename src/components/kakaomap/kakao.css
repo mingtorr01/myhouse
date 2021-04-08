@@ -82,6 +82,30 @@ div.avg_value {
   margin-bottom: 5px;
   border-radius: 24px;
 }
+.level_box:focus>#box_avg{
+  width: auto;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-right: 5px;
+  background-color: #5f71f8e8;
+  margin-bottom: 5px;
+  border-radius: 24px;
+  animation-duration: 3s;
+  animation-name: updown;
+  animation-iteration-count: infinite;
+}
+@keyframes updown {
+  0% {margin-top:0;}
+  10% {margin-top:0;}
+  25% {margin-top:0px;}
+  35% {margin-top:-15px;}
+  50% {margin-top:0px;}
+  60% {margin-top:0;}
+  75% {margin-top:0px;}
+  85% {margin-top:-15px;}
+  100% {margin-top:0;}
+}
 #box_name{
   width: auto;
   font-size: 12px;
@@ -92,21 +116,22 @@ div.avg_value {
 }
 #box_avg{
   width: auto;
-  font-size: 12px;
+  font-size: 13px;
   margin-left: 5px;
   margin-top: 0px;
   margin-right: 5px;
   background-color: #5f71f8e8;
   margin-bottom: 5px;
   border-radius: 24px;
+
 }
 #box_avg_p{
   padding: 0px;
   margin: 0px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 4px;
-  margin-bottom: 3px;
+  margin-top: 6px;
+  margin-bottom: 5px;
   color: white;
 }
 #box_img{

@@ -1,0 +1,142 @@
+.budongsan_main{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: white;
+    margin-top: 1px;
+    border-top: 1px solid #e2e3e5;
+    border-bottom: 4px solid #eaebed;
+    margin-bottom: 5px;
+    flex-direction: column;
+}
+.budongsan_main_title{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #eaebed;
+    align-items: center;
+}
+.budongsan_main_title p{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.budongsan_main_div{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    border-bottom: 1px solid #eaebed;
+    flex-direction: row;
+    text-decoration: none;
+    color: black;
+
+}
+.budongsan_main_div_img{
+    width: 55px;
+    height: 55px;
+    border: 2px solid #6976e7;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 18px;
+    background-image: url("./hanbando.jpeg");
+    background-size: cover;
+}
+.budongsan_main_div_1{
+    width: 170px;
+    height: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.budongsan_main_div_img img{
+    
+}
+.budongsan_main_div_1_1{
+    width: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: 500;
+    color: rgb(38, 24, 163);
+}
+.budongsan_main_div_1_1 img{
+    margin-top: 5px;
+    
+}
+.budongsan_main_div_1_2{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.budongsan_main_div_1_3{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    margin-left: 10px;
+    font-weight: 300;
+    color: rgb(88, 88, 88);
+}
+.budongsan_main_div_2{
+    width: 100px;
+    height: 100%;
+}
+.budongsan_main_div_2_1{
+    width: auto;
+    height: 15px;
+    margin-top: 32px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+.budongsan_main_div_2_2{
+    width: auto;
+    height: 20px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    margin-right: 20px;
+    justify-content: flex-end;
+}
+.budongsan_main_nomal_div_1_1{
+    width: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+.budongsan_main_nomal_div_2_1{
+    width: auto;
+    height: 15px;
+    margin-top: 38px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+.budongsan_main_nomal_div_2{
+    width: 100px;
+    height: 100%;
+    margin-left: 70px;
+}
