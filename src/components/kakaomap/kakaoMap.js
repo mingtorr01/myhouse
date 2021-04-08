@@ -128,7 +128,7 @@ const MapContainer = (props) => {
 
   window.myFunction = (box) => {
     ///클릭 이벤트
-
+    
     var splitstring = box.split(",");
     console.log(splitstring[0]);
     console.log(splitstring[1]);
@@ -163,7 +163,7 @@ const MapContainer = (props) => {
 
     const string = "asdasd";
     if (zoom <= 4) {
-      const level = '<a href="#" class="level_box" onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\"}>" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
+      const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\"}>" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
 
       return level;
     } else if (zoom <= 6 && zoom >= 5) {

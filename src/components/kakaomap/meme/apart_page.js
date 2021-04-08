@@ -4,6 +4,7 @@ import HighChart2 from './meme_line_chart';
 import Bottom_arrow from './blue-bottom-arrow.png';
 import Top_arrow from './blue-top-arrow.png';
 import Predict_tax from './predict_tax/predict_tax';
+import Budongsan from './budongsan/budongsan';
 class Apart_page extends React.Component{
     constructor(props){
         super(props);
@@ -296,8 +297,7 @@ class Apart_page extends React.Component{
            select_sizing:i
        })
         this.state.data.map((v,i,a)=>{
-            if(Math.floor(v.exclusive_private_area) === Math.floor(size)){
-                
+            if(Math.floor(v.exclusive_private_area) === Math.floor(size)&& this.state.select_time==='0'){
                 const date= new Date(v.date);
                 const year = date.getFullYear();
                 const month = date.getMonth()+1;
@@ -317,6 +317,32 @@ class Apart_page extends React.Component{
                 }
                // arr3.push(v.exclusive_private_area);
                 arr2.push(box);
+            }else if(Math.floor(v.exclusive_private_area) === Math.floor(size)&& this.state.select_time==='1'){
+                const today = new Date();
+                const today_year = today.getFullYear()-2; //2년이내
+                const date= new Date(v.date);
+                const year = date.getFullYear();
+                const month = date.getMonth()+1;
+                const day = date.getDate();
+                const string = year+'.'+month+'.'+day;
+
+                if(parseInt(today_year) <= parseInt(year) ){
+                    console.log("aaaaaaaa");
+                    this.setState({
+                        apart_name:v.name,
+                        apart_address:v.address
+                    })
+                    const box = {
+                        date:string,
+                        price:v.trade_price,
+                        size:v.exclusive_private_area,
+                        floor:v.floor,
+                        address :  v.address,
+                        name : v.name
+                    }
+                    //arr3.push(v.exclusive_private_area);
+                    arr2.push(box);
+                }
             }
             
         })
@@ -355,25 +381,27 @@ class Apart_page extends React.Component{
             }
             
         })
-        if(arr2[arr2.length-1].price<10000){
+        if(arr2[arr2.length-1] !=undefined){
+            if(arr2[arr2.length-1].price<10000){
+                this.setState({
+                    avg_meme:arr2[0].price+'만원'
+                })
+            }else if(arr2[arr2.length-1].price%10000===0){
+                this.setState({
+                    avg_meme:Math.floor(arr2[arr2.length-1].price/10000)+'억'
+                })
+            }else{
+                this.setState({
+                    avg_meme:Math.floor(arr2[arr2.length-1].price/10000)+'억'+arr2[arr2.length-1].price%10000+'만원'
+                })
+            }
             this.setState({
-                avg_meme:arr2[0].price+'만원'
-            })
-        }else if(arr2[arr2.length-1].price%10000===0){
-            this.setState({
-                avg_meme:Math.floor(arr2[arr2.length-1].price/10000)+'억'
-            })
-        }else{
-            this.setState({
-                avg_meme:Math.floor(arr2[arr2.length-1].price/10000)+'억'+arr2[arr2.length-1].price%10000+'만원'
-            })
+                make_data:arr,
+                make_data2:arr2.reverse(),
+                graph_name:size,
+                last_cost:arr2[arr2.length-1].price
+            },()=>{},)
         }
-        this.setState({
-            make_data:arr,
-            make_data2:arr2.reverse(),
-            graph_name:size,
-            last_cost:arr2[arr2.length-1].price
-        },()=>{},)
     }
 
     time_onchange=(e)=>{
@@ -435,6 +463,7 @@ class Apart_page extends React.Component{
                         </div>
                     </div>
                     <Predict_tax/>
+                    <Budongsan/>
                 </div>
             </div>
         )

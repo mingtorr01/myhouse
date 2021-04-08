@@ -5,7 +5,7 @@ class Predict_tax extends React.Component{
 
     componentDidMount(){
         const a_tag = document.getElementById('school1');
-        a_tag.style.borderBottom="2px solid rgb(104, 104, 104)";
+        a_tag.style.borderBottom="2px solid #5f71f8";
     }
     onclick_school =(string)=>{
         console.log(string);
@@ -13,7 +13,7 @@ class Predict_tax extends React.Component{
             const a_tag1 = document.getElementById('school1');
             const a_tag2 = document.getElementById('school2');
             const a_tag3 = document.getElementById('school3');
-            a_tag1.style.borderBottom="2px solid rgb(104, 104, 104)";
+            a_tag1.style.borderBottom="2px solid #5f71f8";
             a_tag2.style.borderBottom='0px';
             a_tag3.style.borderBottom='0px';
         }else if(string === '2'){
@@ -21,7 +21,7 @@ class Predict_tax extends React.Component{
             const a_tag2 = document.getElementById('school2');
             const a_tag3 = document.getElementById('school3');
             a_tag1.style.borderBottom="0px";
-            a_tag2.style.borderBottom='2px solid rgb(104, 104, 104)';
+            a_tag2.style.borderBottom='2px solid #5f71f8';
             a_tag3.style.borderBottom='0px';
         }else{
             const a_tag1 = document.getElementById('school1');
@@ -29,7 +29,7 @@ class Predict_tax extends React.Component{
             const a_tag3 = document.getElementById('school3');
             a_tag1.style.borderBottom="0px";
             a_tag2.style.borderBottom='0px';
-            a_tag3.style.borderBottom='2px solid rgb(104, 104, 104)';
+            a_tag3.style.borderBottom='2px solid #5f71f8';
         }
     }
 
