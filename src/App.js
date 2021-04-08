@@ -38,6 +38,8 @@ function App() {
         "content-type": "application/json",
       },
       body: JSON.stringify(box),
+    }).then(res=>res.json()).then((json)=>{
+      console.log(json);
     });
   };
 
