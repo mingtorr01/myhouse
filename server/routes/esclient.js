@@ -12,13 +12,12 @@ var rent_esclient = new elasticsearch.Client({
 
 function code1(location) {
   return new Promise(function (resolve, reject) {
-    console.log("====================================");
     trade_esclient
       .search({
         index: "apart_trades",
         body: {
           sort: [{ date: "asc" }],
-          size:10000,
+          size: 10000,
           query: {
             bool: {
               must: [

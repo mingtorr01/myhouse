@@ -184,11 +184,6 @@ io.on("connection", function (socket) {
 });
 
 trade_esclient.searchTarget = function (sw, ne, type) {
-  console.log("1.");
-  console.log(sw);
-  console.log(ne);
-  console.log("7." + ne.lat + " " + sw.lng);
-  console.log("8." + sw.lat + " " + ne.lng);
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -247,11 +242,6 @@ trade_esclient.searchTarget = function (sw, ne, type) {
   });
 };
 trade_esclient.searchDong = function (sw, ne, type) {
-  console.log("2.");
-  console.log(sw);
-  console.log(ne);
-  console.log("5." + ne.La + " " + ne.Ma);
-  console.log("6." + sw.lat + " " + ne.lng);
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -312,11 +302,6 @@ trade_esclient.searchDong = function (sw, ne, type) {
 };
 
 trade_esclient.searchDistrict = function (sw, ne, type) {
-  console.log("3.");
-  console.log(sw);
-  console.log(ne);
-  console.log("1." + ne.Ma + " " + sw.La);
-  console.log("2." + sw.Ma + " " + ne.La);
   var selectedDistrict = [];
 
   for (var index in districts) {
@@ -376,11 +361,6 @@ trade_esclient.searchDistrict = function (sw, ne, type) {
 };
 
 trade_esclient.searchCity = function (sw, ne, type) {
-  console.log("4.");
-  console.log(sw);
-  console.log(ne);
-  console.log("1." + ne.Ma + " " + sw.La);
-  console.log("2." + sw.Ma + " " + ne.La);
   var selectedDistrict = [];
 
   for (var index in districts) {

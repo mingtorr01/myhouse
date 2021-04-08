@@ -1,7 +1,7 @@
 import "./favorite.css";
 import React, { useState, useEffect } from "react";
 import Favorite_3 from "./favorite_3";
-import Favorite_2 from './favorite_2';
+import Favorite_2 from "./favorite_2";
 const regionarr = ["서울특별시", "대구광역시", "부산광역시", "울산광역시", "광주광역시", "경기도", "강원도", "충청북도", "충청남도", "경상북도", "경상남도", "전라남도", "전라북도", "제주도", "전국"];
 
 function Favorite_1(props) {
@@ -9,13 +9,12 @@ function Favorite_1(props) {
   const [arrsize, arrsizechange] = useState(regionarr.length / 4);
   const [renewarr, renewarrchange] = useState([]);
   const [value, setValue] = useState(props.select_gipho_data);
-  const [location2,location2_change] = useState([]);
-  const [location1,location1_change] = useState('');
+  const [location2, location2_change] = useState([]);
+  const [location1, location1_change] = useState("");
   // This will launch only if propName value has chaged.
   useEffect(() => {
     showregion();
     setValue(props.select_gipho_data);
-    console.log("zzzz" + value);
   }, [value]);
 
   const showregion = () => {
@@ -29,7 +28,6 @@ function Favorite_1(props) {
         newarr.push(newcolumn);
         newcolumn = [];
         newcolumn.push(regionarr[index]);
-        console.log("한줄끝");
       } else {
         newcolumn.push(regionarr[index]);
       }
@@ -54,12 +52,12 @@ function Favorite_1(props) {
         "content-type": "application/json",
       },
       body: JSON.stringify(locations),
-    }).then(res=>res.json()).then((json)=>{
-        console.log(json);
-        location2_change(json)
-        location1_change(location);
-        console.log(location);
     })
+      .then((res) => res.json())
+      .then((json) => {
+        location2_change(json);
+        location1_change(location);
+      });
   };
 
   const rendermap = renewarr.map((v, i, a) => {
@@ -93,11 +91,8 @@ function Favorite_1(props) {
       </div>
     );
   } else {
-      return(<Favorite_2 location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change}/>)
+    return <Favorite_2 location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change} />;
   }
 }
 
 export default Favorite_1;
-//else if(step != 1  && (location1 === '서울특별시' || location1 === '대구광역시' || location1 === '부산광역시' || location1 === '울산광역시' || location1 === '광주광역시' || location1 ==='제주도')) {
-  //  return <Favorite_3 control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change} />;
-  //} 

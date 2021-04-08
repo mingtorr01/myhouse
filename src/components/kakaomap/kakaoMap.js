@@ -68,6 +68,7 @@ const MapContainer = (props) => {
     };
     const map = new kakao.maps.Map(container, options);
     var markers = [];
+    updateDong(map);
     kakao.maps.event.addListener(map, "idle", function () {
       var zoom = map.getLevel();
       console.log(zoom);
