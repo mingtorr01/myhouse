@@ -38,7 +38,11 @@ function App() {
         "content-type": "application/json",
       },
       body: JSON.stringify(box),
-    });
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
   };
 
   function props_gipho_select(event, select) {

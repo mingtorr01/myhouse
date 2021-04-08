@@ -86,17 +86,22 @@ router.post("/getpoint", async function (req, res) {
       const temps = [];
       const data = await getData(city, idx);
       temps.push({ code: idx.name, arr: data });
-      res.send(temps);
 
+      res.send(temps);
+    }
+  }
+  /*
       //arr.push(data);
       if (idx === body.point[body.point.length - 1]) {
         sorting(arr).then((data) => {
-          arr.slice(0, 9);
-          searchData(city, arr);
+          data.slice(0, 9);
+          //searchData(city, arr);
+          console.log(data);
+          res.send(data);
         });
       }
     }
-  }
+  }*/
 });
 
 function searchData(city, temps) {
