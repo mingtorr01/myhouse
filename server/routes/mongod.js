@@ -77,17 +77,18 @@ router.post("/getpoint", async function (req, res) {
   console.log(req.body);
   const body = req.body;
   let arr = [];
+  const temps = [];
   if (body.location === "전국-전체선택") {
     console.log("전국 선택함");
   } else {
     const city = body.location.split("-");
 
     for (const idx of body.point) {
-      const temps = [];
       const data = await getData(city, idx);
       temps.push({ code: idx.name, arr: data });
-
-      res.send(temps);
+      if (idx === body.point[body.point.length - 1]) {
+        res.send(temps);
+      }
     }
   }
   /*
