@@ -111,7 +111,7 @@ router.post("/getpoint", async function (req, res) {
     }
     console.log(arr);
     sorting(arr).then((data) => {
-      let ress = data.slice(0, 9);
+      let ress = data.slice(0, 10);
 
       res.send(ress);
     });
