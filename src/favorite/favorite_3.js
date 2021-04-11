@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./favorite_3.css";
 function Favorite_3(props) {
-  const [value, valuechange] = useState(props.select_gipho_data2);
+  const [value, valuechange] = useState([]);
   const [click, clickchange] = useState(0);
   const [setopen1, openchange1] = useState(true);
   const [setopen2, openchange2] = useState(true);
@@ -18,8 +18,9 @@ function Favorite_3(props) {
   };
   useEffect(() => {
     console.log(props.step); // 선택 지역이름
+    console.log(value);
     props.region_change(props.step);
-    valuechange(props.select_gipho_data2);
+    valuechange(props.select_gipho_data);
   }, [click, click_a]);
 
   const openchange = (item) => {
@@ -56,9 +57,9 @@ function Favorite_3(props) {
     <div className="Favorite_3_main">
       <div className="Favorite_3_main_div">
         <div className="favorite_title_div2">
-          <button id="back_step"></button>
+          <button id="back_step" onClick={()=>props.stepchange2(1)}></button>
           <p>3. 지표를 선택하세요.</p>
-          <button id="cancle_step"></button>
+          <button id="cancle_step" onClick={()=>{props.favorite_div_bool_change(false); props.cancle_select_gipho_data_change();}}></button>
         </div>
         <div className="Favorite_3_main_div_scroll">
           <div className="favorite_item_div">
@@ -330,12 +331,12 @@ function Favorite_3(props) {
           <div className="gongbak"></div>
         </div>
       </div>
-      <div className="gipho" key={props.select_gipho_data2}>
+      <div className="gipho" key={props.select_gipho_data}>
         <div className="gipho_title">
           <p>* 선택하신 지표</p>
         </div>
         <div className="gipho_main">
-          {value.map((v, i, a) => {
+          {props.select_gipho_data.map((v, i, a) => {
             return (
               <div key={i} className="gipho_select_item">
                 <p>{v.name}</p>
@@ -351,7 +352,7 @@ function Favorite_3(props) {
           })}
           <div className="gonbak2"></div>
         </div>
-        <button id="gipho_select_button" onClick={() => props.result_change(props.step)}>
+        <button id="gipho_select_button" onClick={() => {props.result_change(props.step); valuechange([]);}}>
           선택 완료
         </button>
       </div>

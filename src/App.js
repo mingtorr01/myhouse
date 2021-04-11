@@ -24,11 +24,25 @@ function App() {
   const [result_data, result_data_change] = useState([]);
   const [data_set,data_set_change] = useState([]);
   const [region,region_change] = useState('');
+  const [stop,stop_change] = useState(false);
+  const [stop2,stop_change2] = useState(false);
 
   const mounted = useRef(false);
+  const result_cancle =()=>{
+    favorite_div_bool_change(false);
+    result_bool_change(false)
+  }
+
+ 
+  const cancle_select_gipho_data_change =()=>{
+    select_gipho_data_change([]);
+  }
 
   const result_change = (location) => {
-    result_bool_change(true);
+    if(select_gipho_data.length===0){
+      alert('최소 하나 이상의 지표를 설정해야됩니다.');
+    }else{
+      result_bool_change(true);
     favorite_div_bool_change(false);
     const box = {
       location: location,
@@ -45,37 +59,47 @@ function App() {
       console.log(json);
       data_set_change(json);
     });
+    }
   };
 
   function props_gipho_select(event, select) {
     //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
-    event.preventDefault();
-    let data = select_gipho_data;
-    let is_include = false;
-    data.map((value, index, array) => {
-      console.log(value);
-      if (value.name === select.name) {
-        is_include = true;
-        data[index].range = select.range;
+   
+      event.preventDefault();
+      console.log(select_gipho_data.length);
+      console.log('으어어어어엉');
+      let data = select_gipho_data;
+      let is_include = false;
+      data.map((value, index, array) => {
+        console.log(value);
+        if (value.name === select.name) {
+          is_include = true;
+          data[index].range = select.range;
+        }
+      });
+      if (is_include === false) { //중복안될때
+        if(select_gipho_data.length>8){
+          controlchange(false);
+          stop_change(true);
+          alert('9개 이상의 지표를 설정할 수 없습니다.')
+        }else{
+          data.push(select);
+          console.log(select_gipho_data);
+          select_gipho_data_change(data);
+          controlchange(false);
+        }
+      } else {
+        select_gipho_data_change(data);
+        controlchange(false);
       }
-    });
-    if (is_include === false) {
-      data.push(select);
-      console.log(select_gipho_data);
-      select_gipho_data_change(data);
-      controlchange(false);
-    } else {
-      select_gipho_data_change(data);
-      console.log(select_gipho_data);
-      controlchange(false);
-    }
+    
     //select_gipho_data_change(data);
     //console.log(select_gipho_data);
   }
 
   const cancle_giphodata = (name) => {
     console.log("시발?");
-    let data = select_gipho_data;
+      let data = select_gipho_data;
     data.map((value, index) => {
       if (value.name === name) {
         console.log(index);
@@ -158,13 +182,13 @@ function App() {
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
         {favorite_div_bool ? <div></div> : <Findhouse_button findhouse_button={findhouse_button} />}
-        {favorite_div_bool ? <Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change}/> : <News />}
+        {favorite_div_bool ? <Favorite_1 cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change}/> : <News />}
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper />
-        {result_bool ? <Result region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
+        {result_bool ? <Result cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
       </div>
-      {control ? <Controlbox gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
+      {control ? <Controlbox  stop={stop} gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>
   );
 }

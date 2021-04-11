@@ -26,14 +26,15 @@ function Controlbox(props){
     }
 
     const select_click =(e)=>{
-        const data = {
-            bigname:props.gipho_name.bigname,
-            name:props.gipho_name.name,
-            range:range_value
-        }
-        props.props_gipho_select(e,data)
-        console.log(data);
-        return ;
+        
+            const data = {
+                bigname:props.gipho_name.bigname,
+                name:props.gipho_name.name,
+                range:range_value
+            }
+            props.props_gipho_select(e,data)
+            console.log(data);
+            return ;
     }
     return(
         <div className="controlbox_main">

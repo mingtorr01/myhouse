@@ -4,6 +4,7 @@ import Favorite_3 from "./favorite_3";
 
 const Favorite_2 = (props) => {
   const [step, stepchange] = useState(1);
+  const [step2, stepchange2] = useState(1);
   const [region, newregion] = useState([]);
   const [all_region, all_region_change] = useState("");
   useEffect(() => {
@@ -28,6 +29,7 @@ const Favorite_2 = (props) => {
           <button
             onClick={() => {
               stepchange(props.location1 + "-" + v._시군구);
+              stepchange2(0);
             }}
           >
             {str1[0]}
@@ -43,6 +45,7 @@ const Favorite_2 = (props) => {
             <button
               onClick={() => {
                 stepchange(props.location1 + "-" + v._시군구);
+                stepchange2(0);
               }}
             >
               {str}
@@ -55,6 +58,7 @@ const Favorite_2 = (props) => {
             <button
               onClick={() => {
                 stepchange(props.location1 + "-" + v._시군구);
+                stepchange2(0);
               }}
             >
               {str}
@@ -65,19 +69,19 @@ const Favorite_2 = (props) => {
     }
   });
 
-  if (step === 1) {
+  if (step2 === 1) {
     return (
       <div className="favorite_2_main">
         <div className="favorite_2_main_title">
-          <button id="back_step"></button>
+          <button id="back_step" onClick={()=>props.stepchange(1)}></button>
           <p>2. 세부 지역을 선택하세요.</p>
-          <button id="cancle_step"></button>
+          <button id="cancle_step" onClick={()=>props.favorite_div_bool_change(false)}></button>
         </div>
         <div className="favorite_main_div2">{rendering}</div>
       </div>
     );
   } else {
-    return <Favorite_3 region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={props.select_gipho_data2} result_change={props.result_change} />;
+    return <Favorite_3  cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
   }
 };
 

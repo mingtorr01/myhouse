@@ -101,13 +101,13 @@ function Favorite_1(props) {
       <div className="favorite_1">
         <div className="favorite_title_div">
           <p>1. 원하시는 지역을 선택하세요.</p>
-          <button></button>
+          <button onClick={()=>props.favorite_div_bool_change(false)}></button>
         </div>
         <div className="favorite_main_div">{rendermap}</div>
       </div>
     );
   } else {
-    return <Favorite_2 region_change={props.region_change}location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change} />;
+    return <Favorite_2 cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange={stepchange} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change}location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
   }
 }
 

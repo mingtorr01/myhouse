@@ -356,6 +356,7 @@ class Result extends React.Component{
                 <div className="result_main">
                 <div className="result_all_gipho_title">
                     1. <p id="region_selecting">{this.state.region} {this.state.region2}</p> 추천지역 리스트
+                    <button id="cancle_step" onClick={()=>{this.props.result_cancle();this.props.cancle_select_gipho_data_change();}}></button>
                 </div>
                 <div className="result_all_gipho">
                     <div className="result_all_gipho1">
