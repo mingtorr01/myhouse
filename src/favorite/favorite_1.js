@@ -64,17 +64,33 @@ function Favorite_1(props) {
     return (
       <div className="favorite_main_div_row">
         {renewarr[i].map((v, i, a) => {
-          return (
-            <div className="favorite_main_div_column">
+          if(v==='제주특별자치도'){
+            return(
+              <div className="favorite_main_div_column">
               <button
                 onClick={() => {
                   showregion2(v);
                 }}
               >
-                {v}
+                {'제주'}
+                <br />
+                {'특별자치도'}
               </button>
             </div>
-          );
+            )
+          }else{
+            return (
+              <div className="favorite_main_div_column">
+                <button
+                  onClick={() => {
+                    showregion2(v);
+                  }}
+                >
+                  {v}
+                </button>
+              </div>
+            ); 
+          }
         })}
       </div>
     );

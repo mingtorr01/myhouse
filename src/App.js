@@ -41,7 +41,7 @@ function App() {
       body: JSON.stringify(box),
     }).then(res=>res.json()).then((json)=>{
       console.log(json);
-      //data_set_change(json);
+      data_set_change(json);
     });
   };
 
