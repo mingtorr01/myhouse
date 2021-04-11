@@ -24,7 +24,9 @@ class Result extends React.Component{
             set_gipho:'',
             avg_gipho:0,
             top:[],
-            loading:false
+            loading:false,
+            region:'',
+            region2:''
         }
     }
     componentDidMount(){
@@ -33,9 +35,20 @@ class Result extends React.Component{
     }
     componentDidUpdate(prevProps,prevState){
         if(this.props !== prevProps){
-            this.setState({
-                loading:true
-            })
+            const str1 = this.props.region.split("-");
+            if(str1[0]==='전국'){
+                this.setState({
+                    loading:true,
+                    region:str1[0],
+                    region2:''
+                })
+            }else{
+                this.setState({
+                    loading:true,
+                    region:str1[0],
+                    region2:str1[1]
+                })
+            }
             const arr = [];
             let avg=0;
             let indexing = 0;
@@ -342,7 +355,7 @@ class Result extends React.Component{
             return(
                 <div className="result_main">
                 <div className="result_all_gipho_title">
-                    1. 추천지역 리스트
+                    1. <p id="region_selecting">{this.state.region} {this.state.region2}</p> 추천지역 리스트
                 </div>
                 <div className="result_all_gipho">
                     <div className="result_all_gipho1">

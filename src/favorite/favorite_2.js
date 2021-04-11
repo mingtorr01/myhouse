@@ -77,7 +77,7 @@ const Favorite_2 = (props) => {
       </div>
     );
   } else {
-    return <Favorite_3 step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={props.select_gipho_data2} result_change={props.result_change} />;
+    return <Favorite_3 region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={props.select_gipho_data2} result_change={props.result_change} />;
   }
 };
 

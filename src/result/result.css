@@ -164,7 +164,7 @@
     width: 100px;
     height: 25px;
     margin-left: 4px;
-    font-size: 11px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -240,4 +240,9 @@
 }
 .loading_string{
     margin-top: 20px;
+}
+#region_selecting{
+    color: rgb(44, 76, 216);
+    margin-left: 5px;
+    margin-right: 5px;
 }

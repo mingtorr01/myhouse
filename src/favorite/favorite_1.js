@@ -107,7 +107,7 @@ function Favorite_1(props) {
       </div>
     );
   } else {
-    return <Favorite_2 location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change} />;
+    return <Favorite_2 region_change={props.region_change}location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data2={value} result_change={props.result_change} />;
   }
 }
 

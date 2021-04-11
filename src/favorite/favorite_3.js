@@ -18,6 +18,7 @@ function Favorite_3(props) {
   };
   useEffect(() => {
     console.log(props.step); // 선택 지역이름
+    props.region_change(props.step);
     valuechange(props.select_gipho_data2);
   }, [click, click_a]);
 

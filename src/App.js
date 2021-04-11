@@ -11,6 +11,7 @@ import Favorite_1 from "./favorite/favorite_1";
 import { Provider } from "react-redux";
 import Controlbox from "./favorite/controlbox";
 import Result from "./result/result";
+
 function App() {
   const [searchdiv_bool, searchdiv_change] = useState(false);
   const [favorite_div_bool, favorite_div_bool_change] = useState(false);
@@ -22,6 +23,7 @@ function App() {
   const [result_bool, result_bool_change] = useState(false);
   const [result_data, result_data_change] = useState([]);
   const [data_set,data_set_change] = useState([]);
+  const [region,region_change] = useState('');
 
   const mounted = useRef(false);
 
@@ -156,11 +158,11 @@ function App() {
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
         {favorite_div_bool ? <div></div> : <Findhouse_button findhouse_button={findhouse_button} />}
-        {favorite_div_bool ? <Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} /> : <News />}
+        {favorite_div_bool ? <Favorite_1 control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change}/> : <News />}
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper />
-        {result_bool ? <Result select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
+        {result_bool ? <Result region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
       </div>
       {control ? <Controlbox gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>
