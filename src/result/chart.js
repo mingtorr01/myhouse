@@ -17,7 +17,13 @@ function HighChart(props){
         yAxis:{
             title:{
                 text: '' //왼쪽 텍스트
-            }
+            },
+            plotLines: [{
+                color: 'red',
+                value: props.avg_gipho , // Insert your average here
+                width: '1',
+                zIndex: 4 // To not get stuck below the regular plot lines or series
+            }]
         },
         legend:{
             enabled:false
