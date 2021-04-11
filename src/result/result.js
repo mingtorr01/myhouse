@@ -7,6 +7,234 @@ import { map } from 'highcharts';
 
 const top10 = ['창원시 대방동','서울특별시 신림동','창원시 사림동','창원시 명서동','창원시 봉곡동','전라남도 보성읍','창원시 성주동','창원시 남양동','창원시 사파동','창원시 회원동']
 const moneytype = ['매매','월전세'];
+
+
+class Result extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            result_data:[],
+            result_data2:[],
+            gipho_data:[],
+            top10:[],
+            categori:[],
+            categori_in:[],
+            chart_in_data:[],
+            type_index:0,
+        }
+    }
+    componentDidMount(){
+        console.log(this.state.gipho_data);
+       
+    }
+    componentDidUpdate(prevProps,prevState){
+        
+       
+        if(this.props !== prevProps || this.state.gipho_data!== prevState.gipho_data){
+            console.log("그래그래"+JSON.stringify(this.props.select_gipho_data));
+            this.setState({
+                result_data:this.props.select_gipho_data,
+                gipho_data:this.props.data
+            })
+            console.log(this.state.result_data);
+            console.log(this.state.gipho_data);
+            const location_arr = [];
+            this.state.gipho_data.map((v,i,a)=>{
+                var spice_location = v.city.split(' ');
+                if(spice_location[1] === undefined){
+                    const location = spice_location[0]+' '+v.dong;
+                    location_arr.push(location);
+                }else{
+                    const location = spice_location[1]+' '+v.dong;
+                    location_arr.push(location);
+                }
+            })
+            this.setState({
+                top10:location_arr
+            })
+            const chart_data = [];
+            this.data_make(this.state.result_data);
+            this.state.gipho_data.map((v,i,a)=>{
+                if(v.sets[0]===undefined){
+                    const json_data = { name: v.tot_oa_cd, y: 0 ,color:'#4e61f1' };
+                    chart_data.push(json_data);
+                }else{
+                    const json_data = { name: v.tot_oa_cd, y: v.sets[0] ,color:'#4e61f1' };
+                    chart_data.push(json_data);
+                }
+                
+            })
+            this.setState({
+                chart_in_data:chart_data
+            })
+        }
+       
+    }
+     data_make =(data)=>{
+        console.log(data);
+        let making = []
+        let making2 = []
+        data.map((v,i,t)=>{
+           making.push(v.bigname)
+        })
+        const set = new Set(making);
+        const uniqueArr = [...set];
+        console.log(uniqueArr);
+
+        uniqueArr.map((v,i,t)=>{ // 큰배열
+            const arr = []
+            data.map((v2,i2,t2)=>{ //작은배열
+                if(v===v2.bigname){
+                    arr.push(v2.name);
+                }
+            })
+            making2.push({bigname:v, arr:arr});
+         })
+
+         console.log(making2);
+         if(making2[0] !== undefined){
+            this.setState({
+                categori:making2,
+                categori_in:making2[0].arr
+             })
+         }
+        
+         /*
+         this.setState({
+            result_data:making2,
+            result_data2:making2[0].arr
+         },()=>{console.log(this.state.result_data);})*/
+    }
+
+     onclick2=(name,type)=>{
+        console.log(name);
+        console.log(this.state.categori);
+        this.state.categori.map((v,i,a)=>{
+            console.log(v);
+            if(v.bigname===name){
+                console.log(v);
+                console.log(i);
+                
+                this.setState({
+                    categori_in:v.arr
+                })
+            }
+        })
+        console.log(this.state.result_data2);
+    }
+
+    onclick3 =(string)=>{
+        console.log("시발"+string);
+        let indexing = 0;
+        this.state.categori.map((v,i,a)=>{
+            v.arr.map((v2,i2,a2)=>{
+                
+                if(v2===string){
+                    const chart_data = [];
+                    this.state.gipho_data.map((v3,i,a)=>{
+                        if(v3.sets[indexing]===undefined){
+                            const json_data = { name: v3.tot_oa_cd, y: 0 ,color:'#4e61f1' };
+                            chart_data.push(json_data);
+                        }else{
+                            const json_data = { name: v3.tot_oa_cd, y: v3.sets[indexing] ,color:'#4e61f1' };
+                            chart_data.push(json_data);
+                        }
+                    })
+                    this.setState({
+                        chart_in_data:chart_data
+                    })
+                }else{
+                    indexing=indexing+1;
+                }
+            })
+        })
+    }
+    render(){
+        return(
+            <div className="result_main">
+            <div className="result_all_gipho_title">
+                1. 추천지역 리스트
+            </div>
+            <div className="result_all_gipho">
+                <div className="result_all_gipho1">
+                    {this.state.top10.map((v,i,a)=>{
+                        if(i<5)
+                        return(
+                            <a href="#" className="show_all_gipho">
+                                <div id="show_all_gipho_circle">
+                                    <div id="circle_num">
+                                    {i+1}
+                                    </div>
+                                </div>
+                                <div id="show_all_gipho_main">
+                                {v}
+                                </div>
+                            </a>
+                        )
+                    })}
+                </div>
+                <div className="result_all_gipho2">
+                    {this.state.top10.map((v,i,a)=>{
+                            if(i<10&&i>4)
+                            return(
+                                <a href="#" className="show_all_gipho">
+                                <div id="show_all_gipho_circle">
+                                    <div id="circle_num">
+                                    {i+1}
+                                    </div>
+                                </div>
+                                <div id="show_all_gipho_main">
+                                {v}
+                                </div>
+                            </a>
+                            )
+                        })}
+                </div>
+            </div>
+            <div className="result_gipho">
+                <div className="result_all_gipho_title2">
+                    2. 선택한 지표 현황별 보기
+                </div>
+                <div className="result_gipho_title">
+                {this.state.categori.map((v,i,a)=>{
+                    return(
+                        <button onClick={()=>this.onclick2(v.bigname,0)} id="result_button">
+                            {v.bigname}
+                        </button>
+                    )
+                })}
+                </div>
+                <div className="result_gipho_title2">
+                    {
+                        this.state.categori_in.map((v,i,a)=>{
+                            return(<button id="result_button2" onClick={()=>this.onclick3(v)}>{v}</button>)
+                        })
+                    }
+                </div>
+                <HighChart gipho_data={this.state.chart_in_data}/>
+            </div>
+            <div className="money_result">
+                <div className="result_all_gipho_title3">
+                    3. {'창원시 대방동'} 평균가
+                </div>
+                <div className="result_gipho_title">
+                {moneytype.map((v,i,a)=>{
+                    return(
+                        <button  id="result_button">
+                            {v}
+                        </button>
+                    )
+                })}
+                </div>
+                <HighChart2/>
+            </div>
+        </div>
+        )
+    }
+}
+
+
+/*
 function Result(props){
     const [result_data,data_change] = useState([]); //대분류,소분류
     const [result_data2,data_change2] = useState([]); //소분류
@@ -129,5 +357,5 @@ function Result(props){
         </div>
     )
 }
-
+*/
 export default Result

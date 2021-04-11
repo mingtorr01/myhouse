@@ -21,6 +21,7 @@ function App() {
   const [select_gipho_data, select_gipho_data_change] = useState([]);
   const [result_bool, result_bool_change] = useState(false);
   const [result_data, result_data_change] = useState([]);
+  const [data_set,data_set_change] = useState([]);
 
   const mounted = useRef(false);
 
@@ -38,11 +39,10 @@ function App() {
         "content-type": "application/json",
       },
       body: JSON.stringify(box),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-      });
+    }).then(res=>res.json()).then((json)=>{
+      console.log(json);
+      //data_set_change(json);
+    });
   };
 
   function props_gipho_select(event, select) {
@@ -160,7 +160,7 @@ function App() {
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper />
-        {result_bool ? <Result select_gipho_data={select_gipho_data} /> : <div></div>}
+        {result_bool ? <Result select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
       </div>
       {control ? <Controlbox gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>
