@@ -81,8 +81,6 @@ const MapContainer = (props) => {
     socket.on("marker", function (positions) {
       updateMarkers(map, markers);
       for (var key in positions) {
-        //console.log(positions[key].location.hits.hits[0]._source.location.lat); // 아파트 이름
-        //console.log(positions[key].location.hits.hits[0]._source.location.lon); // 아파트 이름
         var position = new kakao.maps.LatLng(positions[key].location.hits.hits[0]._source.location.lat, positions[key].location.hits.hits[0]._source.location.lon);
 
         var avg;
@@ -98,18 +96,6 @@ const MapContainer = (props) => {
           yAnchor: 0.5,
           zIndex: 4,
         });
-
-        /*
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: position,
-          title: positions[key].avg_trade_price.value,
-          icon: {
-            content: ['<div id="base">', '<span class="name">' + positions[key].key + "</span>", '<div class="avg_value">' + avg + "</div>", "</div>"].join(""),
-            size: new kakao.maps.Size(38, 58),
-            anchor: new kakao.maps.Point(19, 58),
-          },
-        });*/
         markers.push(marker);
       }
     });

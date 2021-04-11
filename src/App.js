@@ -32,15 +32,17 @@ function App() {
       point: select_gipho_data,
     };
 
-    fetch("http://localhost:3001/db/getpoint", {
+    fetch("http://localhost:5000/posts", {
       method: "post",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(box),
-    }).then(res=>res.json()).then((json)=>{
-      console.log(json);
-    });
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
   };
 
   function props_gipho_select(event, select) {

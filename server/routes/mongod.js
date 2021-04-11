@@ -86,16 +86,11 @@ router.post("/getpoint", async function (req, res) {
   } else {
     const city = body.location.split("-");
     console.log(body.point[0]);
-    await Promise.all(body.point.map((x) => getCity(city, x.name))).then((data) => {
-      for (i = 0; i < data.length; i++) {
-        for (j = 0; j < 10; j++) {
-          result.push(data[i][j].tot_oa_cd);
-        }
-      }
-    });
+    let a1 = await Promise.all(body.point.map((x) => getCity(city, x.name)));
+
     let cnt = 0;
     for (const idx of body.point) {
-      const data = await Promise.all(result.map((x) => getpoint(x, idx)));
+      const data = await Promise.all(a1.map((x) => adds(x, idx)));
       if (idx === body.point[0]) {
         for (i = 0; i < data.length; i++) arr.push(data[i]);
       } else {
@@ -168,6 +163,21 @@ router.post("/getpoint", async function (req, res) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function adds(loc, idx) {
+  return new Promise(function (resolve, reject) {
+    let locs = loc[loc.length - 1];
+    let result = [];
+    loc.map((data) => {
+      const ids = getpoint(data.tot_oa_cd, idx);
+      result.push(ids);
+
+      if (data === locs) {
+        resolve(result);
+      }
+    });
+  });
+}
+
 function sorting(arr) {
   return new Promise(function (resolve, reject) {
     arr.sort(function (a, b) {
@@ -201,6 +211,7 @@ async function getCity(city, select) {
 
 async function getpoint(loc, idx) {
   return new Promise(function (resolve, reject) {
+    console.log(loc);
     if (idx.name === "대기오염도") {
     } else if (idx.name === "녹지비율") {
     } else if (idx.name === "교원 1인당학생수") {

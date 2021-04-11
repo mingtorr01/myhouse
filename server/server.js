@@ -241,6 +241,9 @@ trade_esclient.searchTarget = function (sw, ne, type) {
       );
   });
 };
+
+
+
 trade_esclient.searchDong = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
