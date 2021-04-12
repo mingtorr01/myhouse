@@ -42,7 +42,7 @@ function HighChart(props){
             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br/>' 
         },
         series: [{ 
-            name: '가격률', 
+            name: '설정하신 지표', 
             data: props.gipho_data
         }],
             

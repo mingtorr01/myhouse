@@ -173,7 +173,7 @@ const MapContainer = (props) => {
         height: "100%",
       }}
     >
-      {apart_page ? <Apart_page apart_data={apart_data} /> : <div></div>}
+      {apart_page ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
     </div>
   );
 };
