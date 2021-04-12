@@ -420,7 +420,7 @@ class Apart_page extends React.Component{
                     <div className="meme_page_title_string2">
                         {this.state.apart_address}
                     </div>
-                    <button id="meme_page_title_button">
+                    <button id="meme_page_title_button" onClick={()=>this.props.apart_page_change(false)}>
                     </button>
                 </div>
                 <div className="meme_page_scroll">
