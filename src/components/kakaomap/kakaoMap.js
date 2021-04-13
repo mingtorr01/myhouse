@@ -59,6 +59,8 @@ const MapContainer = (props) => {
   const dispatcher = useDispatch();
   const [apart_page, apart_page_change] = useState(false);
   const [apart_data, apart_data_change] = useState([]);
+  const [maping, maping_change] = useState(null);
+  var map = 0;
 
   useEffect(() => {
     const container = document.getElementById("myMap");
@@ -66,7 +68,9 @@ const MapContainer = (props) => {
       center: new kakao.maps.LatLng(35.2279868, 128.6796256),
       level: 5,
     };
-    const map = new kakao.maps.Map(container, options);
+    map = new kakao.maps.Map(container, options);
+    maping_change(map);
+    console.log(map);
     var markers = [];
     updateDong(map);
     kakao.maps.event.addListener(map, "idle", function () {
@@ -77,12 +81,12 @@ const MapContainer = (props) => {
       else if (zoom <= 8 && zoom >= 7) updateDistrict(map);
       else if (zoom <= 9) updateCity(map);
     });
-
+    console.log(maping);
     socket.on("marker", function (positions) {
       updateMarkers(map, markers);
       for (var key in positions) {
         var position = new kakao.maps.LatLng(positions[key].location.hits.hits[0]._source.location.lat, positions[key].location.hits.hits[0]._source.location.lon);
-
+        const posi = { lat: positions[key].location.hits.hits[0]._source.location.lat, lon: positions[key].location.hits.hits[0]._source.location.lon };
         var avg;
         if (positions[key].avg_trade_price.value >= 10000) avg = parseInt(Math.round(positions[key].avg_trade_price.value / 1000) / 10) + "." + parseInt(Math.round(positions[key].avg_trade_price.value / 1000) % 10) + "억";
         else avg = parseInt(Math.round(positions[key].avg_trade_price.value)) + "만원";
@@ -91,7 +95,7 @@ const MapContainer = (props) => {
         var marker = new kakao.maps.CustomOverlay({
           map: map,
           position: position,
-          content: markerreturn(key, positions, avg, zoom, housenum),
+          content: markerreturn(key, positions, avg, zoom, housenum, posi),
           xAnchor: 0.5,
           yAnchor: 0.5,
           zIndex: 4,
@@ -115,11 +119,8 @@ const MapContainer = (props) => {
 
   window.myFunction = (box) => {
     ///클릭 이벤트
-    
+
     var splitstring = box.split(",");
-    console.log(splitstring[0]);
-    console.log(splitstring[1]);
-    console.log(splitstring[2]);
     const data = {
       apart_name: splitstring[0],
       position_x: splitstring[1],
@@ -141,7 +142,26 @@ const MapContainer = (props) => {
     apart_page_bool();
   };
 
-  function markerreturn(key, positions, avg, zoom, housenum) {
+  window.myFunction2 = (box) => {
+    console.log(map);
+    console.log(box);
+    var splitstring = box.split("-");
+    let zoom = splitstring[0];
+    let position_x = splitstring[1];
+    let position_y = splitstring[2];
+    var moveLatLon = new kakao.maps.LatLng(position_x, position_y);
+    if (zoom <= 6 && zoom >= 5) {
+      maping.setCenter(moveLatLon);
+      maping.setLevel(4);
+    } else if (zoom < 9 && zoom >= 7) {
+      maping.setCenter(moveLatLon);
+      maping.setLevel(6);
+    } else if (zoom <= 9) {
+      maping.setCenter(moveLatLon);
+      maping.setLevel(8);
+    }
+  };
+  function markerreturn(key, positions, avg, zoom, housenum, posi) {
     const box = {
       data: positions[key].key,
       x: positions[key].location.hits.hits[0]._source.location.lat,
@@ -150,17 +170,17 @@ const MapContainer = (props) => {
 
     const string = "asdasd";
     if (zoom <= 4) {
-      const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\"}>" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
+      const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\">" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
 
       return level;
     } else if (zoom <= 6 && zoom >= 5) {
-      const level2 = '<div class="range_level_box">' + '<div id="range_level_box1">' + positions[key].key + "</div>" + '<div id="range_level_box2">' + avg + "</div>" + "</div>";
+      const level2 = '<div class="range_level_box" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box1">' + positions[key].key + "</div>" + '<div id="range_level_box2">' + avg + "</div>" + "</div>";
       return level2;
     } else if (zoom < 9 && zoom >= 7) {
-      const level2 = '<div class="range_level_box2">' + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
+      const level2 = '<div class="range_level_box2"  onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
       return level2;
     } else if (zoom <= 9) {
-      const level2 = '<div class="range_level_box2">' + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
+      const level2 = '<div class="range_level_box2" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
       return level2;
     }
   }
