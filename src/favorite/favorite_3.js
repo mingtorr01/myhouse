@@ -14,22 +14,43 @@ class Favorite_3 extends React.Component{
       setopen5:true,
       setopen6:true,
       setopen7:true,
-      dropindex:null
+      dropindex:null,
+      click1:0
     }
   }
   componentDidUpdate(prevProps,prevState){
-    if(this.props !== prevProps && this.props !== undefined){
+    if(this.props !== prevProps && this.props !== undefined || prevState.click1 !== this.state.click1){
+      console.log('asdasdasdasd');
       this.props.region_change(this.props.step);
       this.setState({
         value:this.props.select_gipho_data
       })
     }
   }
+   click_a = (name) => {
+    //강제 트리거
+    this.setState({
+      click:this.state.click+1
+    },this.props.cancle_giphodata(name))
+    
+  };
+
+ select_click =(box)=>{    
+    const data = {
+        bigname:box.bigname,
+        name:box.name,
+    }
+    this.setState({
+      click1:this.state.click1+1
+    },this.props.props_gipho_select(data))
+    console.log(data);
+}
+
    effect =(index)=>{
     var st = document.getElementsByClassName("gipho_select_item");
     for(var i = 0 ; i<st.length; i++){
       var section = st.item(i);
-      section.style.backgroundColor = "#4056fc";
+      section.style.backgroundColor = "#4760ce";
     }
     console.log(index+"번 에서"+this.state.dropindex+"에 드래그를 놓음");
 
@@ -62,7 +83,7 @@ class Favorite_3 extends React.Component{
       if(i===this.state.dropindex){
         section.style.backgroundColor = "#4056fc71";
       }else{
-        section.style.backgroundColor = "#4056fc";
+        section.style.backgroundColor = "#4760ce";
       }
     }
     //console.log(index+"번에 가져다 놓음");
@@ -129,14 +150,14 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen1 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "환경", name: "대기오염도" });
+                  this.select_click({ bigname: "환경", name: "대기오염도" });
                 }}
               >
                 대기오염도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "환경", name: "녹지비율" });
+                  this.select_click({ bigname: "환경", name: "녹지비율" });
                 }}
               >
                 녹지비율
@@ -150,7 +171,7 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen2 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "교육", name: "교원1인당학생수" });
+                  this.select_click({ bigname: "교육", name: "교원1인당학생수" });
                 }}
               >
                 교원 1인당 학생수
@@ -164,42 +185,42 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen3 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "병원+약국 밀집도" });
+                  this.select_click({ bigname: "복지", name: "병원+약국 밀집도" });
                 }}
               >
                 병원+약국 밀집도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "유치원및보육시설" });
+                  this.select_click({ bigname: "복지", name: "유치원및보육시설" });
                 }}
               >
                 유치원 및 보육시설
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "노인복지시설" });
+                  this.select_click({ bigname: "복지", name: "노인복지시설" });
                 }}
               >
                 노인복지시설
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "사회복지시설" });
+                  this.select_click({ bigname: "복지", name: "사회복지시설" });
                 }}
               >
                 사회복지시설
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "문화시설수" });
+                  this.select_click({ bigname: "복지", name: "문화시설수" });
                 }}
               >
                 문화시설 수
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "복지", name: "체육시설수" });
+                  this.select_click({ bigname: "복지", name: "체육시설수" });
                 }}
               >
                 체육시설 수
@@ -213,35 +234,35 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen4 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "편의", name: "쇼핑시설밀집도" });
+                  this.select_click({ bigname: "편의", name: "쇼핑시설밀집도" });
                 }}
               >
                 쇼핑시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "편의", name: "외식시설밀집도" });
+                  this.select_click({ bigname: "편의", name: "외식시설밀집도" });
                 }}
               >
                 외식시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "편의", name: "은행시설밀집도" });
+                  this.select_click({ bigname: "편의", name: "은행시설밀집도" });
                 }}
               >
                 은행시설 밀집도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "편의", name: "우체국시설" });
+                  this.select_click({ bigname: "편의", name: "우체국시설" });
                 }}
               >
                 우체국시설
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "편의", name: "대중교통이용률" });
+                  this.select_click({ bigname: "편의", name: "대중교통이용률" });
                 }}
               >
                 대중교통 이용률
@@ -255,35 +276,35 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen5 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "안전", name: "화재안전" });
+                  this.select_click({ bigname: "안전", name: "화재안전" });
                 }}
               >
                 화재 안전
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "안전", name: "교통사고안전" });
+                  this.select_click({ bigname: "안전", name: "교통사고안전" });
                 }}
               >
                 교통사고 안전
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "안전", name: "범죄안전" });
+                  this.select_click({ bigname: "안전", name: "범죄안전" });
                 }}
               >
                 범죄 안전
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "안전", name: "감염병안전" });
+                  this.select_click({ bigname: "안전", name: "감염병안전" });
                 }}
               >
                 감염병 안전
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "안전", name: "자연재해안전" });
+                  this.select_click({ bigname: "안전", name: "자연재해안전" });
                 }}
               >
                 자연재해 안전
@@ -297,35 +318,35 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen6 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "주택", name: "다세대주택수" });
+                  this.select_click({ bigname: "주택", name: "다세대주택수" });
                 }}
               >
                 다세대 주택 수
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "주택", name: "단독주택수" });
+                  this.select_click({ bigname: "주택", name: "단독주택수" });
                 }}
               >
                 단독주택 수
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "주택", name: "노후주택비율" });
+                  this.select_click({ bigname: "주택", name: "노후주택비율" });
                 }}
               >
                 노후주택 비율
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "주택", name: "지가지수" });
+                  this.select_click({ bigname: "주택", name: "지가지수" });
                 }}
               >
                 지가지수
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "주택", name: "총주택수" });
+                  this.select_click({ bigname: "주택", name: "총주택수" });
                 }}
               >
                 총 주택 수
@@ -339,49 +360,49 @@ class Favorite_3 extends React.Component{
             <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen7 === true ? "none" : "block"}` }}>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "청장년인구비율" });
+                  this.select_click({ bigname: "지역인구", name: "청장년인구비율" });
                 }}
               >
                 청장년 인구비율
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "사업체종사자비율" });
+                  this.select_click({ bigname: "지역인구", name: "사업체종사자비율" });
                 }}
               >
                 사업체 종사자 비율
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "노령화지수" });
+                  this.select_click({ bigname: "지역인구", name: "노령화지수" });
                 }}
               >
                 노령화지수
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "인구밀도" });
+                  this.select_click({ bigname: "지역인구", name: "인구밀도" });
                 }}
               >
                 인구밀도
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "총인구" });
+                  this.select_click({ bigname: "지역인구", name: "총인구" });
                 }}
               >
                 총인구
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "평균나이" });
+                  this.select_click({ bigname: "지역인구", name: "평균나이" });
                 }}
               >
                 평균나이
               </button>
               <button
                 onClick={() => {
-                  this.props.control_change({ bigname: "지역인구", name: "평균가구원수" });
+                  this.select_click({ bigname: "지역인구", name: "평균가구원수" });
                 }}
               >
                 평균 가구원 수
@@ -393,20 +414,26 @@ class Favorite_3 extends React.Component{
       </div>
       <div className="gipho" key={this.props.select_gipho_data}>
         <div className="gipho_title">
-          <p>* 선택하신 지표</p>
+          <p>* 선택하신 지표 순위</p>
         </div>
-        <div className="gipho_main"  >
+        <div className="gipho_main">
           {this.state.value.map((v, i, a) => {
             return (
               <div key={i} className="gipho_select_item" draggable="true"  onDragOver={()=>{this.effect3(i)}} onDragStart={()=>this.effect2(i)} onDragEnd={()=>this.effect(i)}>
-                <p>{i+1}. {v.name}</p>
-                <p id="gipho_select_item_p">{v.range * 50}%</p>
+                <div className="gipho_select_item_rank">
+                  <p>{i+1} </p>
+                </div>
+                <div className="gipho_select_item_div_1">
+                <p>{v.name}</p>
+                </div>
+                <div className="gipho_select_item_div_2">
                 <button
                   id="gipho_cancle"
                   onClick={() => {
                     this.click_a(v.name);
                   }}
                 ></button>
+                </div>
               </div>
             );
           })}
