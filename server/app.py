@@ -54,7 +54,8 @@ def postTest():
     locat = list(dfs["tot_oa_cd"])
     results = mydb["val"].find({"tot_oa_cd": {"$in": locat}})
     df = pd.DataFrame(results)
-    poi.append("tot_oa_cd")
+    poi.append("city")
+    poi.append('tot_oa_cd')
     poi.append("dong")
     df = df.loc[:, poi]
 
