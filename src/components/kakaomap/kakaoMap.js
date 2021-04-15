@@ -60,6 +60,7 @@ const MapContainer = (props) => {
   const [apart_page, apart_page_change] = useState(false);
   const [apart_data, apart_data_change] = useState([]);
   const [maping, maping_change] = useState(null);
+  const [polygons, polygon_change] = useState(null);
   var map = 0;
 
   useEffect(() => {
@@ -67,21 +68,23 @@ const MapContainer = (props) => {
     const options = {
       center: new kakao.maps.LatLng(35.2279868, 128.6796256),
       level: 5,
+      tileAnimation: false,
     };
     map = new kakao.maps.Map(container, options);
     maping_change(map);
+    //drawpolygon();
     console.log(map);
     var markers = [];
     updateDong(map);
     kakao.maps.event.addListener(map, "idle", function () {
       var zoom = map.getLevel();
       console.log(zoom);
-      if (zoom <= 4) updateTarget(map);
-      else if (zoom <= 6 && zoom >= 5) updateDong(map);
+      if (zoom <= 3) updateTarget(map);
+      else if (zoom <= 6 && zoom >= 4) updateDong(map);
       else if (zoom <= 8 && zoom >= 7) updateDistrict(map);
       else if (zoom <= 9) updateCity(map);
     });
-    console.log(maping);
+
     socket.on("marker", function (positions) {
       updateMarkers(map, markers);
       for (var key in positions) {
@@ -103,19 +106,32 @@ const MapContainer = (props) => {
         markers.push(marker);
       }
     });
-
     //dispatcher(actionCreators.setMap(map), [map]);
   }, []); ///////////////////////////////////////////////////
 
   const apart_page_bool = () => {
     apart_page_change(true);
-    /*
-    if (apart_page === false) {
-      apart_page_change(true);
-    } else {
-      apart_page_change(false);
-    }*/
   };
+
+  async function drawpolygon() {
+    //불러오는 코드 완성 나머지 띄우는 거 해야함
+    let datas = await Promise.all(
+      props.mapdata[1].map((x) => {
+        let point = new kakao.map.LatLng(x[1], x[0]);
+      })
+    );
+
+    var polygon = new kakao.maps.Polygon({
+      map: maping,
+      path: datas,
+      strokeeWeight: 2,
+      strokeColor: "#004c80",
+      strokeOpacity: 0.8,
+      fillColor: "#FFF",
+      fillOpacity: 0.7,
+    });
+    polygon_change(polygon);
+  }
 
   window.myFunction = (box) => {
     ///클릭 이벤트
@@ -150,14 +166,14 @@ const MapContainer = (props) => {
     let position_x = splitstring[1];
     let position_y = splitstring[2];
     var moveLatLon = new kakao.maps.LatLng(position_x, position_y);
-    if (zoom <= 6 && zoom >= 5) {
-      maping.setCenter(moveLatLon);
-      maping.setLevel(4);
+    if (zoom <= 6 && zoom >= 4) {
+      maping.panTo(moveLatLon);
+      maping.setLevel(3);
     } else if (zoom < 9 && zoom >= 7) {
-      maping.setCenter(moveLatLon);
+      maping.panTo(moveLatLon);
       maping.setLevel(6);
     } else if (zoom <= 9) {
-      maping.setCenter(moveLatLon);
+      maping.panTo(moveLatLon);
       maping.setLevel(8);
     }
   };
@@ -169,11 +185,11 @@ const MapContainer = (props) => {
     };
 
     const string = "asdasd";
-    if (zoom <= 4) {
+    if (zoom <= 3) {
       const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\">" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
 
       return level;
-    } else if (zoom <= 6 && zoom >= 5) {
+    } else if (zoom <= 6 && zoom >= 4) {
       const level2 = '<div class="range_level_box" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box1">' + positions[key].key + "</div>" + '<div id="range_level_box2">' + avg + "</div>" + "</div>";
       return level2;
     } else if (zoom < 9 && zoom >= 7) {

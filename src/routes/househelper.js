@@ -18,7 +18,7 @@ const Househelper = (props) => {
 
   return (
     <div className="map">
-      <MapContainer />
+      <MapContainer mapdata={props.mapdata} />
     </div>
   );
 };

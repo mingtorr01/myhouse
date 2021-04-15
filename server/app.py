@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, json
 from flask_cors import CORS
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import pandas as pd
 import os
 import operator
-
+from bson import json_util
 
 app = Flask(__name__)
 CORS(app)
@@ -28,11 +28,9 @@ def postTest():
     loc = content["location"].split('-')
 
     if "전국" in content["location"]:
-        print("hi")
         result = mydb["point"].find({})
         df = pd.DataFrame(result)
     elif "전체선택" in content["location"]:
-        print("hi2")
         result = mydb["point"].find({"sido": loc[0]})
         df = pd.DataFrame(result)
     else:
@@ -41,7 +39,6 @@ def postTest():
 
     for points in content["point"]:
         name = points["name"]
-        print(name)
         poi.append(name)
         df[name] = df[name].astype(float)*float(points["range"])
 
@@ -68,57 +65,12 @@ def postTest():
     return jsonfiles
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/getpolygon', methods=['GET', 'POST'])
 def poster():
-    #content = request.json
-    # print(content)
-    poi = []
-    loc = gets["location"].split('-')
-    print(loc)
-    if "전국" in gets["location"]:
-        print("hi")
-        result = mydb["point"].find({})
-        df = pd.DataFrame(result)
-    elif "전체선택" in gets["location"]:
-        print("hi2")
-        result = mydb["point"].find({"sido": loc[0]})
-        df = pd.DataFrame(result)
-    else:
-        result = mydb["point"].find({"sido": loc[0], "city": loc[1]})
-        df = pd.DataFrame(result)
-
-    print(df)
-
-    print("############################################################################################################################################")
-    for points in gets["point"]:
-        name = points["name"]
-        print(name)
-        poi.append(name)
-        df[name] = df[name].astype(float)*float(points["range"])
-
-    dfd = df.loc[:, poi].astype(float).sum(axis=1)
-    df = pd.concat([df, dfd], axis=1)
-    dfs = df.sort_values(by=[0],  ascending=[False]).head(10)
-    print(dfs)
-
-
-#########################################################################
-    locat = list(dfs["tot_oa_cd"])
-    results = mydb["val"].find({"tot_oa_cd": {"$in": locat}})
-    df = pd.DataFrame(results)
-
-    poi.append("sido")
-    poi.append("dong")
-    df = df.loc[:, poi]
-
-    sorterIndex = dict(zip(locat, range(len(locat))))
-    df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
-    df.sort_values("sorter", inplace=True)
-    df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
-    print("end")
-    jsonfiles = df.to_json(orient='records')
-    print("end")
-    return jsonfiles
+    content = request.json
+    result = list(mydb["polygon"].find({"properties.EMD_NM": content["city"]}))
+    poly = result[0]["geometry"]["coordinates"]
+    return json.dumps(poly, default=json_util.default)
 
 
 if __name__ == '__main__':

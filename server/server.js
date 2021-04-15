@@ -233,6 +233,7 @@ trade_esclient.searchTarget = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
@@ -241,8 +242,6 @@ trade_esclient.searchTarget = function (sw, ne, type) {
       );
   });
 };
-
-
 
 trade_esclient.searchDong = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
@@ -295,6 +294,7 @@ trade_esclient.searchDong = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
@@ -354,6 +354,7 @@ trade_esclient.searchDistrict = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
@@ -406,6 +407,7 @@ trade_esclient.searchCity = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
