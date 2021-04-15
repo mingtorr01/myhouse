@@ -374,17 +374,17 @@
   color: black;
 }
 .gipho_select_item {
-  width: auto;
+  width: 250px;
   height: auto;
-  background-color: #4056fc;
+  background-color: #4760ce;
   color: #fff;
   box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
   font-family: "Do Hyeon", sans-serif;
   font-size: 14px;
   border: 0px;
-  margin-left: 26px;
+  margin-left: 40px;
   border-radius: 3px;
-  padding-left: 10px;
+  padding-left: 3px;
   padding-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -418,7 +418,8 @@
   outline: none;
   width: 18px;
   height: 18px;
-  background-color: #4056fc;
+  background-color: #4760ce;
+  justify-content:flex-end
 }
 #gipho_select_button {
   width: 100%;
@@ -576,4 +577,27 @@
   width: 100%;
   height: 30px;
   display: flex;
+}
+.gipho_select_item_rank{
+  width: 23px;
+  height: 23px;
+  border-radius: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 3px;
+}
+.gipho_select_item_rank p{
+  margin: 0px;
+  color: #4056fc;
+}
+.gipho_select_item_div_1{
+  width: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
 }

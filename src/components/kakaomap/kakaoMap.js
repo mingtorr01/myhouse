@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators } from "../../store/store";
 import Apart_page from "./meme/apart_page";
+import Tradingmenu from '../../tradingmenu/tradingmenu';
 import "./kakao.css";
 import io from "socket.io-client";
 const url = "http://localhost:3001/";
@@ -209,6 +210,7 @@ const MapContainer = (props) => {
         height: "100%",
       }}
     >
+      <Tradingmenu/>
       {apart_page ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
     </div>
   );
