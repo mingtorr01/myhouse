@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators } from "../../store/store";
 import Apart_page from "./meme/apart_page";
-import Tradingmenu from '../../tradingmenu/tradingmenu';
+import Tradingmenu from "../../tradingmenu/tradingmenu";
 import "./kakao.css";
 import io from "socket.io-client";
 const url = "http://localhost:3001/";
@@ -77,13 +77,14 @@ const MapContainer = (props) => {
     console.log(map);
     var markers = [];
     updateDong(map);
+
     kakao.maps.event.addListener(map, "idle", function () {
       var zoom = map.getLevel();
       console.log(zoom);
       if (zoom <= 3) updateTarget(map);
       else if (zoom <= 6 && zoom >= 4) updateDong(map);
       else if (zoom <= 8 && zoom >= 7) updateDistrict(map);
-      else if (zoom <= 9) updateCity(map);
+      else if (zoom >= 9) updateCity(map);
     });
 
     socket.on("marker", function (positions) {
@@ -168,13 +169,13 @@ const MapContainer = (props) => {
     let position_y = splitstring[2];
     var moveLatLon = new kakao.maps.LatLng(position_x, position_y);
     if (zoom <= 6 && zoom >= 4) {
-      maping.panTo(moveLatLon);
+      maping.setCenter(moveLatLon);
       maping.setLevel(3);
     } else if (zoom < 9 && zoom >= 7) {
-      maping.panTo(moveLatLon);
+      maping.setCenter(moveLatLon);
       maping.setLevel(6);
-    } else if (zoom <= 9) {
-      maping.panTo(moveLatLon);
+    } else if (zoom >= 9) {
+      maping.setCenter(moveLatLon);
       maping.setLevel(8);
     }
   };
@@ -196,7 +197,7 @@ const MapContainer = (props) => {
     } else if (zoom < 9 && zoom >= 7) {
       const level2 = '<div class="range_level_box2"  onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
       return level2;
-    } else if (zoom <= 9) {
+    } else if (zoom >= 9) {
       const level2 = '<div class="range_level_box2" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
       return level2;
     }
@@ -210,7 +211,7 @@ const MapContainer = (props) => {
         height: "100%",
       }}
     >
-      <Tradingmenu/>
+      <Tradingmenu />
       {apart_page ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
     </div>
   );

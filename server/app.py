@@ -6,6 +6,8 @@ import pandas as pd
 import os
 import operator
 from bson import json_util
+from bs4 import BeautifulSoup
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -71,6 +73,18 @@ def poster():
     result = list(mydb["polygon"].find({"properties.EMD_NM": content["city"]}))
     poly = result[0]["geometry"]["coordinates"]
     return json.dumps(poly, default=json_util.default)
+
+# 한국부동산뉴스 크롤링
+# http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm
+
+
+@app.route('/getNews', methods=['GET'])
+def poster():
+    raw = requests.get("http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm",
+                       headers={'User-Agent': 'Mozilla/5.0'})
+    if raw.status_code == 200:
+        html = BeautifulSoup(raw.text, "html.parser")
+        title = html.select_one()
 
 
 if __name__ == '__main__':

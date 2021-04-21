@@ -65,29 +65,24 @@ function App() {
     }
   };
 
-  function props_gipho_select( select) {
+  function props_gipho_select(select) {
     //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
-      console.log(select_gipho_data.length);
-      console.log('으어어어어엉');
-      let data = select_gipho_data;
-      let is_include = false;
-      data.map((value, index, array) => {
-        console.log(value);
-        if (value.name === select.name) {
-          is_include = true;
-        }
-      });
-      if (is_include === false) { //중복안될때
-        if(select_gipho_data.length>4){
-          controlchange(false);
-          stop_change(true);
-          alert('6개 이상의 지표를 설정할 수 없습니다.')
-        }else{
-          data.push(select);
-          console.log(select_gipho_data);
-          select_gipho_data_change(data);
-          controlchange(false);
-        }
+    console.log(select_gipho_data.length);
+    console.log("으어어어어엉");
+    let data = select_gipho_data;
+    let is_include = false;
+    data.map((value, index, array) => {
+      console.log(value);
+      if (value.name === select.name) {
+        is_include = true;
+      }
+    });
+    if (is_include === false) {
+      //중복안될때
+      if (select_gipho_data.length > 4) {
+        controlchange(false);
+        stop_change(true);
+        alert("6개 이상의 지표를 설정할 수 없습니다.");
       } else {
         data.push(select);
         console.log(select_gipho_data);
@@ -95,12 +90,11 @@ function App() {
         controlchange(false);
       }
     } else {
+      data.push(select);
+      console.log(select_gipho_data);
       select_gipho_data_change(data);
       controlchange(false);
     }
-
-    //select_gipho_data_change(data);
-    //console.log(select_gipho_data);
   }
 
   const cancle_giphodata = (name) => {
@@ -188,7 +182,7 @@ function App() {
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
         {favorite_div_bool ? <div></div> : <Findhouse_button findhouse_button={findhouse_button} />}
-        {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change}/> : <News />}
+        {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News />}
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper mapdata={mapdata} />

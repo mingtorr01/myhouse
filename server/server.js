@@ -373,7 +373,6 @@ trade_esclient.searchCity = function (sw, ne, type) {
 
     if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
       selectedDistrict.push(districts[index]);
-      console.log(selectedDistrict);
     }
   }
   return new Promise(function (resolve, reject) {
@@ -384,6 +383,10 @@ trade_esclient.searchCity = function (sw, ne, type) {
           size: 0,
           aggs: {
             name_aggs: {
+              terms: {
+                field: "dong",
+                size: 100,
+              },
               terms: {
                 field: "city",
                 size: 100,
