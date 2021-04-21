@@ -64,7 +64,17 @@ const MapContainer = (props) => {
   const [polygons, polygon_change] = useState(null);
   var map = 0;
 
+
+  useEffect(()=>{
+    if(props.mapdata!==null){
+      console.log(props.mapdata[0][0]);
+      drawpolygon();
+    }
+  },[props.mapdata])
+
+
   useEffect(() => {
+    console.log(props.mapdata);
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.2279868, 128.6796256),
@@ -115,13 +125,91 @@ const MapContainer = (props) => {
     apart_page_change(true);
   };
 
-  async function drawpolygon() {
+  const drawpolygon=()=> {
     //불러오는 코드 완성 나머지 띄우는 거 해야함
-    let datas = await Promise.all(
-      props.mapdata[1].map((x) => {
-        let point = new kakao.map.LatLng(x[1], x[0]);
+    console.log(props.mapdata[0]);
+    var polygonPath = [];
+    if(props.mapdata[0].length <3){
+      props.mapdata[0][0].map((v,i,a)=>{
+        console.log(v);
+        if(i !==props.mapdata[0][0].length-1){
+          const data2 = new kakao.maps.LatLng(v[1], v[0]);
+            polygonPath.push(data2);
+        }else{
+          const data = new kakao.maps.LatLng(v[1], v[0]);
+          polygonPath.push(data);
+          console.log(polygonPath);
+          var polygon = new kakao.maps.Polygon({
+            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 3, // 선의 두께입니다
+            strokeColor: '#39DE2A', // 선의 색깔입니다
+            strokeOpacity: 0.3, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'longdash', // 선의 스타일입니다
+            fillColor: '#A2FF99', // 채우기 색깔입니다
+            fillOpacity: 0.7 // 채우기 불투명도 입니다
+        });
+        if(polygons!=null){
+          polygons.setMap(null)
+        }
+        polygon.setMap(maping);
+        polygon_change(polygon);
+        var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
+        maping.panTo(moveLatLon); 
+        maping.setLevel(5);
+        }
+      }) 
+    }else{
+      props.mapdata[0].map((v,i,a)=>{
+        console.log(v);
+        if(i !==props.mapdata[0].length-1){
+          const data2 = new kakao.maps.LatLng(v[1], v[0]);
+            polygonPath.push(data2);
+        }else{
+          const data = new kakao.maps.LatLng(v[1], v[0]);
+          polygonPath.push(data);
+          console.log(polygonPath);
+          var polygon = new kakao.maps.Polygon({
+            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 3, // 선의 두께입니다
+            strokeColor: '#39DE2A', // 선의 색깔입니다
+            strokeOpacity: 0.3, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'longdash', // 선의 스타일입니다
+            fillColor: '#A2FF99', // 채우기 색깔입니다
+            fillOpacity: 0.7 // 채우기 불투명도 입니다
+        });
+        if(polygons!=null){
+          polygons.setMap(null)
+        }
+        polygon.setMap(maping);
+        polygon_change(polygon);
+        var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
+        maping.panTo(moveLatLon); 
+        maping.setLevel(5);
+        }
       })
-    );
+    }
+    /*
+      props.mapdata[1].map((x,i) => {
+        if(i ===props.mapdata[1].length-1){
+          const data = new kakao.map.LatLng(x[1], x[0]);
+          polygonPath.push(data);
+          var polygon = new kakao.maps.Polygon({
+            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 3, // 선의 두께입니다
+            strokeColor: '#39DE2A', // 선의 색깔입니다
+            strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'longdash', // 선의 스타일입니다
+            fillColor: '#A2FF99', // 채우기 색깔입니다
+            fillOpacity: 0.7 // 채우기 불투명도 입니다
+        });
+        
+        // 지도에 다각형을 표시합니다
+        polygon.setMap(maping);
+        }else{
+          const data2 = new kakao.map.LatLng(x[1], x[0]);
+          polygonPath.push(data2);
+        }
+      })
 
     var polygon = new kakao.maps.Polygon({
       map: maping,
@@ -132,7 +220,8 @@ const MapContainer = (props) => {
       fillColor: "#FFF",
       fillOpacity: 0.7,
     });
-    polygon_change(polygon);
+    polygon_change(polygon);*/
+   // polygon.setMap(map);
   }
 
   window.myFunction = (box) => {

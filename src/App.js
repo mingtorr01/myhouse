@@ -30,6 +30,11 @@ function App() {
   const [mapdata, mapdata_change] = useState(null);
 
   const mounted = useRef(false);
+
+  const mapdata_function = (data) =>{
+    mapdata_change(data);
+  }
+
   const result_cancle = () => {
     favorite_div_bool_change(false);
     result_bool_change(false);
@@ -185,7 +190,7 @@ function App() {
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper mapdata={mapdata} />
-        {result_bool ? <Result mapdata_change={mapdata_change} cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
+        {result_bool ? <Result mapdata={mapdata} mapdata_function={mapdata_function} mapdata_change={mapdata_change} cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
       </div>
       {control ? <Controlbox stop={stop} gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>

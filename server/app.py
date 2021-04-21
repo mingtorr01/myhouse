@@ -76,7 +76,11 @@ def postTest():
 @app.route('/getpolygon', methods=['GET', 'POST'])
 def poster():
     content = request.json
+    print('ㅇㅕ기 밑에 나옴')
+    print(content)
+    print(content["city"])
     result = list(mydb["polygon"].find({"properties.EMD_NM": content["city"]}))
+    print(result)
     poly = result[0]["geometry"]["coordinates"]
     return json.dumps(poly, default=json_util.default)
 
@@ -85,7 +89,7 @@ def poster():
 
 
 @app.route('/getNews', methods=['GET'])
-def poster():
+def poster2():
     raw = requests.get("http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm",
                        headers={'User-Agent': 'Mozilla/5.0'})
     if raw.status_code == 200:
