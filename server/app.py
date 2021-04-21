@@ -39,15 +39,20 @@ def postTest():
         result = mydb["point"].find({"sido": loc[0], "city": loc[1]})
         df = pd.DataFrame(result)
 
-    for points in content["point"]:
+    temp = 1.0
+    rep = temp / len(content["point"])
+    for i, points in enumerate(content["point"]):
         name = points["name"]
         poi.append(name)
-        df[name] = df[name].astype(float)*float(points["range"])
-
+        if i >= 1:
+            temp = round(temp - rep, 2)
+            print(temp)
+            df[name] = df[name].astype(float)*temp
+    print(df)
     dfd = df.loc[:, poi].astype(float).sum(axis=1)
     df = pd.concat([df, dfd], axis=1)
     dfs = df.sort_values(by=[0],  ascending=[False]).head(10)
-    print(dfs)
+    # print(dfs)
 
 #########################################################################
     locat = list(dfs["tot_oa_cd"])
@@ -62,9 +67,10 @@ def postTest():
     df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
     df.sort_values("sorter", inplace=True)
     df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
-    print(df)
+    # print(df)
     jsonfiles = df.to_json(orient='records')
     return jsonfiles
+
 
 
 @app.route('/getpolygon', methods=['GET', 'POST'])

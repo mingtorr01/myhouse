@@ -98,7 +98,6 @@ function App() {
   }
 
   const cancle_giphodata = (name) => {
-    console.log("시발?");
     let data = select_gipho_data;
     data.map((value, index) => {
       if (value.name === name) {
