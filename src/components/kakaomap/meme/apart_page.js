@@ -261,7 +261,6 @@ class Apart_page extends React.Component{
                 }
             }
         })
-        console.log(arr2[0].price);
         if(arr2[arr2.length-1].price<10000){
             console.log('시발');
             this.setState({
