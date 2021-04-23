@@ -85,7 +85,7 @@ def poster():
 
 
 @app.route('/getNews', methods=['GET'])
-def poster():
+def postery():
     raw = requests.get("http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm",
                        headers={'User-Agent': 'Mozilla/5.0'})
     if raw.status_code == 200:
