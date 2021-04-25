@@ -61,9 +61,9 @@ function HighChart2(props){
             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b> {point.y:0f}만원</b><br/>' 
         },
           series: [{
-            name: Math.floor((props.data_name/3.3058))+'평 '+'매매가 평균',
+            name: Math.floor((props.data_name/3.3058))+'평 '+props.name+'가 평균',
             data: props.data,
-            color:'#4e61f1'
+            color:props.color
           }],
         
           responsive: {

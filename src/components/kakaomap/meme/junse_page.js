@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import './meme.css';
+import './junse.css';
 import HighChart2 from './meme_line_chart';
-import Bottom_arrow from './blue-bottom-arrow.png';
-import Top_arrow from './blue-top-arrow.png';
+import Bottom_arrow from './red-bottom-arrow.png';
+import Top_arrow from './red-up-arrow.png';
 import Predict_tax from './predict_tax/predict_tax';
 import Budongsan from './budongsan/budongsan';
-class Apart_page extends React.Component{
+class Junse_page extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -66,7 +66,7 @@ class Apart_page extends React.Component{
                 })
                 const box = {
                     date:string,
-                    price:v.trade_price,
+                    price:v.deposit,
                     size:v.exclusive_private_area,
                     floor:v.floor,
                     address :  v.address,
@@ -83,7 +83,7 @@ class Apart_page extends React.Component{
                     })
                     const box = {
                         date:string,
-                        price:v.trade_price,
+                        price:v.deposit,
                         size:v.exclusive_private_area,
                         floor:v.floor,
                         address :  v.address,
@@ -101,7 +101,7 @@ class Apart_page extends React.Component{
                     })
                     const box = {
                         date:string,
-                        price:v.trade_price,
+                        price:v.deposit,
                         size:v.exclusive_private_area,
                         floor:v.floor,
                         address :  v.address,
@@ -127,8 +127,8 @@ class Apart_page extends React.Component{
                 const box = {
                     sizing:v.exclusive_private_area,
                     name:string,
-                    y:v.trade_price,
-                    color:'#4e61f1'
+                    y:v.deposit,
+                    color:'#df5644'
                 }
                 arr.push(box);
             }else if(Math.floor(v.exclusive_private_area) === this.state.sizing[this.state.select_sizing] && this.state.select_time==='2'){
@@ -136,8 +136,8 @@ class Apart_page extends React.Component{
                     const box = {
                         sizing:v.exclusive_private_area,
                         name:string,
-                        y:v.trade_price,
-                        color:'#4e61f1'
+                        y:v.deposit,
+                        color:'#df5644'
                     }
                     arr.push(box);
                 }
@@ -202,7 +202,7 @@ class Apart_page extends React.Component{
                 })
                 const box = {
                     date:string,
-                    price:v.trade_price,
+                    price:v.deposit,
                     size:v.exclusive_private_area,
                     floor:v.floor,
                     address :  v.address,
@@ -220,7 +220,7 @@ class Apart_page extends React.Component{
                     })
                     const box = {
                         date:string,
-                        price:v.trade_price,
+                        price:v.deposit,
                         size:v.exclusive_private_area,
                         floor:v.floor,
                         address :  v.address,
@@ -245,8 +245,8 @@ class Apart_page extends React.Component{
                 const box = {
                     sizing:v.exclusive_private_area,
                     name:string,
-                    y:v.trade_price,
-                    color:'#4e61f1'
+                    y:v.deposit,
+                    color:'#df5644'
                 }
                 arr.push(box);
             }else if(Math.floor(v.exclusive_private_area) === this.state.sizing[this.state.select_sizing] && this.state.select_time==='2'){
@@ -254,8 +254,8 @@ class Apart_page extends React.Component{
                     const box = {
                         sizing:v.exclusive_private_area,
                         name:string,
-                        y:v.trade_price,
-                        color:'#4e61f1'
+                        y:v.deposit,
+                        color:'#df5644'
                     }
                     arr.push(box);
                 }
@@ -308,7 +308,7 @@ class Apart_page extends React.Component{
                 })
                 const box = {
                     date:string,
-                    price:v.trade_price,
+                    price:v.deposit,
                     size:v.exclusive_private_area,
                     floor:v.floor,
                     address :  v.address,
@@ -333,7 +333,7 @@ class Apart_page extends React.Component{
                     })
                     const box = {
                         date:string,
-                        price:v.trade_price,
+                        price:v.deposit,
                         size:v.exclusive_private_area,
                         floor:v.floor,
                         address :  v.address,
@@ -356,8 +356,8 @@ class Apart_page extends React.Component{
                 const box = {
                     sizing:v.exclusive_private_area,
                     name:string,
-                    y:v.trade_price,
-                    color:'#4e61f1'
+                    y:v.deposit,
+                    color:'#df5644'
                 }
                 arr.push(box);
             }else if(Math.floor(v.exclusive_private_area) === Math.floor(size)&& this.state.select_time==='2'){
@@ -372,8 +372,8 @@ class Apart_page extends React.Component{
                     const box = {
                         sizing:v.exclusive_private_area,
                         name:string,
-                        y:v.trade_price,
-                        color:'#4e61f1'
+                        y:v.deposit,
+                        color:'#df5644'
                     }
                     arr.push(box);
                 }
@@ -412,14 +412,14 @@ class Apart_page extends React.Component{
     render(){
         return(
             <div className="meme_page_main">
-                <div className="meme_page_title">
+                <div className="junse_page_title">
                     <div className="meme_page_title_string">
                         {this.state.apart_name}아파트
                     </div>
                     <div className="meme_page_title_string2">
                         {this.state.apart_address}
                     </div>
-                    <button id="meme_page_title_button" onClick={()=>this.props.apart_page_change(false)}>
+                    <button id="junse_page_title_button" onClick={()=>this.props.apart_page_change(false)}>
                     </button>
                 </div>
                 <div className="meme_page_scroll">
@@ -428,14 +428,14 @@ class Apart_page extends React.Component{
                             <div className="meme_chart_title">
                                 <p>전용평수 당 실매매가 현황</p>
                                 <div className="avg_meme_div">
-                                    <div className="avg_meme_div1">
+                                    <div className="avg_meme_div1_junse">
                                         최근 거래 가격 기준 
                                     </div>
-                                    <div className="avg_meme_div2">
+                                    <div className="avg_meme_div2_junse">
                                         {this.state.avg_meme}
                                     </div>
                                 </div>
-                                <div className="time_select_div">
+                                <div className="time_select_div_junse">
                                     <select onChange={this.time_onchange}>
                                         <option value="0">전체 기간</option>
                                         <option value="2">2년 이내</option>
@@ -446,14 +446,14 @@ class Apart_page extends React.Component{
                                 {this.state.sizing.map((v,i,a)=>{
                                     console.log(v);
                                     return(
-                                        <button onClick={()=>this.change_size(v,i)} id="result_button">
+                                        <button onClick={()=>this.change_size(v,i)} id="result_button_junse">
                                             {v}m<sup>2</sup>
                                         </button>
                                     )
                                 })}
                             </div>
                             <div className="meme_chart1">
-                            <HighChart2 data={this.state.make_data} data_name={this.state.graph_name} color={'#4e61f1'} name={'매매'}/>
+                            <HighChart2 data={this.state.make_data} data_name={this.state.graph_name} color={'#df5644'} name={'전세'}/>
 
                             </div>
                             <div className="meme_chart2">
@@ -461,7 +461,7 @@ class Apart_page extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <Predict_tax/>
+                    <Predict_tax color={'#df5644'}/>
                     <Budongsan/>
                 </div>
             </div>
@@ -522,7 +522,7 @@ render(){
                 }
             })}
             {this.props.make_data2.length>5? 
-            <div className="pho_main_title_row_button">
+            <div className="pho_main_title_row_button_junse">
                 <button onClick={this.onclicker}>{this.state.name}<img src={this.state.img} width="10px" height="10px"/></button>
                 <div className="gonbak">
                 </div>
@@ -599,6 +599,6 @@ class Meme_chart_row extends React.Component{
     }
     
 }
-export default Apart_page;
+export default Junse_page;
 
 ////////////////////

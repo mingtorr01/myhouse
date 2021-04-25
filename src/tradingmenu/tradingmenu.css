@@ -32,8 +32,8 @@
 .Tradingmenu_main_junse{
     width: 85%;
     height: 30px;
-    background-color: #4c61ee;
-    border: 1px solid rgb(129, 151, 202);
+    background-color: #e66250;
+    border: 1px solid #e66250;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,9 +48,34 @@
     margin-left: 3px;
 }
 .Tradingmenu_main_junse:hover{
-    background-color: #4c61eee7;
+    background-color: #e66250d2;
+}
+.Tradingmenu_main_walse{
+    width: 85%;
+    height: 30px;
+    background-color: #48b457;
+    border: 1px solid #48b457;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    margin-top: 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    text-decoration: none;
+    margin-left: 3px;
+}
+.Tradingmenu_main_walse:hover{
+    background-color: #48b456c7;
 }
 .meme_menu{
+    width: 100%;
+    height: auto;
+}
+.junse_menu{
     width: 100%;
     height: auto;
 }
@@ -66,6 +91,42 @@
     font-size: 11px;
     border-radius: 4px;
     color: #5f71f8;
+    font-weight: 500;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    text-decoration: none;
+    margin-top: 5px;
+    margin-left: 3px;
+}
+.junse_menu a{
+    width: 85%;
+    height: 30px;
+    background-color: #f6f6f8;
+    border: 1px solid rgb(250, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    border-radius: 4px;
+    color: #e66250;
+    font-weight: 500;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    text-decoration: none;
+    margin-top: 5px;
+    margin-left: 3px;
+}
+.walse_menu a{
+    width: 85%;
+    height: 30px;
+    background-color: #f6f6f8;
+    border: 1px solid rgb(214, 250, 235);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    border-radius: 4px;
+    color: #48b457;
     font-weight: 500;
     box-shadow: 2px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
     text-decoration: none;

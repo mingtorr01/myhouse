@@ -479,6 +479,7 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
