@@ -10,27 +10,27 @@ const url = "http://localhost:3001/";
 const socket = io.connect("http://localhost:3001/");
 const { kakao } = window;
 
-function updateTarget(map,types) {
+function updateTarget(map, types) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
   socket.emit("bound", { sw: swLatLng, ne: neLatLng, type: types });
 }
 
-function updateDong(map,types) {
+function updateDong(map, types) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
   socket.emit("dong", { sw: swLatLng, ne: neLatLng, type: types });
 }
 
-function updateDistrict(map,types) {
+function updateDistrict(map, types) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
   socket.emit("district", { sw: swLatLng, ne: neLatLng, type: types });
 }
-function updateCity(map,types) {
+function updateCity(map, types) {
   var bounds = map.getBounds();
   var swLatLng = bounds.getSouthWest();
   var neLatLng = bounds.getNorthEast();
@@ -62,30 +62,27 @@ const MapContainer = (props) => {
   const [apart_data, apart_data_change] = useState([]);
   const [maping, maping_change] = useState(null);
   const [polygons, polygon_change] = useState(null);
-  const [type,type_change] = useState('apart_trades');
-  const [markers_save,markers_change] =useState([]);
-  const [position,position_change] = useState(new kakao.maps.LatLng(35.2279868, 128.6796256));
+  const [type, type_change] = useState("apart_trades");
+  const [markers_save, markers_change] = useState([]);
+  const [position, position_change] = useState(new kakao.maps.LatLng(35.2279868, 128.6796256));
   var map = 0;
 
-
-  useEffect(()=>{
-    if(props.mapdata!==null){
+  useEffect(() => {
+    if (props.mapdata !== null) {
       console.log(props.mapdata[0][0]);
       drawpolygon();
     }
-  },[props.mapdata])
+  }, [props.mapdata]);
 
-  useEffect(()=>{
-    if(type!=='apart_trades'){
-      console.log(type);
+  useEffect(() => {
+    if (type !== "apart_trades") {
       type_change(type);
-      updateMarkers(maping,markers_save);
-    }else{
-      console.log(type);
+      updateMarkers(maping, markers_save);
+    } else {
       type_change(type);
-      updateMarkers(maping,markers_save);
+      updateMarkers(maping, markers_save);
     }
-  },[type])
+  }, [type]);
 
   useEffect(() => {
     console.log(props.mapdata);
@@ -101,17 +98,17 @@ const MapContainer = (props) => {
     //drawpolygon();
     console.log(map);
     var markers = [];
-    updateDong(map,type);
+    updateDong(map, type);
 
     kakao.maps.event.addListener(map, "idle", function () {
       position_change(map.getCenter());
       var zoom = map.getLevel();
       console.log(zoom);
       console.log(type);
-      if (zoom <= 3) updateTarget(map,type);
-      else if (zoom <= 6 && zoom >= 4) updateDong(map,type);
-      else if (zoom <= 8 && zoom >= 7) updateDistrict(map,type);
-      else if (zoom >= 9) updateCity(map,type);
+      if (zoom <= 3) updateTarget(map, type);
+      else if (zoom <= 6 && zoom >= 4) updateDong(map, type);
+      else if (zoom <= 8 && zoom >= 7) updateDistrict(map, type);
+      else if (zoom >= 9) updateCity(map, type);
     });
 
     socket.on("marker", function (positions) {
@@ -143,68 +140,68 @@ const MapContainer = (props) => {
     apart_page_change(true);
   };
 
-  const drawpolygon=()=> {
+  const drawpolygon = () => {
     //불러오는 코드 완성 나머지 띄우는 거 해야함
     console.log(props.mapdata[0]);
     var polygonPath = [];
-    if(props.mapdata[0].length <3){
-      props.mapdata[0][0].map((v,i,a)=>{
+    if (props.mapdata[0].length < 3) {
+      props.mapdata[0][0].map((v, i, a) => {
         console.log(v);
-        if(i !==props.mapdata[0][0].length-1){
+        if (i !== props.mapdata[0][0].length - 1) {
           const data2 = new kakao.maps.LatLng(v[1], v[0]);
-            polygonPath.push(data2);
-        }else{
+          polygonPath.push(data2);
+        } else {
           const data = new kakao.maps.LatLng(v[1], v[0]);
           polygonPath.push(data);
           console.log(polygonPath);
           var polygon = new kakao.maps.Polygon({
-            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            path: polygonPath, // 그려질 다각형의 좌표 배열입니다
             strokeWeight: 3, // 선의 두께입니다
-            strokeColor: '#2a3fd6', // 선의 색깔입니다
+            strokeColor: "#2a3fd6", // 선의 색깔입니다
             strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            strokeStyle: 'solid', // 선의 스타일입니다
-            fillColor: '#5f71f8', // 채우기 색깔입니다
-            fillOpacity: 0.2 // 채우기 불투명도 입니다
-        });
-        if(polygons!=null){
-          polygons.setMap(null)
+            strokeStyle: "solid", // 선의 스타일입니다
+            fillColor: "#5f71f8", // 채우기 색깔입니다
+            fillOpacity: 0.2, // 채우기 불투명도 입니다
+          });
+          if (polygons != null) {
+            polygons.setMap(null);
+          }
+          polygon.setMap(maping);
+          polygon_change(polygon);
+          var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
+          maping.panTo(moveLatLon);
+          maping.setLevel(5);
         }
-        polygon.setMap(maping);
-        polygon_change(polygon);
-        var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
-        maping.panTo(moveLatLon); 
-        maping.setLevel(5);
-        }
-      }) 
-    }else{
-      props.mapdata[0].map((v,i,a)=>{
+      });
+    } else {
+      props.mapdata[0].map((v, i, a) => {
         console.log(v);
-        if(i !==props.mapdata[0].length-1){
+        if (i !== props.mapdata[0].length - 1) {
           const data2 = new kakao.maps.LatLng(v[1], v[0]);
-            polygonPath.push(data2);
-        }else{
+          polygonPath.push(data2);
+        } else {
           const data = new kakao.maps.LatLng(v[1], v[0]);
           polygonPath.push(data);
           console.log(polygonPath);
           var polygon = new kakao.maps.Polygon({
-            path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+            path: polygonPath, // 그려질 다각형의 좌표 배열입니다
             strokeWeight: 3, // 선의 두께입니다
-            strokeColor: '#2a3fd6', // 선의 색깔입니다
+            strokeColor: "#2a3fd6", // 선의 색깔입니다
             strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            strokeStyle: 'solid', // 선의 스타일입니다
-            fillColor: '#5f71f8', // 채우기 색깔입니다
-            fillOpacity: 0.2 // 채우기 불투명도 입니다
-        });
-        if(polygons!=null){
-          polygons.setMap(null)
+            strokeStyle: "solid", // 선의 스타일입니다
+            fillColor: "#5f71f8", // 채우기 색깔입니다
+            fillOpacity: 0.2, // 채우기 불투명도 입니다
+          });
+          if (polygons != null) {
+            polygons.setMap(null);
+          }
+          polygon.setMap(maping);
+          polygon_change(polygon);
+          var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
+          maping.panTo(moveLatLon);
+          maping.setLevel(5);
         }
-        polygon.setMap(maping);
-        polygon_change(polygon);
-        var moveLatLon = new kakao.maps.LatLng(v[1], v[0]);
-        maping.panTo(moveLatLon); 
-        maping.setLevel(5);
-        }
-      })
+      });
     }
     /*
       props.mapdata[1].map((x,i) => {
@@ -239,8 +236,8 @@ const MapContainer = (props) => {
       fillOpacity: 0.7,
     });
     polygon_change(polygon);*/
-   // polygon.setMap(map);
-  }
+    // polygon.setMap(map);
+  };
 
   window.myFunction = (box) => {
     ///클릭 이벤트
@@ -250,6 +247,7 @@ const MapContainer = (props) => {
       apart_name: splitstring[0],
       position_x: splitstring[1],
       position_y: splitstring[2],
+      types: type,
     };
     fetch("api/clickevent", {
       method: "post",
@@ -318,7 +316,7 @@ const MapContainer = (props) => {
         height: "100%",
       }}
     >
-      <Tradingmenu type_change={type_change}/>
+      <Tradingmenu type_change={type_change} />
       {apart_page ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
     </div>
   );
