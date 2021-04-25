@@ -1,12 +1,13 @@
 {
-    "apart_trade" : {
+    "apart_rent" : {
       "properties" : {
         "address" : { "type" : "keyword" },
         "detailed_address" : { "type" : "keyword" },
         "year" : { "type" : "long" },
         "month" : { "type" : "long" },
         "build_year" : { "type" : "long" },
-        "trade_price" : { "type" : "long" },
+        "deposit" : { "type" : "long" },
+        "rental_fee" : { "type" : "long" },
         "city" : { "type" : "keyword" },
         "sub_city" : { "type" : "keyword" },
         "dong" : { "type" : "keyword" },
@@ -18,4 +19,5 @@
         "location" : { "type" : "geo_point" }
       }
     }
+  
 }

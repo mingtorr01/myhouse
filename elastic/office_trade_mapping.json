@@ -1,5 +1,5 @@
 {
-    "apart_trade" : {
+    "office_trade" : {
       "properties" : {
         "address" : { "type" : "keyword" },
         "detailed_address" : { "type" : "keyword" },
@@ -18,4 +18,5 @@
         "location" : { "type" : "geo_point" }
       }
     }
+  
 }
