@@ -108,6 +108,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("dong", function (data) {
+    console.log(data.type);
     if (data.type == "apart_trades" || data.type == "office_trades") {
       trade_esclient.searchDong(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
@@ -133,6 +134,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("district", function (data) {
+    console.log(data.type);
     if (data.type == "apart_trades" || data.type == "office_trades") {
       trade_esclient.searchDistrict(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
@@ -158,6 +160,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("city", function (data) {
+    console.log(data.type);
     if (data.type == "apart_trades" || data.type == "office_trades") {
       trade_esclient.searchCity(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);

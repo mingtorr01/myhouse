@@ -32,7 +32,7 @@ class Result extends React.Component {
     console.log(this.state.gipho_data);
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.props !== prevProps) {
+    if (this.props.region !== prevProps.region || this.props.select_gipho_data != prevProps.select_gipho_data||this.props.data != prevProps.data) {
       const str1 = this.props.region.split("-");
 
       if (str1[0] === "전국") {
@@ -62,7 +62,7 @@ class Result extends React.Component {
         () => {
           //여기서 시작;
           //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-          const box = { city: this.state.top10[0].city };
+          const box = { city: this.state.top10[0].dong };
           fetch("http://localhost:5000/getpolygon", {
             method: "post",
             headers: {
@@ -73,6 +73,7 @@ class Result extends React.Component {
             .then((res) => res.json())
             .then((json) => {
               console.log(json);
+              //this.props.mapdata_function(json);
               this.props.mapdata_change(json);
             });
           console.log();
@@ -191,6 +192,22 @@ class Result extends React.Component {
             result_data2:making2[0].arr
          },()=>{console.log(this.state.result_data);})*/
   };
+  dongclick=(index)=>{
+    const box = { city: this.state.top10[index].dong };
+          fetch("http://localhost:5000/getpolygon", {
+            method: "post",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(box),
+          })
+            .then((res) => res.json())
+            .then((json) => {
+              console.log(json);
+              //this.props.mapdata_function(json);
+              this.props.mapdata_change(json);
+            });
+  }
   onclick1 = (name) => {
     console.log(name);
     console.log(this.state.top10);
@@ -414,7 +431,7 @@ class Result extends React.Component {
                 if (i < 5) {
                   if (this.state.region === "전국") {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => this.onclick1(v.tot_oa_cd)}>
+                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -425,7 +442,7 @@ class Result extends React.Component {
                     );
                   } else {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => this.onclick1(v.tot_oa_cd)}>
+                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -441,7 +458,7 @@ class Result extends React.Component {
                 if (i < 10 && i > 4) {
                   if (this.state.region === "전국") {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => this.onclick1(v.tot_oa_cd)}>
+                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -452,7 +469,7 @@ class Result extends React.Component {
                     );
                   } else {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => this.onclick1(v.tot_oa_cd)}>
+                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>

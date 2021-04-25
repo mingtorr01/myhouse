@@ -14,7 +14,7 @@ function code1(location) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
-        index: "apart_trades",
+        index: location.index,
         body: {
           sort: [{ date: "asc" }],
           size: 10000,

@@ -72,11 +72,14 @@ def postTest():
     return jsonfiles
 
 
-
 @app.route('/getpolygon', methods=['GET', 'POST'])
 def poster():
     content = request.json
+    print('ㅇㅕ기 밑에 나옴')
+    print(content)
+    print(content["city"])
     result = list(mydb["polygon"].find({"properties.EMD_NM": content["city"]}))
+    print(result)
     poly = result[0]["geometry"]["coordinates"]
     return json.dumps(poly, default=json_util.default)
 
