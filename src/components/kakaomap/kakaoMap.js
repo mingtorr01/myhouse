@@ -79,7 +79,12 @@ const MapContainer = (props) => {
         drawpolygon(false);  
     }
   }, [props.mapdata,polygon_use]);
-
+  useEffect(()=>{
+    console.log(props.polygon_stop);
+    if(props.polygon_stop===true){
+      polygons.setMap(null);
+    }
+  },[props.polygon_stop])
   useEffect(() => {
     if (type === "apart_trades") {
       type_change(type);
@@ -196,6 +201,7 @@ const MapContainer = (props) => {
       });
     } else {
       props.mapdata[0].map((v, i, a) => {
+        console.log(v);
         if (i !== props.mapdata[0].length - 1) {
           const data2 = new kakao.maps.LatLng(v[1], v[0]);
           polygonPath.push(data2);
@@ -366,10 +372,11 @@ const MapContainer = (props) => {
         height: "100%",
       }}
     >
-      <Tradingmenu type_change={type_change} apart_page_change={apart_page_change} change_poly={change_poly}/>
+      <Tradingmenu type_change={type_change} apart_page_change={apart_page_change} change_poly={change_poly} />
       {apart_page&&type==='apart_trades' ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
       {apart_page&&type==='office_deposits' ? <Junse_page apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
-      {apart_page&&type==='office_rents' ? <Walse_page apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
+      {apart_page&&(type==='office_rents')? <Walse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
+      {apart_page&&(type==='apart_rents')? <Walse_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
     </div>
   );
 };

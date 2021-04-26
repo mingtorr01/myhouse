@@ -102,6 +102,7 @@ io.on("connection", function (socket) {
     }
     if (data.type == "apart_rents" || data.type == "office_rents") {
       rent_esclient.searchTarget(data.sw, data.ne, data.type).then(function (result) {
+        console.log(result);
         io.to(socket.id).emit("marker", result);
       });
     }

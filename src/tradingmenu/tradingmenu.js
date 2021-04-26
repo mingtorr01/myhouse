@@ -95,15 +95,15 @@ class Walse_menu extends React.Component {
   render() {
     return (
       <div className="walse_menu">
-        <a href="#" onClick={() => {this.props.type_change("office_rents"); this.props.apart_page_change(false)}}>
+        <a href="#" onClick={() => {this.props.type_change("apart_rents"); this.props.apart_page_change(false)}}>
           아파트
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => {this.props.type_change("office_rents"); this.props.apart_page_change(false)}}>
           &nbsp;&nbsp;연립
           <br />
           다세대
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => {this.props.type_change("office_rents");this.props.apart_page_change(false);}}>
           오피스텔
         </a>
       </div>
