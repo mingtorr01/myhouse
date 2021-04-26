@@ -68,18 +68,18 @@ class Junse_menu extends React.Component {
   render() {
     return (
       <div className="meme_menu">
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => this.props.type_change("apart_rents")}>
           아파트
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => this.props.type_change("apart_rents")}>
           단독주택
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => this.props.type_change("apart_rents")}>
           &nbsp;&nbsp;연립
           <br />
           다세대
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_rents")}>
+        <a href="#" onClick={() => this.props.type_change("apart_rents")}>
           오피스텔
         </a>
       </div>

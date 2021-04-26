@@ -76,9 +76,11 @@ const MapContainer = (props) => {
 
   useEffect(() => {
     if (type !== "apart_trades") {
+      console.log(type);
       type_change(type);
       updateMarkers(maping, markers_save);
     } else {
+      console.log(type);
       type_change(type);
       updateMarkers(maping, markers_save);
     }

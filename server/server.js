@@ -423,6 +423,7 @@ trade_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 deposit_esclient.searchTarget = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
@@ -449,7 +450,7 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
               },
               must_not: {
                 range: {
-                  rental_fee: { gt: 0 },
+                  rental_fee: { lte: 0 },
                 },
               },
             },
@@ -512,7 +513,7 @@ deposit_esclient.searchDong = function (sw, ne, type) {
               },
               must_not: {
                 range: {
-                  rental_fee: { gt: 0 },
+                  rental_fee: { lte: 0 },
                 },
               },
             },
@@ -575,7 +576,7 @@ deposit_esclient.searchDistrict = function (sw, ne, type) {
               },
               must_not: {
                 range: {
-                  rental_fee: { gt: 0 },
+                  rental_fee: { lte: 0 },
                 },
               },
             },
@@ -633,7 +634,7 @@ deposit_esclient.searchCity = function (sw, ne, type) {
             bool: {
               must_not: {
                 range: {
-                  rental_fee: { gt: 0 },
+                  rental_fee: { lte: 0 },
                 },
               },
             },
@@ -671,6 +672,7 @@ deposit_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
+
 rent_esclient.searchTarget = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient

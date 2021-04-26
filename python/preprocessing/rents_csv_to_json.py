@@ -1,7 +1,7 @@
 import csv
 import json
 
-trade_csv_filename = './office_rents.csv'
+trade_csv_filename = './apartment_rents.csv'
 count = 0
 cnt = 400000
 li = []
@@ -12,7 +12,7 @@ with open(trade_csv_filename, newline='', encoding='UTF8') as csvfile:
             sub_city, dong, code, name, floor, exclusive_private_area, date, latitude, longitude in reader:
 
         count += 1
-        json_result = "{ \"index\" : { \"_index\": \"office_rents\", \"_type\": \"office_rent\"} } \n"
+        json_result = "{ \"index\" : { \"_index\": \"apart_rents\", \"_type\": \"apart_rent\"} } \n"
         json_result += "{"
         json_result += "\"address\":" + "\"" + address + "\"" + ","
         json_result += "\"detailed_address\":" + "\"" + detailed_address + "\"" + ","
