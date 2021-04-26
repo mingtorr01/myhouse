@@ -102,6 +102,7 @@ io.on("connection", function (socket) {
     }
     if (data.type == "apart_rents" || data.type == "office_rents") {
       rent_esclient.searchTarget(data.sw, data.ne, data.type).then(function (result) {
+        console.log(result);
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -480,6 +481,7 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
@@ -855,6 +857,7 @@ rent_esclient.searchDistrict = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {
@@ -914,6 +917,7 @@ rent_esclient.searchCity = function (sw, ne, type) {
       })
       .then(
         function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
           resolve(resp.aggregations.name_aggs.buckets);
         },
         function (err) {

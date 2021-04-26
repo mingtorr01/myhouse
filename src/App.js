@@ -1,7 +1,7 @@
 import Leftmenu_1 from "./leftmenu/leftmenu_1";
 import Region_search from "./leftmenu/region_search";
 import React, { useState, useEffect, useRef } from "react";
-import Findhouse_button from "./leftmenu/findhousebutton";
+import Findhouse_button2 from "./leftmenu/findehousebutton2";
 import store from "./store/store";
 import Househelper from "./routes/househelper";
 import News from "./news/news";
@@ -26,7 +26,7 @@ function App() {
   const [region, region_change] = useState("");
   const [stop, stop_change] = useState(false);
   const [stop2, stop_change2] = useState(false);
-
+  const [polygon_stop,polygon_stop_change] = useState(false);
   const [mapdata, mapdata_change] = useState(null);
 
   const mounted = useRef(false);
@@ -80,6 +80,7 @@ function App() {
       console.log(value);
       if (value.name === select.name) {
         is_include = true;
+        console.log('아니야아니야');
       }
     });
     if (is_include === false) {
@@ -95,7 +96,6 @@ function App() {
         controlchange(false);
       }
     } else {
-      data.push(select);
       console.log(select_gipho_data);
       select_gipho_data_change(data);
       controlchange(false);
@@ -185,12 +185,12 @@ function App() {
       <div>
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
-        {favorite_div_bool ? <div></div> : <Findhouse_button findhouse_button={findhouse_button} />}
+        {favorite_div_bool ? <div></div> : <Findhouse_button2 findhouse_button={findhouse_button} polygon_stop_change={polygon_stop_change}/>}
         {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News />}
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
-        <Househelper mapdata={mapdata} />
-        {result_bool ? <Result mapdata={mapdata} mapdata_function={mapdata_function} mapdata_change={mapdata_change} cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
+        <Househelper mapdata={mapdata} polygon_stop={polygon_stop}/>
+        {result_bool ? <Result polygon_stop_change={polygon_stop_change} mapdata={mapdata} mapdata_function={mapdata_function} mapdata_change={mapdata_change} cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
       </div>
       {control ? <Controlbox stop={stop} gipho_name={gipho_name} props_gipho_select={props_gipho_select} cancle_control_box={cancle_control_box} /> : <div></div>}
     </Provider>

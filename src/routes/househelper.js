@@ -18,7 +18,7 @@ const Househelper = (props) => {
 
   return (
     <div className="map">
-      <MapContainer mapdata={props.mapdata} />
+      <MapContainer mapdata={props.mapdata} polygon_stop={props.polygon_stop}/>
     </div>
   );
 };

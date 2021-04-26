@@ -422,6 +422,7 @@ class Result extends React.Component {
               onClick={() => {
                 this.props.result_cancle();
                 this.props.cancle_select_gipho_data_change();
+                this.props.polygon_stop_change(true);
               }}
             ></button>
           </div>

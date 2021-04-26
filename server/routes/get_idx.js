@@ -20,7 +20,7 @@ router.post("/clickevent", (req, res) => {
       res.send(data);
     });
   } else if (tp.includes("deposit")) {
-    type = tp.split("_")[0] + "_rent";
+    type = tp.split("_")[0] + "_rents";
     const location = {
       lat: req.body.position_x,
       lon: req.body.position_y,

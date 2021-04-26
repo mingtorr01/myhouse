@@ -1,0 +1,205 @@
+.Favorite_4_main_div {
+    display: flex;
+    position: absolute;
+    left: 380px;
+    right: 380px;
+    top: 90px;
+    bottom: 70px;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    border-bottom: 1px solid #c0c0c0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+    z-index: 55;
+    flex-direction: column;
+  }
+  .Favorite_4_main_div_title{
+      width: 100%;
+      height: 40px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+  }
+  .Favorite_4_main_div_title p {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-left: 20px;
+      font-size: 13px;
+      font-weight: 450;
+      margin-top: 15px;
+      color: #4052da;
+  }
+  .Favorite_4_main_div_main{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 56%;
+  }
+  .Favorite_4_main_div_main1{
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: row;
+  }
+  .Favorite_4_main_div_main2{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+}
+.Favorite_4_main_div_main1_1{
+    width: 34%;
+    height: 100%;
+    background-color: rgb(87, 95, 206);
+}
+.Favorite_4_main_div_main1_2{
+    width: 33%;
+    height: 100%;
+    background-color: rgb(91, 209, 87);
+}
+.Favorite_4_main_div_main1_3{
+    width: 33%;
+    height: 100%;
+    background-color: rgb(211, 186, 75);
+}
+.Favorite_4_main_div_main2_1{
+    width: 34%;
+    height: 100%;
+    background-color: rgb(153, 93, 209);
+}
+.Favorite_4_main_div_main2_2{
+    width: 33%;
+    height: 100%;
+    background-color: rgb(61, 155, 103);
+}
+.Favorite_4_main_div_main2_3{
+    width: 33%;
+    height: 100%;
+    background-color: rgb(207, 82, 207);
+}
+.Favorite_4_main_div_main1_1_title{
+    width: 300px;
+    height: 50px;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gipho_name1{
+    margin: 0px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 19px;
+    margin-right: 5px;
+    font-weight: 400;
+    color: white;
+}
+#gipho_name2{
+    margin: 0px;
+    margin-top: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
+}
+.Favorite_4_list{
+    width: 80%;
+    height: 23px;
+    background-color: white;
+    margin-left: 10%;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.Favorite_4_list span{
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: 24px;
+    margin-top: 4px;
+}
+#cancle_step2{
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  background-image: url("../img/cancel_black.png");
+  background-size: cover;
+  border: none;
+  outline: none;
+  width: 12px;
+  height: 12px;
+  background-color: rgb(241, 241, 241);
+}
+.Favorite_4_main_div_title span{
+    font-family: 'Noto Sans KR', sans-serif;
+      margin-left: 30px;
+      font-size: 15px;
+      font-weight: 500;
+
+}
+.gipho_selecting_div{
+    width: 85%;
+    height: 24%;
+    margin-left: 8%;
+    margin-bottom: 6px;
+}
+.gipho_selecting_div_button{
+    width: 100%;
+    height: 9%;
+    margin-top: 3px;
+    border-top: 1px solid lightgray;
+}
+.gipho_selecting_div_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+.gipho_selecting_div1_3{
+    display: flex;
+    height: 50%;
+    width: 100%;
+    flex-direction: row;
+}
+.gipho_selecting_div4_6{
+    display: flex;
+    height: 50%;
+    width: 100%;
+    flex-direction: row;
+}
+.gipho_selecting_list{
+    height: 100%;
+    width: 34%;
+    border: 0.2px solid rgb(218, 218, 218);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241, 241, 241);
+}
+#gipho_button1{
+    outline: none;
+    border: 0px;
+    background-color: rgb(211, 211, 211);
+    width: 140px;
+    height: 45px;
+    border-radius: 12px;
+    position: absolute;
+    left: 30%;
+    bottom: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+#gipho_button2{
+    outline: none;
+    border: 0px;
+    background-color: #8b99ff;
+    width: 140px;
+    height: 45px;
+    border-radius: 12px;
+    position: absolute;
+    right: 30%;
+    bottom: 15px;
+    color: rgb(243, 243, 243);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}

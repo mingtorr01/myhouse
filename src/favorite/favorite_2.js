@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./favorite_2.css";
 import Favorite_3 from "./favorite_3";
-
+import Favorite_4 from "./favorite4";
+import Favorite_5 from "./favorite_5";
 const Favorite_2 = (props) => {
   const [step, stepchange] = useState(1);
   const [step2, stepchange2] = useState(1);
@@ -81,7 +82,7 @@ const Favorite_2 = (props) => {
       </div>
     );
   } else {
-    return <Favorite_3  props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
+    return /*<Favorite_5 props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change}/>*/ <Favorite_3  props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
   }
 };
 

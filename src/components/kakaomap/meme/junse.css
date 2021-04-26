@@ -21,13 +21,13 @@
     display: flex;
     background-color: blue;
   }
-  .meme_page_title{
+  .junse_page_title{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
     height: 60px;
-    background-color: #5f71f8;
+    background-color: #db7365;
   }
   .meme_page_title_string{
     font-family: 'Noto Sans KR', sans-serif;
@@ -43,13 +43,13 @@
     margin-left: 30px;
     font-weight: 200;
   }
-  #meme_page_title_button{
+  #junse_page_title_button{
     position: absolute;
     right: 10px;
     top: 10px;
     width: 15px;
     height: 15px;
-    background-color: #5f71f8;
+    background-color: #db7365;
     border: 0px;
     background-image: url("../../../img/cancel_white.png");
     background-size: cover;
@@ -185,7 +185,33 @@
   color: #5f71f8;
   font-size: 13px;
 }
-.pho_main_title_row_button button:hover{
+.pho_main_title_row_button_junse{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+.pho_main_title_row_button_junse button{
+    width: auto;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    background-color: #ec4a351a;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: none;
+    border: 1.7px solid #db7365;
+    border-radius: 14px;
+    font-weight: 500;
+    color: #db7365;
+    font-size: 13px;
+  }
+.pho_main_title_row_button_junse button:hover{
   width: auto;
   height: auto;
   padding-left: 20px;
@@ -193,12 +219,12 @@
   padding-top: 3px;
   padding-bottom: 4px;
   outline: none;
-  background-color: #5f71f823;
+  background-color: #ec4a3534;
   border-radius: 14px;
   font-weight: 500;
-  color: #5f71f8;
+  color: #db7365;
 }
-.pho_main_title_row_button button img{
+.pho_main_title_row_button_junse button img{
   margin-left: 10px;
   margin-top: 5px;
 }
@@ -230,7 +256,30 @@
   background-size: 12px 13px;
   border-radius: 4px;
 }
-
+.time_select_div_junse{
+    width: 90px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    right: 15px;
+  }
+  .time_select_div_junse select{
+    width: 90px;
+    height: 30px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 2px solid #db7365;
+    outline: none;
+    color: #db7365;
+    text-indent: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    background: url('./red-bottom-arrow.png') no-repeat 90% 50%;
+    background-size: 12px 13px;
+    border-radius: 4px;
+  }
 select::-ms-expand {
   display: none;
 }
@@ -252,6 +301,14 @@ select::-ms-expand {
   align-items: center;
   font-size: 15px;
 }
+.avg_meme_div1_junse{
+  width: 100%;
+  height: 20px;
+  color: rgb(230, 80, 80);
+  margin-left: 10px;
+  align-items: center;
+  font-size: 15px;
+}
 .avg_meme_div2{
   width: 100%;
   height: 30px;
@@ -261,6 +318,15 @@ select::-ms-expand {
   align-items: center;
   color: #1f2a81;
 }
+.avg_meme_div2_junse{
+    width: 100%;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: #b92c2c;
+}
 .avg_meme_div2_walse{
   width: 100%;
   height: 30px;
@@ -269,4 +335,24 @@ select::-ms-expand {
   display: flex;
   align-items: center;
   color: #1f2a81;
+}
+#result_button_junse{
+    width: auto;
+    height: 24px;
+    background-color: white;
+    color: #df5644;
+    font-weight: bold;
+    border: 0px;
+    outline: none;
+    padding-bottom: 5px;
+    
+}
+#result_button_junse:hover{
+    width: auto;
+    height: 24px;
+    background-color: white;
+    color: #df5644d3;
+    font-weight: bold;
+    border: 0px;
+    outline: none;
 }
