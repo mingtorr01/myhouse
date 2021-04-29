@@ -93,7 +93,7 @@ ex) `curl -XGET http://localhost:9200/index_name?pretty`
 
 DATA LIST
 
-![datalist](https://github.com/Mingtorr/myhouse/blob/master/iamges/data_list.png)
+![datalist](https://github.com/Mingtorr/myhouse/blob/master/images/data_list.png)
 데이터 필요 시 Mingtorr@gmail.com 으로 연락하세요.
 
 
@@ -118,24 +118,24 @@ FLASK_MONGO= "YOUR MONGO KEY"
 
 
 marker for Apartment trading :
-![marker for Apartment trading](https://github.com/Mingtorr/myhouse/blob/master/iamges/diagram.png)
+![marker for Apartment trading](https://github.com/Mingtorr/myhouse/blob/master/images/diagram.png)
 
 Recommand System:
-![Recommand System](https://github.com/Mingtorr/myhouse/blob/master/iamges/diagram2.png)
+![Recommand System](https://github.com/Mingtorr/myhouse/blob/master/images/diagram2.png)
 
 ### 3. result
 
 Main Page:
-![main](https://github.com/Mingtorr/myhouse/blob/master/iamges/main.png)
+![main](https://github.com/Mingtorr/myhouse/blob/master/images/main.png)
 
 Main Page marker clustering:
-![main2](https://github.com/Mingtorr/myhouse/blob/master/iamges/main2.png)
+![main2](https://github.com/Mingtorr/myhouse/blob/master/images/main2.png)
 
 Select Point Weight Page:
-![Select Point Weight Page](https://github.com/Mingtorr/myhouse/blob/master/iamges/point.png)
+![Select Point Weight Page](https://github.com/Mingtorr/myhouse/blob/master/images/point.png)
 
 result Page:
-![result Page](https://github.com/Mingtorr/myhouse/blob/master/iamges/result.png)
+![result Page](https://github.com/Mingtorr/myhouse/blob/master/images/result.png)
 
 
 
