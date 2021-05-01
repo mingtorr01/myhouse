@@ -6,7 +6,7 @@ function News(props){
     return(
         <div className="news_main_paper">
             <div className="news_main_paper_title">
-                <p>경상남도 창원시 의창구 뉴스</p>
+                <p>실시간 부동산 뉴스</p>
             </div>
             <div className="news_main_paper_body">
                 <ul>

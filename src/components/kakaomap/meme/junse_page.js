@@ -414,7 +414,7 @@ class Junse_page extends React.Component{
             <div className="meme_page_main">
                 <div className="junse_page_title">
                     <div className="meme_page_title_string">
-                        {this.state.apart_name}
+                        {this.state.apart_name}{this.props.naming}
                     </div>
                     <div className="meme_page_title_string2">
                         {this.state.apart_address}

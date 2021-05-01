@@ -505,15 +505,6 @@ class Result extends React.Component {
             <HighChart gipho_data={this.state.chart_in_data} avg_gipho={this.state.avg_gipho} />
             <div className="set_gipho_name">*{this.state.set_gipho}</div>
           </div>
-          <div className="money_result">
-            <div className="result_all_gipho_title3">3. {"창원시 대방동"} 평균가</div>
-            <div className="result_gipho_title">
-              {moneytype.map((v, i, a) => {
-                return <button id="result_button">{v}</button>;
-              })}
-            </div>
-            <HighChart2 />
-          </div>
         </div>
       );
     } else {
