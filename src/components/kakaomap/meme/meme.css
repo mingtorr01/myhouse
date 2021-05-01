@@ -94,7 +94,7 @@
     height: 30px;
     margin-top: 10px;
     display: flex;
-    margin-bottom: 120px;
+    margin-bottom: 180px;
     flex-direction: column;
 }
 .meme_chart_title p{
@@ -210,7 +210,7 @@
   width: 90px;
   height: 30px;
   position: absolute;
-  top: 50px;
+  top: 70px;
   right: 15px;
 }
 .time_select_div select{
@@ -239,7 +239,7 @@ select::-ms-expand {
   width: 190px;
   height: 50px;
   position: absolute;
-  top: 70px;
+  top: 80px;
   left: 20px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
@@ -269,4 +269,23 @@ select::-ms-expand {
   display: flex;
   align-items: center;
   color: #1f2a81;
+}
+.kakao_road_view{
+  display: flex;
+  height: 20px;
+  background-color: #fff;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.kakao_road_view a{
+  text-decoration: none;
+  color: #1f2a81;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.kakao_road_view img{
+  margin-left: 20px;
 }

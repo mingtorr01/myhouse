@@ -2,6 +2,12 @@ const e = require("cors");
 const express = require("express");
 const router = express.Router();
 const es2 = require("./esclient");
+
+router.post("/school",(req,res)=>{
+  console.log(req.body);
+})
+
+
 router.post("/clickevent", (req, res) => {
   const tp = req.body.types;
   let type = "";

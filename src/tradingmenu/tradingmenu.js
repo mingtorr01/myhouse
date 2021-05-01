@@ -63,7 +63,7 @@ class Meme_menu extends React.Component {
           <br />
           다세대
         </a>
-        <a href="#" onClick={() => this.props.type_change("office_trades")}>
+        <a href="#" onClick={() => {this.props.type_change("office_trades");this.props.apart_page_change(false)}}>
           오피스텔
         </a>
       </div>
