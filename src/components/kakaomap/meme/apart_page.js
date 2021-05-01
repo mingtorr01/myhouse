@@ -174,6 +174,10 @@ class Apart_page extends React.Component {
         () => {
           //
           console.log(this.state.road_view);
+          this.props.cancle_line_school();
+          this.setState({
+            school:[]
+          })
           fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${this.state.data[0].name}&y=${this.state.data[0].location.lat}&x=${this.state.data[0].location.lon}&radius=20000`, {
             method: "post",
             headers: {
@@ -242,6 +246,7 @@ class Apart_page extends React.Component {
                 school:[...this.state.school,json]
             })
           });
+          /////////////////////////////////////////////////
           let index_15 = 0;
           const arr = [];
           const arr2 = [];
@@ -498,7 +503,7 @@ class Apart_page extends React.Component {
         <div className="meme_page_title">
           <div className="meme_page_title_string">{this.props.naming === "오피스텔" ? this.state.apart_name : this.state.apart_name + "아파트"}</div>
           <div className="meme_page_title_string2">{this.state.apart_address}</div>
-          <button id="meme_page_title_button" onClick={() => this.props.apart_page_change(false)}></button>
+          <button id="meme_page_title_button" onClick={() => {this.props.apart_page_change(false); this.props.cancle_line_school()}}></button>
         </div>
         <div className="meme_page_scroll">
           <div className="meme_1">
