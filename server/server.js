@@ -117,7 +117,7 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchDong(data.sw, data.ne, "apart_rents").then(function (result) {
+      deposit_esclient.searchDongApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -144,7 +144,7 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchDistrict(data.sw, data.ne, "apart_rents").then(function (result) {
+      deposit_esclient.searchDistrictApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -170,7 +170,7 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchCity(data.sw, data.ne, "apart_rents").then(function (result) {
+      deposit_esclient.searchCityApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -370,16 +370,6 @@ trade_esclient.searchDistrict = function (sw, ne, type) {
 };
 
 trade_esclient.searchCity = function (sw, ne, type) {
-  var selectedDistrict = [];
-
-  for (var index in districts) {
-    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    //console.log(districts[index]);
-
-    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
-      selectedDistrict.push(districts[index]);
-    }
-  }
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -490,6 +480,7 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
       );
   });
 };
+
 deposit_esclient.searchDong = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
@@ -618,14 +609,6 @@ deposit_esclient.searchDistrict = function (sw, ne, type) {
 };
 
 deposit_esclient.searchCity = function (sw, ne, type) {
-  var selectedDistrict = [];
-
-  for (var index in districts) {
-    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
-      selectedDistrict.push(districts[index]);
-    }
-  }
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -674,7 +657,185 @@ deposit_esclient.searchCity = function (sw, ne, type) {
       );
   });
 };
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+deposit_esclient.searchDongApart = function (sw, ne, type) {
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              filter: {
+                geo_bounding_box: {
+                  location: {
+                    top_left: {
+                      lat: ne.Ma,
+                      lon: sw.La,
+                    },
+                    bottom_right: {
+                      lat: sw.Ma,
+                      lon: ne.La,
+                    },
+                  },
+                },
+              },
+              must_not: {
+                range: {
+                  rental_fee: { lte: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "code",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "deposit",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+
+deposit_esclient.searchDistrictApart = function (sw, ne, type) {
+  var selectedDistrict = [];
+
+  for (var index in districts) {
+    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
+      selectedDistrict.push(districts[index].district);
+    }
+  }
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              filter: {
+                terms: {
+                  dong: selectedDistrict,
+                },
+              },
+              must_not: {
+                range: {
+                  rental_fee: { lte: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "dong",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "deposit",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+
+deposit_esclient.searchCityApart = function (sw, ne, type) {
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              must_not: {
+                range: {
+                  rental_fee: { lte: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "code",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "deposit",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 rent_esclient.searchTarget = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
@@ -868,15 +1029,6 @@ rent_esclient.searchDistrict = function (sw, ne, type) {
 };
 
 rent_esclient.searchCity = function (sw, ne, type) {
-  var selectedDistrict = [];
-
-  console.log(type);
-  for (var index in districts) {
-    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
-    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
-      selectedDistrict.push(districts[index]);
-    }
-  }
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
