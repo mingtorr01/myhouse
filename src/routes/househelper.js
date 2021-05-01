@@ -14,11 +14,18 @@ const Househelper = (props) => {
   useEffect(() => {
     getGeo();
     setEvent();
+    const box = {};
+    fetch("http://localhost:5000/getNews", {
+      method: "get",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
   }, [map]);
 
   return (
     <div className="map">
-      <MapContainer mapdata={props.mapdata} polygon_stop={props.polygon_stop}/>
+      <MapContainer mapdata={props.mapdata} polygon_stop={props.polygon_stop} />
     </div>
   );
 };

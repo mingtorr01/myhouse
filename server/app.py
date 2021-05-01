@@ -8,6 +8,7 @@ import operator
 from bson import json_util
 from bs4 import BeautifulSoup
 import requests
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -88,11 +89,30 @@ def poster():
 
 @app.route('/getNews', methods=['GET'])
 def postery():
-    raw = requests.get("http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm",
+    req = requests.get("http://www.karnews.or.kr/news/articleList.html?sc_section_code=S1N1&view_type=sm",
                        headers={'User-Agent': 'Mozilla/5.0'})
-    if raw.status_code == 200:
-        html = BeautifulSoup(raw.text, "html.parser")
-        title = html.select_one()
+    if req.status_code == 200:
+        date = str(datetime.now())
+        date = date[:date.rfind(':')].replace(' ', '_')
+        date = date.replace(':', '시') + '분'
+        soup = BeautifulSoup(req.text, "html.parser")
+
+        articles = soup.select("ul.type2 > li")
+        print(articles[0])
+        l = []
+        for item in articles:
+            d = {}
+            title = item.select("li > div > h4 > a")
+            d["tile"] = title[0].text
+            link = item.select("li > div > a")
+            d["link"] = "http://www.karnews.or.kr" + link[0]['href']
+            text = item.select("li > div > p > a")
+            try:
+                d["text"] = str(text[0]).split(" = ")[1]
+            except:
+                d["text"] = text[0].text.lstrip()
+            l.append(d)
+        return jsonify(l)
 
 
 if __name__ == '__main__':

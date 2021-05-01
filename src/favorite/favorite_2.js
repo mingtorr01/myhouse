@@ -74,15 +74,16 @@ const Favorite_2 = (props) => {
     return (
       <div className="favorite_2_main">
         <div className="favorite_2_main_title">
-          <button id="back_step" onClick={()=>props.stepchange(1)}></button>
+          <button id="back_step" onClick={() => props.stepchange(1)}></button>
           <p>2. 세부 지역을 선택하세요.</p>
-          <button id="cancle_step" onClick={()=>props.favorite_div_bool_change(false)}></button>
+          <button id="cancle_step" onClick={() => props.favorite_div_bool_change(false)}></button>
         </div>
         <div className="favorite_main_div2">{rendering}</div>
       </div>
     );
   } else {
-    return /*<Favorite_5 props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change}/>*/ <Favorite_3  props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
+    return <Favorite_5 props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
+    /* <Favorite_3  props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange2={stepchange2} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change} step={step} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />*/
   }
 };
 
