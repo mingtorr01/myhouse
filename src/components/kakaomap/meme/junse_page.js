@@ -5,6 +5,7 @@ import Bottom_arrow from './red-bottom-arrow.png';
 import Top_arrow from './red-up-arrow.png';
 import Predict_tax from './predict_tax/predict_tax';
 import Budongsan from './budongsan/budongsan';
+import Kakao from './kakao.png';
 class Junse_page extends React.Component{
     constructor(props){
         super(props);
@@ -19,7 +20,8 @@ class Junse_page extends React.Component{
             select_time:'0',
             select_sizing:0,
             avg_meme:0,
-            last_cost:0
+            last_cost:0,
+            road_view:''
         }
     }
 ///////////////////////////////////////////////////////////////////////
@@ -163,6 +165,18 @@ class Junse_page extends React.Component{
         this.setState({
             data:this.props.apart_data
         },() => {//
+            console.log(this.state.road_view);
+            fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${this.state.data[0].name}&y=${this.state.data[0].location.lat}&x=${this.state.data[0].location.lon}&radius=20000`, {
+                method: "post",
+                headers: {
+                    'Authorization': `KakaoAK ${process.env.REACT_APP_API_KEY}`,
+                }
+              }).then(res => res.json()).then((json)=>{
+                  console.log(json.documents[0].id);
+                  this.setState({
+                    road_view:`https://map.kakao.com/link/roadview/${json.documents[0].id}`
+                  })
+              })
        let index_15 = 0;
         const arr = [];
         const arr2 = [];
@@ -414,7 +428,7 @@ class Junse_page extends React.Component{
             <div className="meme_page_main">
                 <div className="junse_page_title">
                     <div className="meme_page_title_string">
-                        {this.state.apart_name}{this.props.naming}
+                    {this.props.naming==='오피스텔'?this.state.apart_name:this.state.apart_name+'아파트'}
                     </div>
                     <div className="meme_page_title_string2">
                         {this.state.apart_address}
@@ -425,6 +439,10 @@ class Junse_page extends React.Component{
                 <div className="meme_page_scroll">
                     <div className="meme_1">
                         <div className="meme_chart_main">
+                        <div className="kakao_road_view">
+                                        <img src={Kakao} height="18px" width="18px"/>
+                                        <a id="junse_a" href={this.state.road_view} target='_blank'>주변 카카오 로드뷰 보기</a>
+                                    </div>
                             <div className="meme_chart_title">
                                 <p>전용평수 당 실매매가 현황</p>
                                 <div className="avg_meme_div">
