@@ -143,8 +143,66 @@ function rent(location) {
   });
 }
 
+function schools(location) {
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: "schools",
+        size: 3,
+        body: {
+          query: {
+            bool: {
+              must: [
+                {
+                  match: {
+                    stage: location.stage,
+                  },
+                },
+              ],
+              filter: [
+                {
+                  geo_distance: {
+                    distance: "10km",
+                    location: {
+                      lat: location.lat,
+                      lon: location.lon,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+          sort: [
+            {
+              _geo_distance: {
+                location: {
+                  lat: location.lat,
+                  lon: location.lon,
+                },
+                order: "asc",
+                unit: "km",
+                mode: "min",
+                distance_type: "arc",
+                ignore_unmapped: true,
+              },
+            },
+          ],
+        },
+      })
+      .then(
+        function (resp) {
+          resolve(resp);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+}
+
 module.exports = {
   code1,
   rent,
   deposit,
+  schools,
 };

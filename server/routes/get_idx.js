@@ -3,10 +3,14 @@ const express = require("express");
 const router = express.Router();
 const es2 = require("./esclient");
 
-router.post("/school",(req,res)=>{
-  console.log(req.body);
-})
-
+router.post("/school", (req, res) => {
+  //{ lat: 35.2317868832619, lon: 128.675138903524 }
+  es2.schools(req.body).then(function (result) {
+    const data = [];
+    console.log(result.hits.hits);
+    res.send(data);
+  });
+});
 
 router.post("/clickevent", (req, res) => {
   const tp = req.body.types;
