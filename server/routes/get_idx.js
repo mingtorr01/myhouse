@@ -8,7 +8,7 @@ router.post("/school", (req, res) => {
   es2.schools(req.body).then(function (result) {
     const data = [];
     console.log(result.hits.hits);
-    res.send(data);
+    res.send(result.hits.hits);
   });
 });
 

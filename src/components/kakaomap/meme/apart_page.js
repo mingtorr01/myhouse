@@ -22,6 +22,8 @@ class Apart_page extends React.Component {
       avg_meme: 0,
       last_cost: 0,
       road_view: "",
+      school:[],
+      marker_location:{}
     };
   }
   ///////////////////////////////////////////////////////////////////////
@@ -189,15 +191,57 @@ class Apart_page extends React.Component {
           const box = {
             lat: this.state.data[0].location.lat,
             lon: this.state.data[0].location.lon,
+            stage: "초등학교",
+          };
+          const box2 = {
+            lat: this.state.data[0].location.lat,
+            lon: this.state.data[0].location.lon,
             stage: "중학교",
           };
+          const box3 = {
+            lat: this.state.data[0].location.lat,
+            lon: this.state.data[0].location.lon,
+            stage: "고등학교",
+          };
+          this.setState({
+            marker_location:{lat: this.state.data[0].location.lat,lon: this.state.data[0].location.lon,}
+          })
           fetch("api/school", {
             method: "post",
             headers: {
               "content-type": "application/json",
             },
             body: JSON.stringify(box),
-          }).then({});
+          }).then(res=>res.json()).then((json)=>{
+              console.log(json);
+              this.setState({
+                  school:[...this.state.school,json]
+              })
+          });
+          fetch("api/school", {
+            method: "post",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(box2),
+          }).then(res=>res.json()).then((json)=>{
+              console.log(json);
+              this.setState({
+                school:[...this.state.school,json]
+            })
+          });
+          fetch("api/school", {
+            method: "post",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(box3),
+          }).then(res=>res.json()).then((json)=>{
+              console.log(json);
+              this.setState({
+                school:[...this.state.school,json]
+            })
+          });
           let index_15 = 0;
           const arr = [];
           const arr2 = [];
@@ -496,7 +540,7 @@ class Apart_page extends React.Component {
               </div>
             </div>
           </div>
-          <Predict_tax />
+          <Predict_tax school={this.state.school} school_data_change={this.props.school_data_change} marker_location={this.state.marker_location}/>
           <Budongsan />
         </div>
       </div>

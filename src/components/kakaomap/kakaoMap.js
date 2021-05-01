@@ -68,6 +68,9 @@ const MapContainer = (props) => {
   const [markers_save, markers_change] = useState([]);
   const [position, position_change] = useState(new kakao.maps.LatLng(35.2279868, 128.6796256));
   const [polygon_use, polygon_use_change] = useState(0);
+  const [school_data,school_data_change] = useState(null);
+  const [school_overlay,school_overlay_change] = useState(null);
+  const [school_line,school_line_change] = useState(null);
   var map = 0;
   useEffect(() => {
     if (props.mapdata !== null) {
@@ -83,6 +86,44 @@ const MapContainer = (props) => {
       polygons.setMap(null);
     }
   }, [props.polygon_stop]);
+
+  useEffect(() => {
+    if(school_data!==null){
+      if(school_overlay!== null ||school_line!==null){
+        console.log("?????");
+        school_overlay.setMap(null);
+        school_line.setMap(null);
+      }
+      console.log(school_data);
+      var moveLatLon = new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon);
+      
+      var content = '<a  class="level_box">' +'<div id="school_name2">' + '<p id="box_avg_p">' + school_data.name + "</p>" + '<p id="box_avg_p2">' + '604m' + "</p>"+"</div>" + "</a>";;
+      var position = new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon);  
+      var customOverlay = new kakao.maps.CustomOverlay({
+        position: position,
+        content: content   
+      });
+      school_overlay_change(customOverlay);
+      customOverlay.setMap(maping);
+      var linePath = [
+        new kakao.maps.LatLng(school_data.marker_location.lat, school_data.marker_location.lon),
+        new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon),
+      ];
+      var polyline = new kakao.maps.Polyline({
+        path: linePath, // 선을 구성하는 좌표배열 입니다
+        strokeWeight: 2, // 선의 두께 입니다
+        strokeColor: '#565656', // 선의 색깔입니다
+        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        strokeStyle: 'longdash' // 선의 스타일입니다
+      });
+      polyline.setMap(maping);
+      maping.setCenter(moveLatLon);
+      school_overlay_change(customOverlay);
+      school_line_change(polyline);
+
+    }
+  }, [school_data]);
+
   useEffect(() => {
     if (type === "apart_trades") {
       type_change(type);
@@ -365,7 +406,7 @@ const MapContainer = (props) => {
       }}
     >
       <Tradingmenu type_change={type_change} apart_page_change={apart_page_change} change_poly={change_poly} />
-      {apart_page&&type==='apart_trades' ? <Apart_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
+      {apart_page&&type==='apart_trades' ? <Apart_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change}/> : <div></div>}
       {apart_page&&type==='office_trades' ? <Apart_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
       {apart_page&&type==='office_deposits' ? <Junse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
       {apart_page&&type==='apart_deposits' ? <Junse_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
