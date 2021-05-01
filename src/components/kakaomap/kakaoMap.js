@@ -318,7 +318,7 @@ const MapContainer = (props) => {
 
     const string = "asdasd";
     if (zoom <= 3) {
-      if(type==='apart_trades'){
+      if(type==='apart_trades'||type==='office_trades'){
         const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\">" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
         return level;
       }else if(type==='office_deposits'||type==='apart_deposits'){
@@ -329,7 +329,7 @@ const MapContainer = (props) => {
         return level;
       }
     } else if (zoom <= 6 && zoom >= 4) {
-      if(type==='apart_trades'){
+      if(type==='apart_trades'||type==='office_trades'){
         const level2 = '<div class="range_level_box" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box1">' + positions[key].key + "</div>" + '<div id="range_level_box2">' + avg + "</div>" + "</div>";
         return level2;
       }else if(type==='office_deposits'||type==='apart_deposits'){
@@ -340,7 +340,7 @@ const MapContainer = (props) => {
         return level2;
       }
     } else if (zoom < 9 && zoom >= 7) {
-      if(type==='apart_trades'){
+      if(type==='apart_trades'||type==='office_trades'){
         const level2 = '<div class="range_level_box2"  onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
         return level2;
       }else if(type==='office_deposits'||type==='apart_deposits'){
@@ -351,7 +351,7 @@ const MapContainer = (props) => {
         return level2;
       }
     } else if (zoom >= 9) {
-      if(type==='apart_trades'){
+      if(type==='apart_trades'||type==='office_trades'){
         const level2 = '<div class="range_level_box2" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
         return level2;
       }else if(type==='office_deposits'||type==='apart_deposits'){
@@ -373,7 +373,8 @@ const MapContainer = (props) => {
       }}
     >
       <Tradingmenu type_change={type_change} apart_page_change={apart_page_change} change_poly={change_poly} />
-      {apart_page&&type==='apart_trades' ? <Apart_page apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
+      {apart_page&&type==='apart_trades' ? <Apart_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
+      {apart_page&&type==='office_trades' ? <Apart_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change} /> : <div></div>}
       {apart_page&&type==='office_deposits' ? <Junse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
       {apart_page&&type==='apart_deposits' ? <Junse_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
       {apart_page&&(type==='office_rents')? <Walse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change}/> : <div></div>}
