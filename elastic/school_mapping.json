@@ -1,0 +1,15 @@
+
+{
+  "school" : {
+    "properties" : {
+      "name" : { "type" : "keyword" }, 
+      "stage" : { "type" : "keyword" },
+      "year" : { "type" : "keyword" },
+      "type" : { "type" : "keyword" },
+      "state" : { "type" : "keyword" },
+      "run" : { "type" : "keyword" },
+      "loc" : { "type" : "keyword" },
+      "location" : { "type" : "geo_point" }
+    }
+  }
+}

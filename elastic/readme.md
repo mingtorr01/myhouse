@@ -90,3 +90,22 @@ https://curl.trillworks.com/#node-request
 
 - 인덱스 생성 후 documents 넣기  
    `curl -XPOST http://localhost:9200/classess/class/1/ -d @one.json`
+
+
+# 학교데이터 
+1. 인덱스 생성하기 
+`curl -XPUT http://localhost:9200/schools?pretty`
+
+2. 스키마 생성하기
+`curl -XPUT "http://localhost:9200/schools/school/_mapping?include_type_name=true&pretty" -d @school_mapping.json -H "Content-Type: application/json"`
+
+
+
+3. 스키마 매핑하기
+   `curl -XPUT "http://localhost:9200/schools/_mapping" -d @school_mapping.json -H "Content-Type: application/json"`
+
+4. 대량의 데이터 bulk로 넣기  
+   `curl -XPOST http://localhost:9200/_bulk?pretty --data-binary @school2.csv -H "Content-Type: application/json" `
+
+- 인덱스 생성 후 documents 넣기  
+   `curl -XPOST http://localhost:9200/classess/class/1/ -d @one.json`
