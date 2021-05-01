@@ -28,7 +28,6 @@ function App() {
   const [stop2, stop_change2] = useState(false);
   const [polygon_stop, polygon_stop_change] = useState(false);
   const [mapdata, mapdata_change] = useState(null);
-
   const mounted = useRef(false);
 
   const mapdata_function = (data) => {

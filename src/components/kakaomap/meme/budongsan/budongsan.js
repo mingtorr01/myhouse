@@ -6,7 +6,7 @@ export default class Budongsan extends React.Component{
         return(
             <div className="budongsan_main">
                 <div className="budongsan_main_title">
-                    <p>근처 부동산 추천</p>
+                    <p>근처 부동산</p>
                 </div>
                 <a href="#" className="budongsan_main_div">
                     <div className="budongsan_main_div_img">

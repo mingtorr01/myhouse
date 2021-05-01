@@ -16,7 +16,6 @@ export default class Tradingmenu extends React.Component {
     });
     console.log(this.state.memeclick);
   };
-
   meme_click2 = () => {
     this.setState({
       junseclick: !this.state.junseclick,
@@ -29,7 +28,6 @@ export default class Tradingmenu extends React.Component {
     });
     console.log(this.state.walseclick);
   };
-
   render() {
     return (
       <div className="Tradingmenu_main">
@@ -65,7 +63,7 @@ class Meme_menu extends React.Component {
           <br />
           다세대
         </a>
-        <a href="#" onClick={() => this.props.type_change("apart_trades")}>
+        <a href="#" onClick={() => this.props.type_change("office_trades")}>
           오피스텔
         </a>
       </div>
@@ -76,7 +74,7 @@ class Junse_menu extends React.Component {
   render() {
     return (
       <div className="junse_menu">
-        <a href="#" onClick={() => {this.props.type_change("office_deposits"); this.props.apart_page_change(false)}}>
+        <a href="#" onClick={() => {this.props.type_change("apart_deposits"); this.props.apart_page_change(false)}}>
           아파트
         </a>
         <a href="#" onClick={() => {this.props.type_change("office_deposits"); this.props.apart_page_change(false)}}>
