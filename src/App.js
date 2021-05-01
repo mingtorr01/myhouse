@@ -29,6 +29,21 @@ function App() {
   const [polygon_stop, polygon_stop_change] = useState(false);
   const [mapdata, mapdata_change] = useState(null);
   const mounted = useRef(false);
+  const [newsdata,newsdatachange] = useState([]);
+
+
+  useEffect(() => {
+      fetch("http://localhost:5000/getNews", {
+          method: "get",
+          headers: {
+              "content-type": "application/json",
+          },
+      }).then(res=>res.json()).then((json)=>{
+          console.log(json[0].tile);
+          newsdatachange(json)
+          console.log(newsdata);
+      })
+  },[])
 
   const mapdata_function = (data) => {
     mapdata_change(data);
@@ -38,7 +53,6 @@ function App() {
     favorite_div_bool_change(false);
     result_bool_change(false);
   };
-
   const cancle_select_gipho_data_change = () => {
     select_gipho_data_change([]);
   };
@@ -185,7 +199,7 @@ function App() {
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
         {favorite_div_bool ? <div></div> : <Findhouse_button2 findhouse_button={findhouse_button} polygon_stop_change={polygon_stop_change} />}
-        {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News />}
+        {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News newsdata={newsdata}/>}
         <Dropmenu listname_change_props={listname_change_props} />
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper mapdata={mapdata} polygon_stop={polygon_stop} />

@@ -2,7 +2,7 @@
     display: block;
     border: 1px solid red;
     width: 354px;
-    height: 434px;
+    height: auto;
     position: absolute;
     top: 125px;
     left: 11px;
@@ -30,7 +30,7 @@
 }
 .news_main_paper_body{
     width: 100%;
-    height: 373px;
+    height: auto;
     background-color: white;
 }
 .news_main_paper_body ul{
@@ -43,7 +43,7 @@
     border-bottom: 1px solid #c0c0c0;
 }
 .nomal_news{
-    height: 60px;
+    height: auto;
     background-color: white;
     border-bottom: 1px solid #c0c0c0;
     margin-top: 5px;
@@ -52,6 +52,7 @@
 .news_title{
     background-color: white;
     align-items: center;
+    margin-bottom: 13px;
 }
 .news_title a{
     display: inline-block;
@@ -61,6 +62,8 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     font-size: 15px;
+    text-decoration: none;
+    color: black;
 }
 
 .news_title_where{

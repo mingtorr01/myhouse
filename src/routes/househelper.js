@@ -15,12 +15,7 @@ const Househelper = (props) => {
     getGeo();
     setEvent();
     const box = {};
-    fetch("http://localhost:5000/getNews", {
-      method: "get",
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    
   }, [map]);
 
   return (

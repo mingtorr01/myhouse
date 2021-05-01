@@ -178,6 +178,20 @@ class Apart_page extends React.Component{
                     road_view:`https://map.kakao.com/link/roadview/${json.documents[0].id}`
                   })
               })
+              ///////////////////////////////////////
+              const box = {
+                  lat:this.state.data[0].location.lat,
+                  lon:this.state.data[0].location.lat
+              }
+              fetch("api/school", {
+                    method: "post",
+                    headers: {
+                    "content-type": "application/json",
+                    },
+                    body: JSON.stringify(box),
+               }).then({
+                   
+               })
        let index_15 = 0;
         const arr = [];
         const arr2 = [];
