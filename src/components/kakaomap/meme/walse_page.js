@@ -21,7 +21,9 @@ class Walse_page extends React.Component{
             select_sizing:0,
             avg_meme:0,
             last_cost:0,
-            road_view:''
+            road_view:'',
+            school:[],
+            marker_location:{}
         }
     }
 ///////////////////////////////////////////////////////////////////////
@@ -168,6 +170,10 @@ class Walse_page extends React.Component{
         this.setState({
             data:this.props.apart_data
         },() => {//
+            this.props.cancle_line_school();
+            this.setState({
+                school:[]
+              })
             fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${this.state.data[0].name}&y=${this.state.data[0].location.lat}&x=${this.state.data[0].location.lon}&radius=20000`, {
                 method: "post",
                 headers: {
@@ -179,6 +185,60 @@ class Walse_page extends React.Component{
                     road_view:`https://map.kakao.com/link/roadview/${json.documents[0].id}`
                   })
               })
+              const box = {
+                lat: this.state.data[0].location.lat,
+                lon: this.state.data[0].location.lon,
+                stage: "초등학교",
+              };
+              const box2 = {
+                lat: this.state.data[0].location.lat,
+                lon: this.state.data[0].location.lon,
+                stage: "중학교",
+              };
+              const box3 = {
+                lat: this.state.data[0].location.lat,
+                lon: this.state.data[0].location.lon,
+                stage: "고등학교",
+              };
+              this.setState({
+                marker_location:{lat: this.state.data[0].location.lat,lon: this.state.data[0].location.lon,}
+              })
+              fetch("api/school", {
+                method: "post",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(box),
+              }).then(res=>res.json()).then((json)=>{
+                  console.log(json);
+                  this.setState({
+                      school:[...this.state.school,json]
+                  })
+              });
+              fetch("api/school", {
+                method: "post",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(box2),
+              }).then(res=>res.json()).then((json)=>{
+                  console.log(json);
+                  this.setState({
+                    school:[...this.state.school,json]
+                })
+              });
+              fetch("api/school", {
+                method: "post",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(box3),
+              }).then(res=>res.json()).then((json)=>{
+                  console.log(json);
+                  this.setState({
+                    school:[...this.state.school,json]
+                })
+              });
        let index_15 = 0;
         const arr = [];
         const arr2 = [];
@@ -496,7 +556,7 @@ class Walse_page extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <Predict_tax/>
+                    <Predict_tax school={this.state.school} school_data_change={this.props.school_data_change} marker_location={this.state.marker_location}/>
                     <Budongsan/>
                 </div>
             </div>
