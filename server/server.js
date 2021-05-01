@@ -805,7 +805,7 @@ deposit_esclient.searchCityApart = function (sw, ne, type) {
           aggs: {
             name_aggs: {
               terms: {
-                field: "code",
+                field: "sub_city",
                 size: 100,
               },
               aggs: {
