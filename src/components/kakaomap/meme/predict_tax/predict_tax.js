@@ -56,11 +56,12 @@ class Predict_tax extends React.Component{
             })
         }
     }
-    school_onclick=(school_name,shool_location)=>{
+    school_onclick=(school_name,shool_location,distance)=>{
         const data = {
             name:school_name,
             location:shool_location,
-            marker_location:this.props.marker_location
+            marker_location:this.props.marker_location,
+            distance:distance
         }
         console.log(data);
         this.props.school_data_change(data)
@@ -84,7 +85,7 @@ class Predict_tax extends React.Component{
                 <div className="school_div_main">
                 {this.state.data[this.state.index]===undefined?<div></div>:this.state.data[this.state.index].map((v,i,a)=>{
                         return(
-                            <a href="#" onClick={()=>this.school_onclick(v._source.name,v._source.location)} className="school_div_main_row">
+                            <a href="#" onClick={()=>this.school_onclick(v._source.name,v._source.location,v.sort[0]*1000>1000?Math.floor(v.sort[0]*1000)/1000+'km':Math.floor(v.sort[0]*1000)+'m')} className="school_div_main_row">
                                 <div className="school_div_main_row_1">
                                     <div className="school_div_main_row_1_1">
                                         {v._source.type}
