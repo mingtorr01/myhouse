@@ -171,6 +171,30 @@ div.avg_value {
   border-radius: 24px;
 
 }
+#school_name{
+  width: auto;
+  font-size: 11px;
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-right: 5px;
+  background-color: #9b9b9be8;
+  margin-bottom: 3px;
+  border-radius: 24px;
+}
+#school_name2{
+  width: auto;
+  font-size: 13px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-right: 5px;
+  background-color: #96853ce8;
+  margin-bottom: 5px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 #box_avg2{
   width: auto;
   font-size: 13px;
@@ -200,10 +224,25 @@ div.avg_value {
   margin-bottom: 5px;
   color: white;
 }
+#box_avg_p2{
+  padding: 0px;
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  color: white;
+}
 #box_img{
   width: 35px;
   height: 35px;
   background-image: url("./building.png");
+  background-size: cover;
+}
+#box_img2{
+  width: 35px;
+  height: 35px;
+  background-image: url("./school.png");
   background-size: cover;
 }
 .range_level_box{
@@ -311,4 +350,9 @@ div.avg_value {
   font-weight: bolder;
   justify-content: center;
   align-items: center;
+}
+.school_div{
+  background-color: green;
+  height: 40px;
+  font-size: 14px;
 }
