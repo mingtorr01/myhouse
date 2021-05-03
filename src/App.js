@@ -200,7 +200,7 @@ function App() {
         <Leftmenu_1 props_searchbar_change={props_searchbar_change} result_data_change={result_data_change} />
         {favorite_div_bool ? <div></div> : <Findhouse_button2 findhouse_button={findhouse_button} polygon_stop_change={polygon_stop_change} />}
         {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News newsdata={newsdata}/>}
-        <Dropmenu listname_change_props={listname_change_props} />
+        
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}
         <Househelper mapdata={mapdata} polygon_stop={polygon_stop} />
         {result_bool ? <Result polygon_stop_change={polygon_stop_change} mapdata={mapdata} mapdata_function={mapdata_function} mapdata_change={mapdata_change} cancle_select_gipho_data_change={cancle_select_gipho_data_change} result_cancle={result_cancle} region={region} select_gipho_data={select_gipho_data} data={data_set} /> : <div></div>}
@@ -209,5 +209,5 @@ function App() {
     </Provider>
   );
 }
-
+//<Dropmenu listname_change_props={listname_change_props} />
 export default App;

@@ -58,11 +58,6 @@ class Meme_menu extends React.Component {
         <a href="#" onClick={() => {this.props.type_change("apart_trades");this.props.apart_page_change(false)}}>
           아파트
         </a>
-        <a href="#" onClick={() => this.props.type_change("apart_trades")}>
-          &nbsp;&nbsp;연립
-          <br />
-          다세대
-        </a>
         <a href="#" onClick={() => {this.props.type_change("office_trades");this.props.apart_page_change(false)}}>
           오피스텔
         </a>
@@ -78,11 +73,6 @@ class Junse_menu extends React.Component {
           아파트
         </a>
         <a href="#" onClick={() => {this.props.type_change("office_deposits"); this.props.apart_page_change(false)}}>
-          &nbsp;&nbsp;연립
-          <br />
-          다세대
-        </a>
-        <a href="#" onClick={() => {this.props.type_change("office_deposits"); this.props.apart_page_change(false)}}>
           오피스텔
         </a>
       </div>
@@ -95,11 +85,6 @@ class Walse_menu extends React.Component {
       <div className="walse_menu">
         <a href="#" onClick={() => {this.props.type_change("apart_rents"); this.props.apart_page_change(false)}}>
           아파트
-        </a>
-        <a href="#" onClick={() => {this.props.type_change("office_rents"); this.props.apart_page_change(false)}}>
-          &nbsp;&nbsp;연립
-          <br />
-          다세대
         </a>
         <a href="#" onClick={() => {this.props.type_change("office_rents");this.props.apart_page_change(false);}}>
           오피스텔

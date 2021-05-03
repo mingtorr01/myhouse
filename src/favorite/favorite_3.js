@@ -7,13 +7,13 @@ class Favorite_3 extends React.Component {
     this.state = {
       value: [],
       click: 0,
-      setopen1: true,
-      setopen2: true,
-      setopen3: true,
-      setopen4: true,
-      setopen5: true,
-      setopen6: true,
-      setopen7: true,
+      setopen1: false,
+      setopen2: false,
+      setopen3: false,
+      setopen4: false,
+      setopen5: false,
+      setopen6: false,
+      setopen7: false,
       dropindex: null,
       click1: 0,
     };
@@ -152,7 +152,7 @@ class Favorite_3 extends React.Component {
           <div className="Favorite_3_main_div_scroll">
             <div className="favorite_item_div">
               <button id="favorite_item_div_button" onClick={() => this.openchange(1)}>
-                이런 환경에서 살고 싶다
+                1. 환경지표
               </button>
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen1 === true ? "none" : "block"}` }}>
                 <button
@@ -190,13 +190,6 @@ class Favorite_3 extends React.Component {
                 3. 복지 지표
               </button>
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen3 === true ? "none" : "block"}` }}>
-                <button
-                  onClick={() => {
-                    this.select_click({ bigname: "복지", name: "병원+약국 밀집도" });
-                  }}
-                >
-                  병원+약국 밀집도
-                </button>
                 <button
                   onClick={() => {
                     this.select_click({ bigname: "복지", name: "유치원및보육시설" });

@@ -298,7 +298,6 @@ class Result extends React.Component {
       if (v.bigname === name) {
         console.log(v);
         console.log(i);
-
         this.setState(
           {
             categori_in: v.arr,

@@ -24,7 +24,7 @@ function Leftmenu_1(props) {
       {realtime_bool ? <Realtime_visitor realtime_onclick_false={realtime_onclick_false} /> : <div></div>}
       <div className="keyword_div">
         <a href="#"></a>
-        <input placeholder="  지역명또는 도로명주소로 검색" type="text" name="message" value={data} onChange={handleChange} onKeyPress={handleKeyPress} />
+        <input placeholder="검색은 아직 미구현단계입니다!" type="text" name="message" value={data} onChange={handleChange} onKeyPress={handleKeyPress} />
         <button onClick={props.props_searchbar_change}></button>
       </div>
       <div className="realtime_visitor">
@@ -33,28 +33,28 @@ function Leftmenu_1(props) {
             <div className="realtime_visitor_div">
               <div className="realtime_visitor_div_num">1</div>
               <div className="realtime_visitor_div_name">경상남도 창원시 의창구 사림동</div>
-              <div className="realtime_visitor_div_visitornum">512명</div>
+              
             </div>
           </li>
           <li>
             <div className="realtime_visitor_div">
               <div className="realtime_visitor_div_num">2</div>
               <div className="realtime_visitor_div_name">경상남도 창원시 성산구 대방동</div>
-              <div className="realtime_visitor_div_visitornum">312명</div>
+              
             </div>
           </li>
           <li>
             <div className="realtime_visitor_div">
               <div className="realtime_visitor_div_num">3</div>
               <div className="realtime_visitor_div_name">경상남도 창원시 성산구 성주동</div>
-              <div className="realtime_visitor_div_visitornum">162명</div>
+              
             </div>
           </li>
           <li>
             <div className="realtime_visitor_div">
               <div className="realtime_visitor_div_num">4</div>
               <div className="realtime_visitor_div_name">경상남도 창원시 의창구 봉림동</div>
-              <div className="realtime_visitor_div_visitornum">52명</div>
+              
             </div>
           </li>
         </ul>
@@ -80,7 +80,7 @@ function Realtime_visitor(props) {
               <div className="show_realtime_visitor_row_1">
                 <div className="show_realtime_visitor_column_1">1</div>
                 <div className="show_realtime_visitor_column_2">경상남도 창원시 의창구 사림동</div>
-                <div className="show_realtime_visitor_column_3">512명</div>
+                
               </div>
               <div className="show_realtime_visitor_row_2"></div>
             </div>
@@ -90,7 +90,7 @@ function Realtime_visitor(props) {
               <div className="show_realtime_visitor_row_1">
                 <div className="show_realtime_visitor_column_1">2</div>
                 <div className="show_realtime_visitor_column_2">경상남도 창원시 성산구 대방동</div>
-                <div className="show_realtime_visitor_column_3">312명</div>
+                
               </div>
               <div className="show_realtime_visitor_row_2"></div>
             </div>
@@ -100,7 +100,7 @@ function Realtime_visitor(props) {
               <div className="show_realtime_visitor_row_1">
                 <div className="show_realtime_visitor_column_1">3</div>
                 <div className="show_realtime_visitor_column_2">경상남도 창원시 성산구 성주동</div>
-                <div className="show_realtime_visitor_column_3">162명</div>
+               
               </div>
               <div className="show_realtime_visitor_row_2"></div>
             </div>
@@ -110,7 +110,7 @@ function Realtime_visitor(props) {
               <div className="show_realtime_visitor_row_1">
                 <div className="show_realtime_visitor_column_1">4</div>
                 <div className="show_realtime_visitor_column_2">경상남도 창원시 의창구 봉림동</div>
-                <div className="show_realtime_visitor_column_3">52명</div>
+                
               </div>
               <div className="show_realtime_visitor_row_2"></div>
             </div>
