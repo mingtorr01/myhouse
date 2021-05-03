@@ -68,9 +68,9 @@ const MapContainer = (props) => {
   const [markers_save, markers_change] = useState([]);
   const [position, position_change] = useState(new kakao.maps.LatLng(35.2279868, 128.6796256));
   const [polygon_use, polygon_use_change] = useState(0);
-  const [school_data,school_data_change] = useState(null);
-  const [school_overlay,school_overlay_change] = useState(null);
-  const [school_line,school_line_change] = useState(null);
+  const [school_data, school_data_change] = useState(null);
+  const [school_overlay, school_overlay_change] = useState(null);
+  const [school_line, school_line_change] = useState(null);
   var map = 0;
   useEffect(() => {
     if (props.mapdata !== null) {
@@ -88,43 +88,37 @@ const MapContainer = (props) => {
   }, [props.polygon_stop]);
 
   useEffect(() => {
-    if(school_data!==null){
-      if(school_overlay!== null ||school_line!==null){
+    if (school_data !== null) {
+      if (school_overlay !== null || school_line !== null) {
         console.log("?????");
         school_overlay.setMap(null);
         school_line.setMap(null);
       }
       console.log(school_data);
       var moveLatLon = new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon);
-      
-      var content = '<a  class="level_box">' +'<div id="school_name2">' + '<p id="box_avg_p">' + school_data.name + "</p>" + '<p id="box_avg_p2">' + school_data.distance + "</p>"+"</div>" + "</a>";;
-      var position = new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon);  
+
+      var content = '<a  class="level_box">' + '<div id="school_name2">' + '<p id="box_avg_p">' + school_data.name + "</p>" + '<p id="box_avg_p2">' + school_data.distance + "</p>" + "</div>" + "</a>";
+      var position = new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon);
       var customOverlay = new kakao.maps.CustomOverlay({
         position: position,
-        content: content   
+        content: content,
       });
       school_overlay_change(customOverlay);
       customOverlay.setMap(maping);
-      var linePath = [
-        new kakao.maps.LatLng(school_data.marker_location.lat, school_data.marker_location.lon),
-        new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon),
-      ];
+      var linePath = [new kakao.maps.LatLng(school_data.marker_location.lat, school_data.marker_location.lon), new kakao.maps.LatLng(school_data.location.lat, school_data.location.lon)];
       var polyline = new kakao.maps.Polyline({
         path: linePath, // 선을 구성하는 좌표배열 입니다
         strokeWeight: 2, // 선의 두께 입니다
-        strokeColor: '#565656', // 선의 색깔입니다
+        strokeColor: "#565656", // 선의 색깔입니다
         strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        strokeStyle: 'longdash' // 선의 스타일입니다
+        strokeStyle: "longdash", // 선의 스타일입니다
       });
       polyline.setMap(maping);
       maping.setCenter(moveLatLon);
       school_overlay_change(customOverlay);
       school_line_change(polyline);
-
     }
   }, [school_data]);
-
-
 
   useEffect(() => {
     if (type === "apart_trades") {
@@ -202,12 +196,12 @@ const MapContainer = (props) => {
     polygon_use_change(polygon_use + num);
   };
 
-  const cancle_line_school=()=>{
-    if(school_overlay!== null ||school_line!==null){
+  const cancle_line_school = () => {
+    if (school_overlay !== null || school_line !== null) {
       school_overlay.setMap(null);
-    school_line.setMap(null);
+      school_line.setMap(null);
     }
-  }
+  };
   const drawpolygon = (stop) => {
     //불러오는 코드 완성 나머지 띄우는 거 해야함
     console.log(props.mapdata[0]);
@@ -242,7 +236,6 @@ const MapContainer = (props) => {
       });
     } else {
       props.mapdata[0].map((v, i, a) => {
-        console.log(v);
         if (i !== props.mapdata[0].length - 1) {
           const data2 = new kakao.maps.LatLng(v[1], v[0]);
           polygonPath.push(data2);
@@ -359,7 +352,7 @@ const MapContainer = (props) => {
 
     const string = "asdasd";
     if (zoom <= 3) {
-      if(type==='apart_trades'||type==='office_trades'){
+      if (type === "apart_trades" || type === "office_trades") {
         const level = '<a href="#" class="level_box"  onclick="myFunction(\'' + positions[key].key + "," + positions[key].location.hits.hits[0]._source.location.lat + "," + positions[key].location.hits.hits[0]._source.location.lon + "')\">" + '<div id="box_avg">' + '<p id="box_avg_p">' + avg + "</p>" + "</div>" + '<div id="box_img">' + "</div>" + "</a>";
         return level;
       } else if (type === "office_deposits" || type === "apart_deposits") {
@@ -370,7 +363,7 @@ const MapContainer = (props) => {
         return level;
       }
     } else if (zoom <= 6 && zoom >= 4) {
-      if(type==='apart_trades'||type==='office_trades'){
+      if (type === "apart_trades" || type === "office_trades") {
         const level2 = '<div class="range_level_box" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box1">' + positions[key].key + "</div>" + '<div id="range_level_box2">' + avg + "</div>" + "</div>";
         return level2;
       } else if (type === "office_deposits" || type === "apart_deposits") {
@@ -381,7 +374,7 @@ const MapContainer = (props) => {
         return level2;
       }
     } else if (zoom < 9 && zoom >= 7) {
-      if(type==='apart_trades'||type==='office_trades'){
+      if (type === "apart_trades" || type === "office_trades") {
         const level2 = '<div class="range_level_box2"  onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
         return level2;
       } else if (type === "office_deposits" || type === "apart_deposits") {
@@ -392,7 +385,7 @@ const MapContainer = (props) => {
         return level2;
       }
     } else if (zoom >= 9) {
-      if(type==='apart_trades'||type==='office_trades'){
+      if (type === "apart_trades" || type === "office_trades") {
         const level2 = '<div class="range_level_box2" onclick="myFunction2(\'' + zoom + "-" + box.x + "-" + box.y + "')\">" + '<div id="range_level_box3">' + positions[key].key + "</div>" + '<div id="range_level_box4">' + avg + "</div>" + "</div>";
         return level2;
       } else if (type === "office_deposits" || type === "apart_deposits") {
@@ -414,12 +407,12 @@ const MapContainer = (props) => {
       }}
     >
       <Tradingmenu type_change={type_change} apart_page_change={apart_page_change} change_poly={change_poly} />
-      {apart_page&&type==='apart_trades' ? <Apart_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
-      {apart_page&&type==='office_trades' ? <Apart_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
-      {apart_page&&type==='office_deposits' ? <Junse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change}school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
-      {apart_page&&type==='apart_deposits' ? <Junse_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
-      {apart_page&&(type==='office_rents')? <Walse_page naming={'오피스텔'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
-      {apart_page&&(type==='apart_rents')? <Walse_page naming={'아파트'} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school}/> : <div></div>}
+      {apart_page && type === "apart_trades" ? <Apart_page naming={"아파트"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
+      {apart_page && type === "office_trades" ? <Apart_page naming={"오피스텔"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
+      {apart_page && type === "office_deposits" ? <Junse_page naming={"오피스텔"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
+      {apart_page && type === "apart_deposits" ? <Junse_page naming={"아파트"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
+      {apart_page && type === "office_rents" ? <Walse_page naming={"오피스텔"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
+      {apart_page && type === "apart_rents" ? <Walse_page naming={"아파트"} apart_data={apart_data} apart_page_change={apart_page_change} school_data_change={school_data_change} cancle_line_school={cancle_line_school} /> : <div></div>}
     </div>
   );
 };

@@ -9,6 +9,8 @@ from bson import json_util
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime
+from pandas import json_normalize
+from collections import OrderedDict
 
 app = Flask(__name__)
 CORS(app)
@@ -28,6 +30,7 @@ def postTest():
     content = request.json
     print(content)
     poi = []
+    sid = pd.DataFrame()
     loc = content["location"].split('-')
 
     if "전국" in content["location"]:
@@ -41,45 +44,57 @@ def postTest():
         df = pd.DataFrame(result)
 
     temp = 1.0
+    cnt = 0
     rep = temp / len(content["point"])
     for i, points in enumerate(content["point"]):
-        name = points["name"]
-        poi.append(name)
-        if i >= 1:
-            temp = round(temp - rep, 2)
-            print(temp)
+        if points["sido"] == 1:
+            name = points["name"]
+            poi.append(name)
+            if i >= 1:
+                temp = temp - 0.2
             df[name] = df[name].astype(float)*temp
-    print(df)
-    dfd = df.loc[:, poi].astype(float).sum(axis=1)
-    df = pd.concat([df, dfd], axis=1)
-    dfs = df.sort_values(by=[0],  ascending=[False]).head(10)
-    # print(dfs)
+        else:
+            sido = list(mydb[points["name"]].find({"sido": loc[0]}))
+            sid = sid.append(sido)
+            cnt = cnt + 1
+    if cnt == len(content["point"]):
+        df = pd.DataFrame()
+    else:
+        dfd = df.loc[:, poi].astype(float).sum(axis=1)
+        df = pd.concat([df, dfd], axis=1)
+        dfs = df.sort_values(by=[0],  ascending=[False]).head(10)
+        # print(dfs)
 
-#########################################################################
-    locat = list(dfs["tot_oa_cd"])
-    results = mydb["val"].find({"tot_oa_cd": {"$in": locat}})
-    df = pd.DataFrame(results)
-    poi.append("city")
-    poi.append('tot_oa_cd')
-    poi.append("dong")
-    df = df.loc[:, poi]
+    #########################################################################
+        locat = list(dfs["tot_oa_cd"])
+        results = mydb["val"].find({"tot_oa_cd": {"$in": locat}})
+        df = pd.DataFrame(results)
+        poi.append("city")
+        poi.append('tot_oa_cd')
+        poi.append("dong")
+        df = df.loc[:, poi]
 
-    sorterIndex = dict(zip(locat, range(len(locat))))
-    df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
-    df.sort_values("sorter", inplace=True)
-    df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
-    # print(df)
-    jsonfiles = df.to_json(orient='records')
-    return jsonfiles
+        sorterIndex = dict(zip(locat, range(len(locat))))
+        df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
+        df.sort_values("sorter", inplace=True)
+        df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
+
+    res = pd.concat([sid, df])
+    res.reset_index(drop=True, inplace=True)
+    print(res)
+    #jsonfiles = res.to_json(orient='records', encoding="utf-8-sig")
+    #jsonfiles = df.apply(lambda x: [x.dropna()], axis=1).to_json()
+    result = res.to_dict("records")
+    tem = json.dumps(result, default=json_util.default)
+    print(tem)
+    return tem
 
 
 @app.route('/getpolygon', methods=['GET', 'POST'])
 def poster():
     content = request.json
-    print(content)
-    print(content["city"])
-    result = list(mydb["polygon"].find({"properties.EMD_NM": content["city"]}))
-    print(result)
+    code = content["city"][0:7]
+    result = list(mydb["polygon"].find({"properties.ADM_DR_CD": code}))
     poly = result[0]["geometry"]["coordinates"]
     return json.dumps(poly, default=json_util.default)
 

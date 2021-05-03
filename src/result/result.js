@@ -32,7 +32,7 @@ class Result extends React.Component {
     console.log(this.state.gipho_data);
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.region !== prevProps.region || this.props.select_gipho_data != prevProps.select_gipho_data||this.props.data != prevProps.data) {
+    if (this.props.region !== prevProps.region || this.props.select_gipho_data != prevProps.select_gipho_data || this.props.data != prevProps.data) {
       const str1 = this.props.region.split("-");
 
       if (str1[0] === "전국") {
@@ -60,9 +60,9 @@ class Result extends React.Component {
           top: this.props.data,
         },
         () => {
-          //여기서 시작;
-          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-          const box = { city: this.state.top10[0].dong };
+          console.log(this.state.top);
+          const box = { city: this.state.top10[0].tot_oa_cd };
+
           fetch("http://localhost:5000/getpolygon", {
             method: "post",
             headers: {
@@ -76,9 +76,6 @@ class Result extends React.Component {
               //this.props.mapdata_function(json);
               this.props.mapdata_change(json);
             });
-          console.log();
-          console.log(this.state.categori);
-          console.log(this.state.top10);
           this.state.top.map((v, i, a) => {
             for (const key in v) {
               if (key === this.state.categori_in[0]) {
@@ -99,7 +96,6 @@ class Result extends React.Component {
                   };
                   arr.push(data);
                 }
-                console.log(key + ": " + v[key] + v.dong);
               }
             }
           });
@@ -113,47 +109,11 @@ class Result extends React.Component {
             },
             () => {
               console.log(this.state.top10);
-              console.log("시작");
+              console.log(this.state.chart_in_data);
             }
           );
         }
       );
-      /*
-            this.setState({
-                result_data:this.props.select_gipho_data,
-                gipho_data:this.props.data
-            })
-            console.log(this.state.result_data);
-            console.log(this.state.gipho_data);
-            const location_arr = [];
-            this.state.gipho_data.map((v,i,a)=>{
-                var spice_location = v.city.split(' ');
-                if(spice_location[1] === undefined){
-                    const location = spice_location[0]+' '+v.dong;
-                    location_arr.push(location);
-                }else{
-                    const location = spice_location[1]+' '+v.dong;
-                    location_arr.push(location);
-                }
-            })
-            this.setState({
-                top10:location_arr
-            })
-            const chart_data = [];
-            this.data_make(this.state.result_data);
-            this.state.gipho_data.map((v,i,a)=>{
-                if(v.sets[0]===undefined){
-                    const json_data = { name: v.tot_oa_cd, y: 0 ,color:'#4e61f1' };
-                    chart_data.push(json_data);
-                }else{
-                    const json_data = { name: v.tot_oa_cd, y: v.sets[0] ,color:'#4e61f1' };
-                    chart_data.push(json_data);
-                }
-                
-            })
-            this.setState({
-                chart_in_data:chart_data
-            })*/
     }
   }
   data_make = (data) => {
@@ -192,22 +152,22 @@ class Result extends React.Component {
             result_data2:making2[0].arr
          },()=>{console.log(this.state.result_data);})*/
   };
-  dongclick=(index)=>{
-    const box = { city: this.state.top10[index].dong };
-          fetch("http://localhost:5000/getpolygon", {
-            method: "post",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(box),
-          })
-            .then((res) => res.json())
-            .then((json) => {
-              console.log(json);
-              //this.props.mapdata_function(json);
-              this.props.mapdata_change(json);
-            });
-  }
+  dongclick = (index) => {
+    const box = { city: this.state.top10[index].tot_oa_cd };
+    fetch("http://localhost:5000/getpolygon", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(box),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        //this.props.mapdata_function(json);
+        this.props.mapdata_change(json);
+      });
+  };
   onclick1 = (name) => {
     console.log(name);
     console.log(this.state.top10);
@@ -432,7 +392,14 @@ class Result extends React.Component {
                 if (i < 5) {
                   if (this.state.region === "전국") {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
+                      <a
+                        href="#"
+                        className="show_all_gipho"
+                        onClick={() => {
+                          this.onclick1(v.tot_oa_cd);
+                          this.dongclick(i);
+                        }}
+                      >
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -443,7 +410,14 @@ class Result extends React.Component {
                     );
                   } else {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
+                      <a
+                        href="#"
+                        className="show_all_gipho"
+                        onClick={() => {
+                          this.onclick1(v.tot_oa_cd);
+                          this.dongclick(i);
+                        }}
+                      >
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -459,7 +433,14 @@ class Result extends React.Component {
                 if (i < 10 && i > 4) {
                   if (this.state.region === "전국") {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
+                      <a
+                        href="#"
+                        className="show_all_gipho"
+                        onClick={() => {
+                          this.onclick1(v.tot_oa_cd);
+                          this.dongclick(i);
+                        }}
+                      >
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
@@ -470,7 +451,14 @@ class Result extends React.Component {
                     );
                   } else {
                     return (
-                      <a href="#" className="show_all_gipho" onClick={() => {this.onclick1(v.tot_oa_cd);this.dongclick(i);}}>
+                      <a
+                        href="#"
+                        className="show_all_gipho"
+                        onClick={() => {
+                          this.onclick1(v.tot_oa_cd);
+                          this.dongclick(i);
+                        }}
+                      >
                         <div id="show_all_gipho_circle">
                           <div id="circle_num">{i + 1}</div>
                         </div>
