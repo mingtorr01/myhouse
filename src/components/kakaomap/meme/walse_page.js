@@ -557,7 +557,7 @@ class Walse_page extends React.Component{
                         </div>
                     </div>
                     <Predict_tax school={this.state.school} school_data_change={this.props.school_data_change} marker_location={this.state.marker_location}/>
-                    <Budongsan/>
+                    
                 </div>
             </div>
         )

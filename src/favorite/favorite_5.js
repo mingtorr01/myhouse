@@ -42,6 +42,7 @@ class Favorite_3 extends React.Component {
       bigname: box.bigname,
       name: box.name,
       view: box.view,
+      sido: box.sido,
     };
     this.setState(
       {
@@ -157,21 +158,21 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen1 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "환경", name: "대기오염도", view: "대기 오염도가 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "환경", name: "대기오염도", view: "대기 오염도가 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;대기 오염도가 낮은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "환경", name: "도시공원", view: "도시 공원이 넓은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "환경", name: "도시공원", view: "도시 공원이 넓은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;도시 공원이 넓은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "환경", name: "녹지비율", view: "녹지 비율이 높은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "환경", name: "녹지비율", view: "녹지 비율이 높은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;녹지 비율이 높은 지역
@@ -185,14 +186,14 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen2 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "교육", name: "학원수", view: "학원이 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "교육", name: "학원수", view: "학원이 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;학원이 많은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "교육", name: "교원1인당학생수", view: "교원 1인당 학생수가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "교육", name: "교원1인당학생수", view: "교원 1인당 학생수가 많은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;교원 1인당 학생수가 많은 지역
@@ -206,19 +207,19 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen4 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "특성", name: "쇼핑시설밀집도", view: "쇼핑시설 밀집도가 높은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "특성", name: "쇼핑시설밀집도", view: "쇼핑시설 밀집도가 높은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   쇼핑시설 밀집도가 높은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "특성", name: "외식시설밀집도", view: "외식시설이 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "특성", name: "외식시설밀집도", view: "외식시설이 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   외식시설 밀집도가 높은 지역
                 </button>
-                <button
+                {/*<button
                   onClick={() => {
                     this.select_click({ bigname: "특성", name: "면적당아파트가격", view: "면적당 아파트가격이 높은 지역이면 좋겠어요!." });
                   }}
@@ -238,10 +239,10 @@ class Favorite_3 extends React.Component {
                   }}
                 >
                   주택 가격 변동률이 높은 지역
-                </button>
+                </button>*/}
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "편의", name: "노후주택비율", view: "노후주택 비율이 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "편의", name: "노후주택비율", view: "노후주택 비율이 낮은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   노후주택 비율이 낮은 지역
@@ -255,28 +256,28 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen5 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "안전", name: "cctv", view: "CCTV 감시 취약 지수가 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "안전", name: "cctv", view: "CCTV 감시 취약 지수가 낮은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;CCTV 감시 취약 지수가 낮은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "안전", name: "범죄안전", view: "범죄 안전취약 지수가 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "안전", name: "범죄안전", view: "범죄 안전취약 지수가 낮은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;범죄 안전취약 지수가 낮은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "안전", name: "스트레스인지율", view: "스트레스 인지율이 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "안전", name: "스트레스인지율", view: "스트레스 인지율이 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;스트레스 인지율이 낮은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "안전", name: "화재발생건수", view: "화제 발생건수가 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "안전", name: "화재발생건수", view: "화제 발생건수가 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;화제 발생건수가 낮은 지역
@@ -290,21 +291,21 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen6 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "취업/창업", name: "사업체종사자비율", view: "사업체 종사자 비율이 높은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "취업/창업", name: "사업체종사자비율", view: "사업체 종사자 비율이 높은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;사업체 종사자 비율이 높은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "취업/창업", name: "기업체수", view: "기업체가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "취업/창업", name: "기업체수", view: "기업체가 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;기업체가 많은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "취업/창업", name: "순이동인구", view: "순이동 인구가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "취업/창업", name: "순이동인구", view: "순이동 인구가 많은 지역이면 좋겠어요!.", sido: 0 });
                   }}
                 >
                   &middot;순이동 인구가 많은 지역
@@ -318,42 +319,42 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen7 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "노령화지수", view: "노령화지수가 낮은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "노령화지수", view: "노령화지수가 낮은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;노령화 지수가 낮은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "사업체종사자비율", view: "평균나이가 젊은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "평균나이", view: "평균나이가 젊은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;평균나이가 젊은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "인구밀도높음", view: "인구 밀도가 높은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "인구밀도높음", view: "인구 밀도가 높은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;인구 밀도가 높은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "총인구", view: "총인구가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "총인구", view: "총인구가 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;총인구가 많은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "남자인구", view: "남자가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "남자인구", view: "남자가 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;남자가 많은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "이웃", name: "여자인구", view: "여자가 많은 지역이면 좋겠어요!." });
+                    this.select_click({ bigname: "이웃", name: "여자인구", view: "여자가 많은 지역이면 좋겠어요!.", sido: 1 });
                   }}
                 >
                   &middot;여자가 많은 지역

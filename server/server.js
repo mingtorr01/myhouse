@@ -127,9 +127,15 @@ io.on("connection", function (socket) {
         io.to(socket.id).emit("marker", result);
       });
     }
-    if (data.type == "apart_rents" || data.type == "office_rents") {
+    if (data.type == "office_rents") {
       console.log(data.type);
       rent_esclient.searchDong(data.sw, data.ne, data.type).then(function (result) {
+        io.to(socket.id).emit("marker", result);
+      });
+    }
+    if (data.type == "apart_rents") {
+      console.log(data.type);
+      rent_esclient.searchDongApart(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -154,8 +160,13 @@ io.on("connection", function (socket) {
         io.to(socket.id).emit("marker", result);
       });
     }
-    if (data.type == "apart_rents" || data.type == "office_rents") {
+    if (data.type == "office_rents") {
       rent_esclient.searchDistrict(data.sw, data.ne, data.type).then(function (result) {
+        io.to(socket.id).emit("marker", result);
+      });
+    }
+    if (data.type == "apart_rents") {
+      rent_esclient.searchDistrictApart(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -180,7 +191,12 @@ io.on("connection", function (socket) {
         io.to(socket.id).emit("marker", result);
       });
     }
-    if (data.type == "apart_rents" || data.type == "office_rents") {
+    if (data.type == "apart_rents") {
+      rent_esclient.searchCityApart(data.sw, data.ne, data.type).then(function (result) {
+        io.to(socket.id).emit("marker", result);
+      });
+    }
+    if (data.type == "office_rents") {
       rent_esclient.searchCity(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
@@ -1048,6 +1064,186 @@ rent_esclient.searchCity = function (sw, ne, type) {
             name_aggs: {
               terms: {
                 field: "city",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "rental_fee",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+rent_esclient.searchDongApart = function (sw, ne, type) {
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              filter: {
+                geo_bounding_box: {
+                  location: {
+                    top_left: {
+                      lat: ne.Ma,
+                      lon: sw.La,
+                    },
+                    bottom_right: {
+                      lat: sw.Ma,
+                      lon: ne.La,
+                    },
+                  },
+                },
+              },
+              must: {
+                range: {
+                  rental_fee: { gt: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "code",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "rental_fee",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+
+rent_esclient.searchDistrictApart = function (sw, ne, type) {
+  var selectedDistrict = [];
+
+  for (var index in districts) {
+    // 칼럼 갯수만큼 돌면서 적절한 데이터 추가하기.
+    if (districts[index].lat <= ne.Ma && districts[index].lat >= sw.Ma && districts[index].lng <= ne.La && districts[index].lng >= sw.La) {
+      selectedDistrict.push(districts[index].district);
+    }
+  }
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              filter: {
+                terms: {
+                  dong: selectedDistrict,
+                },
+              },
+              must: {
+                range: {
+                  rental_fee: { gt: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "dong",
+                size: 100,
+              },
+              aggs: {
+                avg_trade_price: {
+                  avg: {
+                    field: "rental_fee",
+                  },
+                },
+                location: {
+                  top_hits: {
+                    size: 1,
+                    _source: { include: ["location"] },
+                  },
+                },
+              },
+            },
+          },
+        },
+      })
+      .then(
+        function (resp) {
+          console.log(resp.aggregations.name_aggs.buckets);
+          resolve(resp.aggregations.name_aggs.buckets);
+        },
+        function (err) {
+          reject(err.message);
+        }
+      );
+  });
+};
+
+rent_esclient.searchCityApart = function (sw, ne, type) {
+  return new Promise(function (resolve, reject) {
+    trade_esclient
+      .search({
+        index: type,
+        body: {
+          size: 0,
+          query: {
+            bool: {
+              must: {
+                range: {
+                  rental_fee: { gt: 0 },
+                },
+              },
+            },
+          },
+          aggs: {
+            name_aggs: {
+              terms: {
+                field: "sub_city",
                 size: 100,
               },
               aggs: {

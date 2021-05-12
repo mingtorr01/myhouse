@@ -37,7 +37,7 @@ render(){
                         </div>
                     </li>
                     {this.props.newsdata.map((v,i,a)=>{
-                        if(i>0 && i<5)
+                        if(i>0 && i<8)
                         return(
                             <li>
                                 <div className="nomal_news">
