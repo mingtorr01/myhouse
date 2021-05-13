@@ -157,6 +157,7 @@ class Favorite_3 extends React.Component {
               </button>
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen1 === true ? "none" : "block"}` }}>
                 <button
+                 id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "환경", name: "대기오염도", view: "대기 오염도가 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -164,6 +165,7 @@ class Favorite_3 extends React.Component {
                   &middot;대기 오염도가 낮은 지역
                 </button>
                 <button
+                id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "환경", name: "도시공원", view: "도시 공원이 넓은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -171,6 +173,7 @@ class Favorite_3 extends React.Component {
                   &middot;도시 공원이 넓은 지역
                 </button>
                 <button
+                id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "환경", name: "녹지비율", view: "녹지 비율이 높은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -192,6 +195,7 @@ class Favorite_3 extends React.Component {
                   &middot;학원이 많은 지역
                 </button>
                 <button
+                  id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "교육", name: "교원1인당학생수", view: "교원 1인당 학생수가 많은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -269,6 +273,7 @@ class Favorite_3 extends React.Component {
                   &middot;범죄 안전취약 지수가 낮은 지역
                 </button>
                 <button
+                id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "안전", name: "스트레스인지율", view: "스트레스 인지율이 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -276,6 +281,7 @@ class Favorite_3 extends React.Component {
                   &middot;스트레스 인지율이 낮은 지역
                 </button>
                 <button
+                id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "안전", name: "화재발생건수", view: "화제 발생건수가 낮은 지역이면 좋겠어요!.", sido: 0 });
                   }}
@@ -304,6 +310,7 @@ class Favorite_3 extends React.Component {
                   &middot;기업체가 많은 지역
                 </button>
                 <button
+                id="specialbutton"
                   onClick={() => {
                     this.select_click({ bigname: "취업/창업", name: "순이동인구", view: "순이동 인구가 많은 지역이면 좋겠어요!.", sido: 0 });
                   }}

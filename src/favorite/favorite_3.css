@@ -103,6 +103,52 @@
   margin-left: 5px;
   margin-right: 10px;
 }
+#specialbutton{
+  width: 300px;
+  height: auto;
+  outline: none;
+  background-color: #fae1da;
+  color: #ff8b8b;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border: 0px;
+  margin-left: 15px;
+  border-radius: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#specialbutton:hover{
+  width: 300px;
+  height: auto;
+  outline: none;
+  background-color: #ff8b8b;
+  color: #fff;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 8%), -1px 1px 1px rgb(0 0 0 / 3%), 1px 1px 1px rgb(0 0 0 / 3%);
+  z-index: 2;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border: 0px;
+  margin-left: 15px;
+  border-radius: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .favorite_enviroment_item_div button {
   width: 300px;
   height: auto;
