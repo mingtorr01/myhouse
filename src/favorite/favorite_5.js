@@ -151,6 +151,9 @@ class Favorite_3 extends React.Component {
             ></button>
           </div>
           <div className="Favorite_3_main_div_scroll">
+            <div className="type_div">
+              <span id="blue_span"></span> 읍면동 데이터 <span id="red_span"></span> 시군구 데이터
+            </div>
             <div className="favorite_item_div">
               <button id="favorite_item_div_button" onClick={() => this.openchange(1)}>
                 1. 이런 환경에서 살고 싶어요!

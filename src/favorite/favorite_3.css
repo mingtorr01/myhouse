@@ -655,3 +655,26 @@
   font-family: 'Noto Sans KR', sans-serif;
   font-family: 500;
 }
+.type_div{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+#blue_span{
+  width: 20px;
+  height: 10px;
+  background-color: #8692f3;
+  margin-right: 6px;
+  
+}
+#red_span{
+  width: 20px;
+  height: 10px;
+  background-color: #ff8b8b;
+  margin-left: 20px;
+  margin-right: 6px;
+}
