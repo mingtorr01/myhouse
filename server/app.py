@@ -78,14 +78,13 @@ def postTest():
         df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
         df.sort_values("sorter", inplace=True)
         df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
-
     res = pd.concat([sid, df])
     res.reset_index(drop=True, inplace=True)
     print(res)
     #jsonfiles = res.to_json(orient='records', encoding="utf-8-sig")
     #jsonfiles = df.apply(lambda x: [x.dropna()], axis=1).to_json()
     result = res.to_dict("records")
-    tem = json.dumps(result, default=json_util.default)
+    tem = json.dumps(result, default=json_util.default, ensure_ascii=False)
     print(tem)
     return tem
 
