@@ -32,7 +32,7 @@ function App() {
   const [newsdata, newsdatachange] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/getNews", {
+    fetch("flask/getNews", {
       method: "get",
       headers: {
         "content-type": "application/json",
@@ -69,7 +69,7 @@ function App() {
         point: select_gipho_data,
       };
       console.log(box);
-      fetch("http://localhost:5000/posts", {
+      fetch("flask/posts", {
         method: "post",
         headers: {
           "content-type": "application/json",

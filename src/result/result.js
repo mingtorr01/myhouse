@@ -145,7 +145,7 @@ class Result extends React.Component {
   };
   dongclick = (index) => {
     const box = { city: this.state.top10[index].tot_oa_cd };
-    fetch("http://localhost:5000/getpolygon", {
+    fetch("flask/getpolygon", {
       method: "post",
       headers: {
         "content-type": "application/json",
