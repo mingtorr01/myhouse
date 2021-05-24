@@ -46,7 +46,7 @@ function Favorite_1(props) {
     const locations = {
       location: location,
     };
-    fetch("http://localhost:3001/db/getLocation", {
+    fetch("db/getLocation", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -64,21 +64,21 @@ function Favorite_1(props) {
     return (
       <div className="favorite_main_div_row">
         {renewarr[i].map((v, i, a) => {
-          if(v==='제주특별자치도'){
-            return(
+          if (v === "제주특별자치도") {
+            return (
               <div className="favorite_main_div_column">
-              <button
-                onClick={() => {
-                  showregion2(v);
-                }}
-              >
-                {'제주'}
-                <br />
-                {'특별자치도'}
-              </button>
-            </div>
-            )
-          }else{
+                <button
+                  onClick={() => {
+                    showregion2(v);
+                  }}
+                >
+                  {"제주"}
+                  <br />
+                  {"특별자치도"}
+                </button>
+              </div>
+            );
+          } else {
             return (
               <div className="favorite_main_div_column">
                 <button
@@ -89,7 +89,7 @@ function Favorite_1(props) {
                   {v}
                 </button>
               </div>
-            ); 
+            );
           }
         })}
       </div>
@@ -101,13 +101,28 @@ function Favorite_1(props) {
       <div className="favorite_1">
         <div className="favorite_title_div">
           <p>1. 원하시는 지역을 선택하세요.</p>
-          <button onClick={()=>props.favorite_div_bool_change(false)}></button>
+          <button onClick={() => props.favorite_div_bool_change(false)}></button>
         </div>
         <div className="favorite_main_div">{rendermap}</div>
       </div>
     );
   } else {
-    return <Favorite_2 props_gipho_select={props.props_gipho_select} cancle_select_gipho_data_change={props.cancle_select_gipho_data_change} stepchange={stepchange} favorite_div_bool_change={props.favorite_div_bool_change} region_change={props.region_change}location1={location1} location2={location2} control_change={props.control_change} result_data_change={props.result_data_change} cancle_giphodata={props.cancle_giphodata} select_gipho_data={props.select_gipho_data} result_change={props.result_change} />;
+    return (
+      <Favorite_2
+        props_gipho_select={props.props_gipho_select}
+        cancle_select_gipho_data_change={props.cancle_select_gipho_data_change}
+        stepchange={stepchange}
+        favorite_div_bool_change={props.favorite_div_bool_change}
+        region_change={props.region_change}
+        location1={location1}
+        location2={location2}
+        control_change={props.control_change}
+        result_data_change={props.result_data_change}
+        cancle_giphodata={props.cancle_giphodata}
+        select_gipho_data={props.select_gipho_data}
+        result_change={props.result_change}
+      />
+    );
   }
 }
 

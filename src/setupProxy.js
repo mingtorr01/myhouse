@@ -8,8 +8,8 @@ module.exports = function (app) {
     })
   );
   app.use(
-    createProxyMiddleware("/flask", {
-      target: "http://localhost:5000/",
+    createProxyMiddleware("/db", {
+      target: "http://localhost:3001/",
       changeOrigin: true,
     })
   );
