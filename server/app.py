@@ -95,7 +95,6 @@ def postTest():
         df["sorter"] = df["tot_oa_cd"].map(sorterIndex)
         df.sort_values("sorter", inplace=True)
         df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
-
     res = pd.concat([df, sid])
     res.reset_index(drop=True, inplace=True)
     res = res.replace(np.NaN, '0')
