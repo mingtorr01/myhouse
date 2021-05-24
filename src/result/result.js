@@ -354,6 +354,7 @@ class Result extends React.Component {
           <div className="result_all_gipho">
             <div className="result_all_gipho1">
               {this.state.top10.map((v, i, a) => {
+              if(v.sido === '0'){
                 if (i < 5) {
                   if (this.state.region === "전국") {
                     return (
@@ -390,46 +391,49 @@ class Result extends React.Component {
                       </a>
                     );
                   }
-                }
+                } 
+              }
               })}
             </div>
             <div className="result_all_gipho2">
               {this.state.top10.map((v, i, a) => {
-                if (i < 10 && i > 4) {
-                  if (this.state.region === "전국") {
-                    return (
-                      <a
-                        href="#"
-                        className="show_all_gipho"
-                        onClick={() => {
-                          this.onclick1(v.tot_oa_cd);
-                          this.dongclick(i);
-                        }}
-                      >
-                        <div id="show_all_gipho_circle">
-                          <div id="circle_num">{i + 1}</div>
-                        </div>
-                        <div id="show_all_gipho_main">
-                          {v.city}&nbsp;{v.dong}
-                        </div>
-                      </a>
-                    );
-                  } else {
-                    return (
-                      <a
-                        href="#"
-                        className="show_all_gipho"
-                        onClick={() => {
-                          this.onclick1(v.tot_oa_cd);
-                          this.dongclick(i);
-                        }}
-                      >
-                        <div id="show_all_gipho_circle">
-                          <div id="circle_num">{i + 1}</div>
-                        </div>
-                        <div id="show_all_gipho_main">{v.dong}</div>
-                      </a>
-                    );
+                if(v.sido === '0'){
+                  if (i < 10 && i > 4) {
+                    if (this.state.region === "전국") {
+                      return (
+                        <a
+                          href="#"
+                          className="show_all_gipho"
+                          onClick={() => {
+                            this.onclick1(v.tot_oa_cd);
+                            this.dongclick(i);
+                          }}
+                        >
+                          <div id="show_all_gipho_circle">
+                            <div id="circle_num">{i + 1}</div>
+                          </div>
+                          <div id="show_all_gipho_main">
+                            {v.city}&nbsp;{v.dong}
+                          </div>
+                        </a>
+                      );
+                    } else {
+                      return (
+                        <a
+                          href="#"
+                          className="show_all_gipho"
+                          onClick={() => {
+                            this.onclick1(v.tot_oa_cd);
+                            this.dongclick(i);
+                          }}
+                        >
+                          <div id="show_all_gipho_circle">
+                            <div id="circle_num">{i + 1}</div>
+                          </div>
+                          <div id="show_all_gipho_main">{v.dong}</div>
+                        </a>
+                      );
+                    }
                   }
                 }
               })}
