@@ -40,7 +40,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json[0].tile);
+        console.log(json);
         newsdatachange(json);
         console.log(newsdata);
       });
@@ -73,6 +73,7 @@ function App() {
         method: "post",
         headers: {
           "content-type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(box),
       })
@@ -80,6 +81,9 @@ function App() {
         .then((json) => {
           console.log(json);
           data_set_change(json);
+        })
+        .catch(function (err) {
+          console.log(err);
         });
     }
   };
@@ -87,14 +91,12 @@ function App() {
   function props_gipho_select(select) {
     //선택한지표들중에서 선택을한게 있을때 검사를 하고 있으면 change 없으면 추가
     console.log(select_gipho_data.length);
-    console.log("으어어어어엉");
     let data = select_gipho_data;
     let is_include = false;
     data.map((value, index, array) => {
       console.log(value);
       if (value.name === select.name) {
         is_include = true;
-        console.log("아니야아니야");
       }
     });
     if (is_include === false) {
@@ -105,12 +107,10 @@ function App() {
         alert("6개 이상의 지표를 설정할 수 없습니다.");
       } else {
         data.push(select);
-        console.log(select_gipho_data);
         select_gipho_data_change(data);
         controlchange(false);
       }
     } else {
-      console.log(select_gipho_data);
       select_gipho_data_change(data);
       controlchange(false);
     }
@@ -198,7 +198,7 @@ function App() {
     <Provider store={store}>
       <div>
         {searchdiv_bool ? <Region_search props_searchbar_false_change={props_searchbar_false_change} /> : <div></div>}
-        
+
         {favorite_div_bool ? <div></div> : <Findhouse_button2 findhouse_button={findhouse_button} polygon_stop_change={polygon_stop_change} />}
         {favorite_div_bool ? <Favorite_1 props_gipho_select={props_gipho_select} cancle_select_gipho_data_change={cancle_select_gipho_data_change} favorite_div_bool_change={favorite_div_bool_change} control_change={control_change} result_change={result_change} cancle_giphodata={cancle_giphodata} select_gipho_data={select_gipho_data} region_change={region_change} /> : <News newsdata={newsdata} />}
         {listclick_count === 1 ? <Dropmenu_list_hospital listname={listname} /> : <div></div>}

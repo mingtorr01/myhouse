@@ -68,13 +68,10 @@ cities = cities.slice(0, -1);
 districts = districts.slice(0, -1);
 
 var trade_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
-});
-var deposit_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
-});
-var rent_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
+  auth: {
+    username: "elastic",
+    password: "ARpUCTd6slJOq22Se7izPVnL",
+  },
 });
 
 //..............................................................................................................................
@@ -90,18 +87,18 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchTarget(data.sw, data.ne, "apart_rents").then(function (result) {
+      trade_esclient.searchTarget(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
 
     if (data.type == "office_deposits") {
-      deposit_esclient.searchTarget(data.sw, data.ne, "office_rents").then(function (result) {
+      trade_esclient.searchTarget(data.sw, data.ne, "office_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "apart_rents" || data.type == "office_rents") {
-      rent_esclient.searchTarget(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchTarget(data.sw, data.ne, data.type).then(function (result) {
         console.log(result);
         io.to(socket.id).emit("marker", result);
       });
@@ -117,25 +114,25 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchDongApart(data.sw, data.ne, "apart_rents").then(function (result) {
+      trade_esclient.searchDongApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
 
     if (data.type == "office_deposits") {
-      deposit_esclient.searchDong(data.sw, data.ne, "office_rents").then(function (result) {
+      trade_esclient.searchDong(data.sw, data.ne, "office_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "office_rents") {
       console.log(data.type);
-      rent_esclient.searchDong(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchDong(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "apart_rents") {
       console.log(data.type);
-      rent_esclient.searchDongApart(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchDongApart(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -150,23 +147,23 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchDistrictApart(data.sw, data.ne, "apart_rents").then(function (result) {
+      trade_esclient.searchDistrictApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
 
     if (data.type == "office_deposits") {
-      deposit_esclient.searchDistrict(data.sw, data.ne, "office_rents").then(function (result) {
+      trade_esclient.searchDistrict(data.sw, data.ne, "office_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "office_rents") {
-      rent_esclient.searchDistrict(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchDistrict(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "apart_rents") {
-      rent_esclient.searchDistrictApart(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchDistrictApart(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -181,23 +178,23 @@ io.on("connection", function (socket) {
     }
 
     if (data.type == "apart_deposits") {
-      deposit_esclient.searchCityApart(data.sw, data.ne, "apart_rents").then(function (result) {
+      trade_esclient.searchCityApart(data.sw, data.ne, "apart_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
 
     if (data.type == "office_deposits") {
-      deposit_esclient.searchCity(data.sw, data.ne, "office_rents").then(function (result) {
+      trade_esclient.searchCity(data.sw, data.ne, "office_rents").then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "apart_rents") {
-      rent_esclient.searchCityApart(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchCityApart(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
     if (data.type == "office_rents") {
-      rent_esclient.searchCity(data.sw, data.ne, data.type).then(function (result) {
+      trade_esclient.searchCity(data.sw, data.ne, data.type).then(function (result) {
         io.to(socket.id).emit("marker", result);
       });
     }
@@ -432,7 +429,7 @@ trade_esclient.searchCity = function (sw, ne, type) {
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-deposit_esclient.searchTarget = function (sw, ne, type) {
+trade_esclient.searchTarget = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -497,7 +494,7 @@ deposit_esclient.searchTarget = function (sw, ne, type) {
   });
 };
 
-deposit_esclient.searchDong = function (sw, ne, type) {
+trade_esclient.searchDong = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -561,7 +558,7 @@ deposit_esclient.searchDong = function (sw, ne, type) {
   });
 };
 
-deposit_esclient.searchDistrict = function (sw, ne, type) {
+trade_esclient.searchDistrict = function (sw, ne, type) {
   var selectedDistrict = [];
 
   for (var index in districts) {
@@ -624,7 +621,7 @@ deposit_esclient.searchDistrict = function (sw, ne, type) {
   });
 };
 
-deposit_esclient.searchCity = function (sw, ne, type) {
+trade_esclient.searchCity = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -675,7 +672,7 @@ deposit_esclient.searchCity = function (sw, ne, type) {
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-deposit_esclient.searchDongApart = function (sw, ne, type) {
+trade_esclient.searchDongApart = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -739,7 +736,7 @@ deposit_esclient.searchDongApart = function (sw, ne, type) {
   });
 };
 
-deposit_esclient.searchDistrictApart = function (sw, ne, type) {
+trade_esclient.searchDistrictApart = function (sw, ne, type) {
   var selectedDistrict = [];
 
   for (var index in districts) {
@@ -802,7 +799,7 @@ deposit_esclient.searchDistrictApart = function (sw, ne, type) {
   });
 };
 
-deposit_esclient.searchCityApart = function (sw, ne, type) {
+trade_esclient.searchCityApart = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -852,7 +849,7 @@ deposit_esclient.searchCityApart = function (sw, ne, type) {
   });
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-rent_esclient.searchTarget = function (sw, ne, type) {
+trade_esclient.searchTarget = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -915,7 +912,7 @@ rent_esclient.searchTarget = function (sw, ne, type) {
       );
   });
 };
-rent_esclient.searchDong = function (sw, ne, type) {
+trade_esclient.searchDong = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -980,7 +977,7 @@ rent_esclient.searchDong = function (sw, ne, type) {
   });
 };
 
-rent_esclient.searchDistrict = function (sw, ne, type) {
+trade_esclient.searchDistrict = function (sw, ne, type) {
   var selectedDistrict = [];
 
   for (var index in districts) {
@@ -1044,7 +1041,7 @@ rent_esclient.searchDistrict = function (sw, ne, type) {
   });
 };
 
-rent_esclient.searchCity = function (sw, ne, type) {
+trade_esclient.searchCity = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -1095,7 +1092,7 @@ rent_esclient.searchCity = function (sw, ne, type) {
   });
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-rent_esclient.searchDongApart = function (sw, ne, type) {
+trade_esclient.searchDongApart = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({
@@ -1160,7 +1157,7 @@ rent_esclient.searchDongApart = function (sw, ne, type) {
   });
 };
 
-rent_esclient.searchDistrictApart = function (sw, ne, type) {
+trade_esclient.searchDistrictApart = function (sw, ne, type) {
   var selectedDistrict = [];
 
   for (var index in districts) {
@@ -1224,7 +1221,7 @@ rent_esclient.searchDistrictApart = function (sw, ne, type) {
   });
 };
 
-rent_esclient.searchCityApart = function (sw, ne, type) {
+trade_esclient.searchCityApart = function (sw, ne, type) {
   return new Promise(function (resolve, reject) {
     trade_esclient
       .search({

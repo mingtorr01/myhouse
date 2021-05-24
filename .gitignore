@@ -25,6 +25,8 @@ yarn-error.log*
 .env
 .eslintcache
 
-*.csv
-*.xlxs
+.build
 
+
+.csv
+.exel
