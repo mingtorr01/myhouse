@@ -24,3 +24,9 @@ yarn-error.log*
 
 .env
 .eslintcache
+
+.build
+
+
+.csv
+.exel

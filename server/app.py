@@ -12,6 +12,9 @@ from datetime import datetime
 from pandas import json_normalize
 from collections import OrderedDict
 import numpy as np
+import re
+import json
+
 
 app = Flask(__name__)
 CORS(app)
@@ -28,8 +31,8 @@ gets = {'location': '강원도-전체선택', 'point': [{'bigname': '이웃', 'n
 
 @app.route('/posts', methods=['GET', 'POST'])
 def postTest():
-    #content = request.json
-    content = gets
+    content = request.json
+    #content = gets
     print(content)
     poi = []
     sid = pd.DataFrame()
@@ -44,9 +47,10 @@ def postTest():
     else:
         result = mydb["point"].find({"sido": loc[0], "city": loc[1]})
         df = pd.DataFrame(result)
-
+        
+    pd.set_option('display.max_columns', None)
+    print(df)
     df = df.replace('0', np.NaN)
-
     important = 100
     cnt = 0
     for i, points in enumerate(content["point"]):
@@ -61,16 +65,17 @@ def postTest():
         elif "전국" == loc[0]:
             #sido = list(mydb[points["name"]].find({}))
             nm = points["name"]
-            sido = list(mydb[nm].find({}).sort(nm, -1).limit(10))
-            sid = sid.append(sido)
+            sido = mydb[nm].find({}).sort(nm, -1).limit(10)
+            tp = pd.DataFrame(sido)
+            sid = pd.concat([tp, sid], ignore_index=True)
             cnt = cnt + 1
         else:
             nm = points["name"]
-            sido = list(mydb[nm].find({"sido": loc[0]}).sort(nm, -1).limit(10))
-            sid = sid.append(sido)
+            sido = mydb[nm].find({"sido": loc[0]}, {"_id": 0}).sort(nm, -1).limit(10)
+            tp = pd.DataFrame(sido)
+            sid = pd.concat([tp, sid], ignore_index=True)
             cnt = cnt + 1
         important = important - 20
-
     if cnt == len(content["point"]):
         df = pd.DataFrame()
     else:
@@ -78,7 +83,6 @@ def postTest():
         # print(dfd)
         df = pd.concat([df, dfd], axis=1)
         dfs = df.sort_values(by=[0],  ascending=[False]).head(10)
-        print(dfs)
         # 상위 10개 지역 추출 완료
     #########################################################################
         locat = list(dfs["tot_oa_cd"])
@@ -95,11 +99,10 @@ def postTest():
         df.drop('sorter', 1, inplace=True)  # sorter 열 삭제
     res = pd.concat([df, sid])
     res.reset_index(drop=True, inplace=True)
+    res = res.replace(np.NaN, '0')
     print(res)
-    #jsonfiles = res.to_json(orient='records', encoding="utf-8-sig")
-    #jsonfiles = df.apply(lambda x: [x.dropna()], axis=1).to_json()
-    result = res.to_dict("records")
-    tem = json.dumps(result, default=json_util.default, ensure_ascii=False)
+    tem = res.to_json(orient="records")
+
     return tem
 
 

@@ -215,14 +215,14 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen4 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "특성", name: "쇼핑시설밀집도", view: "쇼핑시설 밀집도가 높은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
+                    this.select_click({ bigname: "특성", name: "쇼핑", view: "쇼핑시설 밀집도가 높은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
                   }}
                 >
                   쇼핑시설 밀집도가 높은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "특성", name: "외식시설밀집도", view: "외식시설이 많은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
+                    this.select_click({ bigname: "특성", name: "외식", view: "외식시설이 많은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
                   }}
                 >
                   외식시설 밀집도가 높은 지역
@@ -301,14 +301,14 @@ class Favorite_3 extends React.Component {
               <div className="favorite_enviroment_item_div" style={{ display: `${this.state.setopen6 === true ? "none" : "block"}` }}>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "취업/창업", name: "사업체종사자비율", view: "사업체 종사자 비율이 높은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
+                    this.select_click({ bigname: "취업/창업", name: "사업체종사자", view: "사업체 종사자 비율이 높은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
                   }}
                 >
                   &middot;사업체 종사자 비율이 높은 지역
                 </button>
                 <button
                   onClick={() => {
-                    this.select_click({ bigname: "취업/창업", name: "기업체수", view: "기업체가 많은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
+                    this.select_click({ bigname: "취업/창업", name: "기업체", view: "기업체가 많은 지역이면 좋겠어요!.", sido: 1, Positive: 1 });
                   }}
                 >
                   &middot;기업체가 많은 지역

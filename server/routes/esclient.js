@@ -1,15 +1,14 @@
 const elasticsearch = require("elasticsearch");
 
 var trade_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
+  cloud: {
+    id: "name : 111b08c44f374be09258afed962ac848",
+  },
+  auth: {
+    username: "elastic",
+    password: "ARpUCTd6slJOq22Se7izPVnL",
+  },
 });
-var deposit_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
-});
-var rent_esclient = new elasticsearch.Client({
-  host: "http://localhost:9200",
-});
-
 function code1(location) {
   return new Promise(function (resolve, reject) {
     trade_esclient
