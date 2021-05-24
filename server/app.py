@@ -63,7 +63,7 @@ def postTest():
         elif "전국" == loc[0]:
             #sido = list(mydb[points["name"]].find({}))
             nm = points["name"]
-            sido = mydb[nm].find({}).sort(nm, -1).limit(10)
+            sido = mydb[nm].find({}, {"_id": 0}).sort(nm, -1).limit(10)
             tp = pd.DataFrame(sido)
             sid = pd.concat([tp, sid], ignore_index=True)
             cnt = cnt + 1
