@@ -47,9 +47,7 @@ def postTest():
     else:
         result = mydb["point"].find({"sido": loc[0], "city": loc[1]})
         df = pd.DataFrame(result)
-        
-    pd.set_option('display.max_columns', None)
-    print(df)
+
     df = df.replace('0', np.NaN)
     important = 100
     cnt = 0
