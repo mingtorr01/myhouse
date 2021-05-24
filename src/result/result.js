@@ -63,7 +63,7 @@ class Result extends React.Component {
           console.log(this.state.top);
           const box = { city: this.state.top10[0].tot_oa_cd };
 
-          fetch("flask/getpolygon", {
+          fetch("http://localhost:5000/getpolygon", {
             method: "post",
             headers: {
               "content-type": "application/json",
@@ -154,7 +154,7 @@ class Result extends React.Component {
   };
   dongclick = (index) => {
     const box = { city: this.state.top10[index].tot_oa_cd };
-    fetch("flask/getpolygon", {
+    fetch("http://localhost:5000/getpolygon", {
       method: "post",
       headers: {
         "content-type": "application/json",
