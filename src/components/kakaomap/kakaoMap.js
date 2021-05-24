@@ -9,7 +9,7 @@ import "./kakao.css";
 import io from "socket.io-client";
 const url = "http://localhost:3001/";
 
-const socket = io.connect();
+const socket = io.connect(url);
 const { kakao } = window;
 
 function updateTarget(map, types) {

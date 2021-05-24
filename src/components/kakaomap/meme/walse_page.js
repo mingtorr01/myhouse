@@ -213,31 +213,33 @@ class Walse_page extends React.Component{
                   console.log(json);
                   this.setState({
                       school:[...this.state.school,json]
+                  },()=>{
+                    fetch("api/school", {
+                      method: "post",
+                      headers: {
+                        "content-type": "application/json",
+                      },
+                      body: JSON.stringify(box2),
+                    }).then(res=>res.json()).then((json)=>{
+                        console.log(json);
+                        this.setState({
+                          school:[...this.state.school,json]
+                      },()=>{
+                        fetch("api/school", {
+                          method: "post",
+                          headers: {
+                            "content-type": "application/json",
+                          },
+                          body: JSON.stringify(box3),
+                        }).then(res=>res.json()).then((json)=>{
+                            console.log(json);
+                            this.setState({
+                              school:[...this.state.school,json]
+                          })
+                        });
+                      })
+                    });
                   })
-              });
-              fetch("api/school", {
-                method: "post",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify(box2),
-              }).then(res=>res.json()).then((json)=>{
-                  console.log(json);
-                  this.setState({
-                    school:[...this.state.school,json]
-                })
-              });
-              fetch("api/school", {
-                method: "post",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify(box3),
-              }).then(res=>res.json()).then((json)=>{
-                  console.log(json);
-                  this.setState({
-                    school:[...this.state.school,json]
-                })
               });
        let index_15 = 0;
         const arr = [];
