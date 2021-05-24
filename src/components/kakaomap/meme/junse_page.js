@@ -169,6 +169,9 @@ class Junse_page extends React.Component{
         },() => {//
             console.log(this.state.road_view);
             this.props.cancle_line_school();
+            this.setState({
+                school:[]
+              })
             fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${this.state.data[0].name}&y=${this.state.data[0].location.lat}&x=${this.state.data[0].location.lon}&radius=20000`, {
                 method: "post",
                 headers: {
