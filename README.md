@@ -94,7 +94,6 @@ ex) `curl -XGET http://localhost:9200/index_name?pretty`
 DATA LIST
 
 ![datalist](https://github.com/Mingtorr/myhouse/blob/master/images/data_list.png)
-데이터 필요 시 Mingtorr@gmail.com 으로 연락하세요.
 
 
 ### 2. Run
